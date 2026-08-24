@@ -90,6 +90,18 @@ export const WEB_TOOLS = [
 
 export const TRACKS = [
   {
+    title: 'CALMA',
+    mainArtist: 'dhreian & Nanae',
+    featArtist: 'Rayxn Antu',
+    tags: ['prod'],
+    cover: '/collabs/art-calma.jpg',
+    links: {
+      spotify: 'https://open.spotify.com/intl-es/track/4mjzHteHfr9uHM9irpqhCl',
+      apple: 'https://music.apple.com/cl/song/calma-feat-rayxn-antu/6794247468',
+      youtube: 'https://music.youtube.com/watch?v=dcPpLZpq6gI',
+    }
+  },
+  {
     title: 'artificial',
     mainArtist: 'dhreian & nanae',
     featArtist: null,

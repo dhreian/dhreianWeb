@@ -25,6 +25,10 @@ export const translations = {
       ctaServices: 'ver servicios',
       listenOn: 'Escuchar en',
       coverOf: 'Carátula de',
+      otherReleases: 'Otros lanzamientos',
+      previousRelease: 'Ver lanzamiento anterior',
+      nextRelease: 'Ver lanzamiento siguiente',
+      of: 'de',
     },
     beatstore: {
       eyebrow: 'catálogo de beats',
@@ -235,6 +239,10 @@ export const translations = {
       ctaServices: 'view services',
       listenOn: 'Listen on',
       coverOf: 'Cover of',
+      otherReleases: 'Other releases',
+      previousRelease: 'View previous release',
+      nextRelease: 'View next release',
+      of: 'of',
     },
     beatstore: {
       eyebrow: 'beat catalog',

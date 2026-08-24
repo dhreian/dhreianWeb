@@ -179,6 +179,20 @@ html {
   -ms-overflow-style: none;
 }
 
+.release-carousel-shell {
+  container-type: inline-size;
+}
+
+.release-card-slot {
+  flex: 0 0 calc((100cqw - 0.75rem) / 2);
+}
+
+@media (min-width: 64rem) {
+  .release-card-slot {
+    flex-basis: calc((100cqw - 2rem) / 3);
+  }
+}
+
 .beat-card-slot {
   flex: 0 0 100%;
 }

@@ -204,8 +204,18 @@ const SOCIAL_PROFILES = [
 
 const RELEASES = [
   {
+    slug: 'calma',
+    title: 'CALMA',
+    artists: ['Nanae', 'Rayxn Antu'],
+    image: '/collabs/art-calma.jpg',
+    spotify: 'https://open.spotify.com/track/4mjzHteHfr9uHM9irpqhCl',
+    apple: 'https://music.apple.com/cl/song/calma-feat-rayxn-antu/6794247468',
+    youtube: 'https://music.youtube.com/watch?v=dcPpLZpq6gI',
+  },
+  {
     slug: 'artificial',
     title: 'artificial',
+    artists: ['Nanae'],
     image: '/collabs/art-artificial.jpg',
     spotify: 'https://open.spotify.com/track/00r8HD5I5RfZLFKnJxbEBA',
     apple: 'https://music.apple.com/cl/album/artificial-single/6777309486',
@@ -214,6 +224,7 @@ const RELEASES = [
   {
     slug: 'hilos-de-ternura',
     title: 'hilos de ternura',
+    artists: ['Nanae'],
     image: '/collabs/art-hilos.webp',
     spotify: 'https://open.spotify.com/album/4AfGpUHkGgZY480WLuyJuF',
     apple: 'https://music.apple.com/cl/album/hilos-de-ternura-single/1820158756',
@@ -222,6 +233,7 @@ const RELEASES = [
   {
     slug: 'amanecer-contigo',
     title: 'amanecer contigo',
+    artists: ['Nanae'],
     image: '/collabs/art-amanecer.webp',
     spotify: 'https://open.spotify.com/album/2un8xEf4i9VxerTy2htgfg',
     apple: 'https://music.apple.com/cl/album/amanecer-contigo-single/1848530533',
@@ -230,6 +242,7 @@ const RELEASES = [
   {
     slug: 'senales',
     title: 'señales',
+    artists: ['Nanae'],
     image: '/collabs/art-senales.webp',
     spotify: 'https://open.spotify.com/artist/5Sv40N0flsAfHMxy6NrB1m',
     apple: 'https://music.apple.com/cl/album/se%C3%B1ales-single/1853665206',
@@ -539,8 +552,8 @@ function createReleaseNodes() {
     '@id': `${SITE_URL}/#track-${release.slug}`,
     name: release.title,
     byArtist: [
-      { '@type': 'MusicGroup', name: 'NaNae' },
       { '@id': ARTIST_ID },
+      ...release.artists.map((artist) => ({ '@type': 'MusicGroup', name: artist })),
     ],
     image: `${SITE_URL}${release.image}`,
     url: release.spotify,

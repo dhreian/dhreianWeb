@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMusic, faSliders } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faMusic, faSliders } from '@fortawesome/free-solid-svg-icons';
 import { TRACKS, PLATFORMS } from '../data/site';
 import Card from './Card';
 import NeonButton from './Button';
@@ -10,6 +10,31 @@ export default function Hero() {
   const { t } = useLang();
   const featuredTrack = TRACKS[0];
   const otherTracks = TRACKS.slice(1);
+  const otherTracksCarouselRef = useRef(null);
+
+  const scrollOtherTracks = (direction) => {
+    const carousel = otherTracksCarouselRef.current;
+    const firstSlide = carousel?.querySelector('[data-release-slide]');
+    if (!carousel || !firstSlide) return;
+
+    const gap = Number.parseFloat(window.getComputedStyle(carousel).columnGap) || 0;
+    const step = firstSlide.getBoundingClientRect().width + gap;
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    const atStart = carousel.scrollLeft <= 4;
+    const atEnd = carousel.scrollLeft >= maxScroll - 4;
+
+    if (direction < 0 && atStart) {
+      carousel.scrollTo({ left: maxScroll, behavior: 'smooth' });
+      return;
+    }
+
+    if (direction > 0 && atEnd) {
+      carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      return;
+    }
+
+    carousel.scrollBy({ left: direction * step, behavior: 'smooth' });
+  };
 
   return (
     <section
@@ -43,7 +68,7 @@ export default function Hero() {
 
           {featuredTrack && (
             <Card accent="purple" className="w-full">
-              <div className="flex items-stretch p-3 lg:p-4 gap-3 lg:gap-4">
+              <div className="flex items-center h-full p-3 lg:p-4 gap-3 lg:gap-4">
 
                 <div className="w-[45%] aspect-square shrink-0 rounded-2xl overflow-hidden shadow-[0_0_45px_rgba(138,108,255,0.25)] relative group">
                   <img
@@ -71,9 +96,13 @@ export default function Hero() {
                     ))}
                   </h2>
 
-                  <p className="font-body text-sm lg:text-base font-bold text-zinc-300 uppercase tracking-[0.15em] leading-tight w-full">
-                    {featuredTrack.mainArtist}
-                    {featuredTrack.featArtist && ` feat. ${featuredTrack.featArtist}`}
+                  <p className="font-body text-[11px] sm:text-sm lg:text-base font-bold uppercase tracking-[0.08em] sm:tracking-[0.15em] leading-tight w-full">
+                    <span className="block whitespace-nowrap text-zinc-300">{featuredTrack.mainArtist}</span>
+                    {featuredTrack.featArtist && (
+                      <span className="block whitespace-nowrap text-fuchsia-300">
+                        feat. {featuredTrack.featArtist}
+                      </span>
+                    )}
                   </p>
 
                   <div className="flex gap-3 lg:gap-4 justify-center">
@@ -83,7 +112,7 @@ export default function Hero() {
                         href={featuredTrack.links[p.key]}
                         target="_blank"
                         rel="noopener noreferrer"
-                        title={`${t('hero.listenOn')} ${p.title}`}
+                        title={`${t('hero.listenOn')} ${p.key === 'youtube' && featuredTrack.links.youtube.includes('music.youtube.com') ? 'YouTube Music' : p.title}`}
                         className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white/5 border border-white/10 text-zinc-300 hover:text-white grid place-items-center leading-none transition-all duration-300 shadow-[0_0_16px_rgba(0,0,0,0.25)] ${p.hoverClass}`}
                       >
                         <FontAwesomeIcon icon={p.icon} fixedWidth className="block text-xl lg:text-2xl" />
@@ -96,53 +125,95 @@ export default function Hero() {
             </Card>
           )}
 
-          <div className="flex flex-col min-w-0">
+          <div className="release-carousel-shell flex items-stretch gap-2 lg:gap-3 min-w-0">
 
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 flex-grow min-h-0">
+            {otherTracks.length > 3 && (
+              <button
+                type="button"
+                onClick={() => scrollOtherTracks(-1)}
+                className="self-center shrink-0 w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-black/80 border border-white/15 text-zinc-200 grid place-items-center shadow-lg backdrop-blur-sm transition-all hover:text-white hover:border-purple-400/60 hover:bg-purple-950/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400"
+                aria-label={t('hero.previousRelease')}
+              >
+                <FontAwesomeIcon icon={faChevronLeft} />
+              </button>
+            )}
+
+            <div
+              ref={otherTracksCarouselRef}
+              className="flex gap-3 lg:gap-4 flex-1 min-w-0 min-h-0 overflow-x-auto overscroll-x-contain scroll-smooth snap-x snap-mandatory scrollbar-hide"
+              role="region"
+              aria-roledescription="carousel"
+              aria-label={t('hero.otherReleases')}
+            >
               {otherTracks.map((track, idx) => (
-                <Card key={idx} accent="subtle" className="h-full">
-                  <div className="flex flex-col h-full p-2.5 lg:p-3 gap-2 justify-between">
+                <div
+                  key={track.title}
+                  data-release-slide
+                  className="release-card-slot snap-start min-w-0"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label={`${track.title}, ${idx + 1} ${t('hero.of')} ${otherTracks.length}`}
+                >
+                  <Card accent="subtle" className="h-full">
+                    <div className="flex flex-col h-full p-2.5 lg:p-3 gap-2 justify-between">
 
-                    <div className="aspect-square shrink-0 rounded-2xl overflow-hidden border border-white/5 shadow-[0_0_8px_rgba(0,0,0,0.25)]">
-                      <img
-                        src={track.cover}
-                        alt={`${t('hero.coverOf')} ${track.title}`}
-                        width="600"
-                        height="600"
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover"
-                      />
+                      <div className="aspect-square shrink-0 rounded-2xl overflow-hidden border border-white/5 shadow-[0_0_8px_rgba(0,0,0,0.25)]">
+                        <img
+                          src={track.cover}
+                          alt={`${t('hero.coverOf')} ${track.title}`}
+                          width="600"
+                          height="600"
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+
+                      <div className="shrink-0 min-w-0 text-center">
+                        <p className="font-body text-[9px] lg:text-[10px] font-bold text-purple-300 uppercase tracking-widest truncate">
+                          {track.mainArtist}
+                        </p>
+                        {track.featArtist && (
+                          <p className="font-body text-[9px] lg:text-[10px] font-bold text-fuchsia-300 uppercase tracking-widest truncate">
+                            feat. {track.featArtist}
+                          </p>
+                        )}
+                        <h3 className="font-display lowercase text-sm lg:text-base text-white truncate group-hover:text-purple-300 transition-colors">
+                          {track.title}
+                        </h3>
+                      </div>
+
+                      <div className="shrink-0 flex gap-1.5 lg:gap-2 justify-center">
+                        {PLATFORMS.map((p) => (
+                          <a
+                            key={p.key}
+                            href={track.links[p.key]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title={`${t('hero.listenOn')} ${p.key === 'youtube' && track.links.youtube.includes('music.youtube.com') ? 'YouTube Music' : p.title}`}
+                            className={`w-9 h-9 lg:w-10 lg:h-10 shrink-0 rounded-full border border-white/5 text-zinc-400 hover:text-white grid place-items-center leading-none transition-all duration-300 ${p.hoverClass || 'hover:bg-purple-500/10'}`}
+                          >
+                            <FontAwesomeIcon icon={p.icon} fixedWidth className="block text-base lg:text-lg" />
+                          </a>
+                        ))}
+                      </div>
+
                     </div>
-
-                    <div className="shrink-0 min-w-0 text-center">
-                      <p className="font-body text-[9px] lg:text-[10px] font-bold text-purple-300 uppercase tracking-widest truncate">
-                        {track.mainArtist}
-                      </p>
-                      <h3 className="font-display lowercase text-sm lg:text-base text-white truncate group-hover:text-purple-300 transition-colors">
-                        {track.title}
-                      </h3>
-                    </div>
-
-                    <div className="shrink-0 flex gap-1.5 lg:gap-2 justify-center">
-                      {PLATFORMS.map((p) => (
-                        <a
-                          key={p.key}
-                          href={track.links[p.key]}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          title={`${t('hero.listenOn')} ${p.title}`}
-                          className={`w-9 h-9 lg:w-10 lg:h-10 shrink-0 rounded-full border border-white/5 text-zinc-400 hover:text-white grid place-items-center leading-none transition-all duration-300 ${p.hoverClass || 'hover:bg-purple-500/10'}`}
-                        >
-                          <FontAwesomeIcon icon={p.icon} fixedWidth className="block text-base lg:text-lg" />
-                        </a>
-                      ))}
-                    </div>
-
-                  </div>
-                </Card>
+                  </Card>
+                </div>
               ))}
             </div>
+
+            {otherTracks.length > 3 && (
+              <button
+                type="button"
+                onClick={() => scrollOtherTracks(1)}
+                className="self-center shrink-0 w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-black/80 border border-white/15 text-zinc-200 grid place-items-center shadow-lg backdrop-blur-sm transition-all hover:text-white hover:border-purple-400/60 hover:bg-purple-950/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400"
+                aria-label={t('hero.nextRelease')}
+              >
+                <FontAwesomeIcon icon={faChevronRight} />
+              </button>
+            )}
           </div>
         </div>
 
