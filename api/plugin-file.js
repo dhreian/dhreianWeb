@@ -6,6 +6,10 @@ const DOWNLOADABLE_FILES = {
     environmentVariable: 'DHREVERB_DOWNLOAD_URL',
     fileName: 'dhreVerb-1.0.0-windows-x64-installer.exe',
   },
+  dhrelink: {
+    environmentVariable: 'DHRELINK_DOWNLOAD_URL',
+    fileName: 'dhreLink-1.0.0-x64-Setup.exe',
+  },
 };
 
 function getPrivateSourceUrl(file) {

@@ -36,6 +36,7 @@ function injectMetadata(template, metadata, structuredData, renderedApp) {
   html = replaceTagAttribute(html, /<html\b[^>]*\blang="[^"]*"[^>]*>/i, 'lang', metadata.lang);
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtmlAttribute(metadata.title)}</title>`);
   html = replaceTagAttribute(html, /<meta\b[^>]*\bname="description"[^>]*>/i, 'content', metadata.description);
+  html = replaceTagAttribute(html, /<meta\b[^>]*\bproperty="og:type"[^>]*>/i, 'content', metadata.ogType);
   html = replaceTagAttribute(html, /<meta\b[^>]*\bproperty="og:title"[^>]*>/i, 'content', metadata.title);
   html = replaceTagAttribute(html, /<meta\b[^>]*\bproperty="og:description"[^>]*>/i, 'content', metadata.socialDescription);
   html = replaceTagAttribute(html, /<meta\b[^>]*\bproperty="og:url"[^>]*>/i, 'content', metadata.canonical);

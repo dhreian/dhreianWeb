@@ -3,42 +3,45 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://dhreian.com/</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <image:image>
       <image:loc>https://dhreian.com/og-image.png</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://dhreian.com/beats</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <image:image>
       <image:loc>https://dhreian.com/beats/vibras.png</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://dhreian.com/servicios</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <image:image>
       <image:loc>https://dhreian.com/og-image.png</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://dhreian.com/plugins</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <image:image>
       <image:loc>https://dhreian.com/plugins/dhreverb.png</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://dhreian.com/herramientas</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <image:image>
       <image:loc>https://dhreian.com/tools/aurolab.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://dhreian.com/tools/dhrelink.png</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://dhreian.com/contacto</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <image:image>
       <image:loc>https://dhreian.com/og-image.png</image:loc>
     </image:image>

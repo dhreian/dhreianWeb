@@ -23,7 +23,7 @@ PostgreSQL, y los correos transaccionales se envían con Resend.
 | **Beats** | Reproduce previews desde el sitio y deriva la compra y las licencias a BeatStars. |
 | **Servicios** | Detalla beat custom, producción full, mezcla y masterización con precios de referencia. |
 | **Plugins** | Presenta dhreVerb y permite solicitar por correo un enlace de descarga firmado. |
-| **Herramientas** | Enlaza a auroLab y a otros recursos web creados para producción musical. |
+| **Herramientas** | Presenta auroLab y permite solicitar por correo la descarga firmada de dhreLink. |
 | **Contacto** | Recibe solicitudes, las registra y envía una confirmación automática al remitente. |
 
 Además:
@@ -59,9 +59,10 @@ El formulario de contacto y la solicitud de plugins validan el origen, el tipo d
 campo honeypot y un tiempo mínimo de llenado. Después aplican límites por dirección IP y correo,
 guardan la solicitud en PostgreSQL y envían el mensaje mediante Resend.
 
-El instalador de dhreVerb no se publica en el repositorio ni se expone directamente al cliente. El
-servidor genera un enlace firmado con una vigencia de 24 horas y, cuando se utiliza, transmite el
-archivo desde la URL HTTPS privada configurada por el propietario del despliegue.
+Los instaladores de dhreVerb y dhreLink no se publican en el repositorio ni se exponen directamente
+al cliente. El servidor genera un enlace firmado con una vigencia de 24 horas y, cuando se utiliza,
+transmite el archivo correspondiente desde la URL HTTPS privada configurada por el propietario del
+despliegue.
 
 ## Rutas y SEO
 
@@ -71,7 +72,7 @@ archivo desde la URL HTTPS privada configurada por el propietario del despliegue
 | `/beats` | Catálogo de beats |
 | `/servicios` | Servicios de producción |
 | `/plugins` | Plugins de audio |
-| `/herramientas` | Herramientas web |
+| `/herramientas` | Herramientas de producción y streaming |
 | `/contacto` | Contacto |
 
 `/portfolio`, `/instrumentales`, `/services`, `/tools` y `/contact` redirigen a sus rutas canónicas

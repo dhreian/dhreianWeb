@@ -20,6 +20,10 @@ const DOWNLOADABLE_PLUGINS = {
     name: 'dhreVerb',
     downloadUrlEnvironmentVariable: 'DHREVERB_DOWNLOAD_URL',
   },
+  dhrelink: {
+    name: 'dhreLink',
+    downloadUrlEnvironmentVariable: 'DHRELINK_DOWNLOAD_URL',
+  },
 };
 
 function hasConfiguredDownloadSource(plugin) {

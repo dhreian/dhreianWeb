@@ -84,7 +84,18 @@ export const WEB_TOOLS = [
     key: 'aurolab',
     name: 'auroLab',
     image: '/tools/aurolab.png',
+    type: 'webApp',
     url: 'https://aurolab.dhreian.com',
+  },
+  {
+    key: 'dhrelink',
+    name: 'dhreLink',
+    image: '/tools/dhrelink.png',
+    type: 'desktopApp',
+    formats: ['VST3', 'OBS', 'Windows'],
+    free: true,
+    downloadByEmail: true,
+    url: null,
   },
 ];
 

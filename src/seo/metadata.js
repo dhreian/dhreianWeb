@@ -64,12 +64,12 @@ const PAGE_METADATA = {
       locale: 'es_CL',
     },
     '/herramientas': {
-      title: 'Herramientas Web para Productores Musicales | dhreian',
-      name: 'Herramientas web para productores de dhreian',
+      title: 'Herramientas de Audio para Productores y Streaming | dhreian',
+      name: 'Herramientas de audio para productores de dhreian',
       description:
-        'Herramientas web para productores: calcula delay y reverb por BPM, usa metrónomo y tap tempo, y analiza BPM y tonalidad con auroLab.',
+        'Usa auroLab para tareas de producción y descarga dhreLink gratis para enviar audio procesado desde tu DAW a OBS Studio en Windows.',
       socialDescription:
-        'auroLab reúne cálculo de delay y reverb, metrónomo, tap tempo y análisis de BPM y tonalidad.',
+        'auroLab reúne utilidades de producción y dhreLink conecta el audio de tu DAW con OBS Studio sin dispositivos virtuales.',
       imageAlt: 'dhreian — artista y productor musical',
       locale: 'es_CL',
     },
@@ -126,12 +126,12 @@ const PAGE_METADATA = {
       locale: 'en_US',
     },
     '/herramientas': {
-      title: 'Web Tools for Music Producers | dhreian',
-      name: 'Web tools for music producers by dhreian',
+      title: 'Audio Tools for Music Production and Streaming | dhreian',
+      name: 'Audio tools for music producers by dhreian',
       description:
-        'Web tools for producers: calculate delay and reverb from BPM, use a metronome and tap tempo, and analyze BPM and key with auroLab.',
+        'Use auroLab for production tasks and download dhreLink free to send processed audio from your DAW to OBS Studio on Windows.',
       socialDescription:
-        'auroLab combines delay and reverb timing, metronome, tap tempo, BPM analysis and key detection.',
+        'auroLab brings together production utilities, while dhreLink connects your DAW audio to OBS Studio without virtual devices.',
       imageAlt: 'dhreian — artist and music producer',
       locale: 'en_US',
     },
@@ -323,6 +323,7 @@ export function getPageMetadata(pathname = '/', lang = 'es') {
     path: canonicalPath,
     canonical: `${SITE_URL}${canonicalPath === '/' ? '/' : canonicalPath}`,
     image: DEFAULT_IMAGE,
+    ogType: canonicalPath === '/' ? 'profile' : 'website',
   };
 }
 
@@ -330,7 +331,7 @@ function createArtistNode(lang) {
   const isEnglish = lang === 'en';
 
   return {
-    '@type': ['Person', 'MusicGroup'],
+    '@type': 'Person',
     '@id': ARTIST_ID,
     name: 'dhreian',
     alternateName: ['@dhreian', 'dhreian music'],
@@ -338,6 +339,7 @@ function createArtistNode(lang) {
       ? 'Artist, music producer and developer creating exclusive beats, professional production, mixing, mastering, audio plugins and web tools.'
       : 'Artista, productor musical y desarrollador de beats exclusivos, producción profesional, mezcla, masterización, plugins de audio y herramientas web.',
     url: `${SITE_URL}/`,
+    mainEntityOfPage: { '@id': `${SITE_URL}/#webpage` },
     image: DEFAULT_IMAGE,
     logo: `${SITE_URL}/email/dhreian-logo.png`,
     email: 'contact@dhreian.com',
@@ -397,7 +399,7 @@ function createBreadcrumbNode(path, lang, pageUrl) {
 
 function createPageNode(metadata) {
   const pageTypes = {
-    '/': 'WebPage',
+    '/': 'ProfilePage',
     '/beats': 'CollectionPage',
     '/servicios': 'WebPage',
     '/plugins': 'CollectionPage',
@@ -409,7 +411,7 @@ function createPageNode(metadata) {
     '/beats': `${SITE_URL}/beats#catalog`,
     '/servicios': `${SITE_URL}/servicios#services`,
     '/plugins': `${SITE_URL}/plugins#dhreverb`,
-    '/herramientas': `${SITE_URL}/herramientas#aurolab`,
+    '/herramientas': `${SITE_URL}/herramientas#catalog`,
     '/contacto': ARTIST_ID,
   };
 
@@ -424,6 +426,13 @@ function createPageNode(metadata) {
     mainEntity: { '@id': mainEntityIds[metadata.path] },
     primaryImageOfPage: DEFAULT_IMAGE,
     inLanguage: metadata.lang,
+    ...(metadata.path === '/'
+      ? {
+          hasPart: RELEASES.map((release) => ({
+            '@id': `${SITE_URL}/#track-${release.slug}`,
+          })),
+        }
+      : {}),
     ...(metadata.path !== '/'
       ? { breadcrumb: { '@id': `${metadata.canonical}#breadcrumb` } }
       : {}),
@@ -528,8 +537,8 @@ function createPluginNode(lang) {
   };
 }
 
-function createWebToolNode(lang) {
-  return {
+function createWebToolNodes(lang) {
+  const auroLab = {
     '@type': 'WebApplication',
     '@id': `${SITE_URL}/herramientas#aurolab`,
     name: 'auroLab',
@@ -544,21 +553,71 @@ function createWebToolNode(lang) {
     image: `${SITE_URL}/tools/aurolab.png`,
     author: { '@id': ARTIST_ID },
   };
+
+  const dhreLink = {
+    '@type': 'SoftwareApplication',
+    '@id': `${SITE_URL}/herramientas#dhrelink`,
+    name: 'dhreLink',
+    description:
+      lang === 'en'
+        ? 'Send processed audio from your DAW to OBS Studio on Windows through a VST3 and an OBS source, with no virtual audio devices or helper applications.'
+        : 'Lleva el audio ya procesado de tu DAW a OBS Studio en Windows mediante un VST3 y una fuente de OBS, sin dispositivos de audio virtuales ni aplicaciones auxiliares.',
+    applicationCategory: 'MultimediaApplication',
+    applicationSubCategory: 'Audio routing tool (VST3 and OBS source)',
+    operatingSystem: 'Windows 10/11 x64',
+    softwareVersion: '1.0.0',
+    url: `${SITE_URL}/herramientas`,
+    image: `${SITE_URL}/tools/dhrelink.png`,
+    author: { '@id': ARTIST_ID },
+    offers: {
+      '@type': 'Offer',
+      price: 0,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
+  };
+
+  return [
+    {
+      '@type': 'ItemList',
+      '@id': `${SITE_URL}/herramientas#catalog`,
+      name: lang === 'en' ? 'Audio tools by dhreian' : 'Herramientas de audio de dhreian',
+      url: `${SITE_URL}/herramientas`,
+      numberOfItems: 2,
+      itemListElement: [auroLab, dhreLink].map((tool, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: { '@id': tool['@id'] },
+      })),
+    },
+    auroLab,
+    dhreLink,
+  ];
 }
 
 function createReleaseNodes() {
-  return RELEASES.map((release) => ({
-    '@type': 'MusicRecording',
-    '@id': `${SITE_URL}/#track-${release.slug}`,
-    name: release.title,
-    byArtist: [
-      { '@id': ARTIST_ID },
-      ...release.artists.map((artist) => ({ '@type': 'MusicGroup', name: artist })),
-    ],
-    image: `${SITE_URL}${release.image}`,
-    url: release.spotify,
-    sameAs: [release.spotify, release.apple, release.youtube],
-  }));
+  return RELEASES.map((release) => {
+    const platformUrls = [release.spotify, release.apple, release.youtube];
+    const recordingUrls = platformUrls.filter(
+      (url) => !url.includes('open.spotify.com/artist/')
+    );
+    const primaryUrl = release.spotify.includes('open.spotify.com/track/')
+      ? release.spotify
+      : release.youtube;
+
+    return {
+      '@type': 'MusicRecording',
+      '@id': `${SITE_URL}/#track-${release.slug}`,
+      name: release.title,
+      byArtist: [
+        { '@id': ARTIST_ID },
+        ...release.artists.map((artist) => ({ '@type': 'MusicGroup', name: artist })),
+      ],
+      image: `${SITE_URL}${release.image}`,
+      url: primaryUrl,
+      sameAs: recordingUrls,
+    };
+  });
 }
 
 export function getStructuredData(pathname = '/', lang = 'es') {
@@ -582,7 +641,7 @@ export function getStructuredData(pathname = '/', lang = 'es') {
     graph.push(createPluginNode(metadata.lang));
   }
   if (metadata.path === '/' || metadata.path === '/herramientas') {
-    graph.push(createWebToolNode(metadata.lang));
+    graph.push(...createWebToolNodes(metadata.lang));
   }
   if (metadata.path === '/') {
     graph.push(...createReleaseNodes());
@@ -612,6 +671,7 @@ export function applyPageMetadata(pathname = '/', lang = 'es') {
   document.title = metadata.title;
 
   setMeta('meta[name="description"]', metadata.description);
+  setMeta('meta[property="og:type"]', metadata.ogType);
   setMeta('meta[property="og:title"]', metadata.title);
   setMeta('meta[property="og:description"]', metadata.socialDescription);
   setMeta('meta[property="og:url"]', metadata.canonical);

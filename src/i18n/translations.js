@@ -161,17 +161,24 @@ export const translations = {
     },
     webtools: {
       eyebrow: 'utilidades para productores',
-      title: 'herramientas web',
+      title: 'herramientas',
       subtitle:
-        'Recursos creados para resolver tareas técnicas de producción desde el navegador, con rapidez y sin interrumpir tu flujo creativo.',
+        'Recursos creados para resolver tareas técnicas de producción y streaming con rapidez, sin interrumpir tu flujo creativo.',
       webApp: 'app web',
+      desktopApp: 'app',
       developedBy: 'developed by dhreian',
       cta: 'usar',
+      free: 'gratis',
+      download: 'descargar',
       imageAlt: 'Vista previa de',
       items: {
         aurolab: {
           description:
             'Un laboratorio web para productores, creado para calcular tiempos de delay y reverb a partir del BPM, practicar con metrónomo y tap tempo, y analizar el BPM y la tonalidad de tus audios sin salir del navegador.',
+        },
+        dhrelink: {
+          description:
+            'Lleva el audio ya procesado de tu DAW a OBS Studio en Windows mediante un VST3 y una fuente de OBS, sin dispositivos de audio virtuales ni aplicaciones auxiliares.',
         },
       },
     },
@@ -373,17 +380,24 @@ export const translations = {
     },
     webtools: {
       eyebrow: 'utilities for producers',
-      title: 'web tools',
+      title: 'tools',
       subtitle:
-        'Resources built to handle technical production tasks right in your browser, quickly and without interrupting your creative flow.',
+        'Resources built to handle technical production and streaming tasks quickly, without interrupting your creative flow.',
       webApp: 'web app',
+      desktopApp: 'app',
       developedBy: 'developed by dhreian',
       cta: 'use',
+      free: 'free',
+      download: 'download',
       imageAlt: 'Preview of',
       items: {
         aurolab: {
           description:
             'A web lab for producers, built to calculate delay and reverb timing from BPM, practice with a metronome and tap tempo, and analyze the BPM and key of your audio without leaving the browser.',
+        },
+        dhrelink: {
+          description:
+            'Send processed audio from your DAW to OBS Studio on Windows through a VST3 and an OBS source, with no virtual audio devices or helper applications.',
         },
       },
     },
