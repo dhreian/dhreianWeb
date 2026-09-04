@@ -74,7 +74,7 @@ export default function Contact() {
       });
 
       const data = await response.json();
-      
+
       if (response.ok && data.success) {
         await minimumSending;
         setStatus('success');
@@ -90,7 +90,7 @@ export default function Contact() {
   };
 
   return (
-    <Section id="contacto" glow={true} glowAccent="fuchsia">
+    <Section id="contacto" glow={true}>
       <SectionHeading
         eyebrow={t('contact.eyebrow')}
         title={t('contact.title')}
@@ -117,8 +117,8 @@ export default function Contact() {
                     </div>
                     <div className="flex flex-col min-w-0">
                       <span className="text-base md:text-lg font-medium truncate">contact@dhreian.com</span>
-                      <span className="text-[10px] text-zinc-500 uppercase tracking-widest flex items-center gap-1 group-hover/contact:text-purple-400 transition-colors duration-300">
-                        <FontAwesomeIcon icon={copied ? faCheck : faCopy} className="text-[8px]" />
+                      <span className="text-xs text-zinc-400 font-semibold uppercase tracking-wider flex items-center gap-1.5 group-hover/contact:text-purple-400 transition-colors duration-300">
+                        <FontAwesomeIcon icon={copied ? faCheck : faCopy} className="text-[10px]" />
                         {copied ? t('contact.copied') : t('contact.copy')}
                       </span>
                     </div>
@@ -130,14 +130,14 @@ export default function Contact() {
                     href="https://instagram.com/dhreian"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 text-zinc-300 hover:text-[#E1306C] transition-colors duration-300"
+                    className="flex items-center gap-4 text-zinc-300 hover:text-purple-300 transition-colors duration-300"
                   >
-                    <div className="w-14 h-14 rounded-full border border-white/10 text-zinc-400 grid place-items-center transition-all duration-300 group-hover/insta:text-[#E1306C] group-hover/insta:border-[#E1306C]/50 group-hover/insta:bg-[#E1306C]/10 group-hover/insta:shadow-[0_0_15px_rgba(225,48,108,0.4)] shrink-0">
+                    <div className="w-14 h-14 rounded-full border border-white/10 text-zinc-400 grid place-items-center transition-all duration-300 group-hover/insta:text-purple-300 group-hover/insta:border-purple-500/50 group-hover/insta:bg-purple-500/10 group-hover/insta:shadow-[0_0_15px_rgba(138,108,255,0.4)] shrink-0">
                       <FontAwesomeIcon icon={faInstagram} fixedWidth className="text-xl" />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-base md:text-lg font-medium">@dhreian</span>
-                      <span className="text-[10px] text-zinc-500 uppercase tracking-widest group-hover/insta:text-[#E1306C] transition-colors duration-300">
+                      <span className="text-xs text-zinc-400 font-semibold uppercase tracking-wider group-hover/insta:text-purple-300 transition-colors duration-300">
                         {t('contact.instaOfficial')}
                       </span>
                     </div>
@@ -148,8 +148,8 @@ export default function Contact() {
 
             <div className="mt-8 pt-6 border-t border-white/5 flex items-center gap-2.5">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-purple-500"></span>
               </span>
               <span className="text-xs text-zinc-500 uppercase tracking-wider font-semibold">
                 {t('contact.available')}
@@ -168,7 +168,7 @@ export default function Contact() {
                 <h3 className="font-display lowercase text-3xl text-white mb-3">
                   {t('contact.sentTitle')}
                 </h3>
-                <p className="text-zinc-400 text-sm max-w-sm mb-8 leading-relaxed">
+                <p className="text-white text-sm max-w-sm mb-8 leading-relaxed">
                   {t('contact.sentBody1')}<span className="text-purple-300 font-semibold">{formData.name}</span>{t('contact.sentBody2')}<span className="text-purple-300 font-semibold lowercase">{selectedSubject}</span>{t('contact.sentBody3')}
                 </p>
                 <NeonButton

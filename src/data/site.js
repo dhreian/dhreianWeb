@@ -38,7 +38,7 @@ export const SECTION_ROUTES = {
 export const SOCIAL_LINKS = [
   { platform: 'instagram', href: 'https://instagram.com/dhreian', label: 'Instagram', hoverClass: 'hover:text-[#E1306C] hover:border-[#E1306C]/50 hover:bg-[#E1306C]/10 hover:shadow-[0_0_15px_rgba(225,48,108,0.4)]' },
   { platform: 'x', href: 'https://x.com/dhreian', label: 'X (Twitter)', hoverClass: 'hover:text-[#FFFFFF] hover:border-[#FFFFFF]/50 hover:bg-[#FFFFFF]/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]' },
-  { platform: 'tiktok', href: 'https://tiktok.com/@dhreian.als', label: 'TikTok', hoverClass: 'hover:text-[#00F2FE] hover:border-[#00F2FE]/50 hover:bg-[#00F2FE]/10 hover:shadow-[0_0_15px_rgba(0,242,254,0.4)]' },
+  { platform: 'tiktok', href: 'https://tiktok.com/@dhreian_', label: 'TikTok', hoverClass: 'hover:text-[#00F2FE] hover:border-[#00F2FE]/50 hover:bg-[#00F2FE]/10 hover:shadow-[0_0_15px_rgba(0,242,254,0.4)]' },
   { platform: 'spotify', href: 'https://open.spotify.com/intl-es/artist/5Sv40N0flsAfHMxy6NrB1m', label: 'Spotify', hoverClass: 'hover:text-[#1DB954] hover:border-[#1DB954]/50 hover:bg-[#1DB954]/10 hover:shadow-[0_0_15px_rgba(29,185,84,0.4)]' },
   { platform: 'youtube', href: 'https://www.youtube.com/@dhreian', label: 'YouTube', hoverClass: 'hover:text-[#FF0000] hover:border-[#FF0000]/50 hover:bg-[#FF0000]/10 hover:shadow-[0_0_15px_rgba(255,0,0,0.4)]' },
 ];
@@ -109,7 +109,7 @@ export const TRACKS = [
     links: {
       spotify: 'https://open.spotify.com/intl-es/track/4mjzHteHfr9uHM9irpqhCl',
       apple: 'https://music.apple.com/cl/song/calma-feat-rayxn-antu/6794247468',
-      youtube: 'https://music.youtube.com/watch?v=dcPpLZpq6gI',
+      youtube: 'https://youtu.be/xMQ4w3qaRGM',
     }
   },
   {
@@ -170,10 +170,10 @@ export const TRACK_TAG_ICONS = {
 };
 
 export const TRACK_TAG_STYLES = {
-  prod: 'bg-purple-500/15 text-purple-300 border-purple-500/30',
-  beatmaker: 'bg-blue-500/15 text-blue-300 border-blue-500/30',
-  mezcla: 'bg-violet-400/15 text-violet-200 border-violet-400/30',
-  mastering: 'bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/30',
+  prod: 'bg-purple-500/20 text-purple-200 border-purple-400/40',
+  beatmaker: 'bg-purple-950/70 text-purple-300 border-purple-500/30',
+  mezcla: 'bg-white/10 text-white border-white/20',
+  mastering: 'bg-purple-600/25 text-purple-100 border-purple-300/40',
 };
 
 export const PLATFORMS = [

@@ -49,7 +49,7 @@ export default function Catalog() {
               key={g}
               type="button"
               onClick={() => handleGenreChange(g)}
-              className={`font-display lowercase px-4 py-2 rounded-2xl text-sm sm:text-base tracking-wide transition-all duration-300 inline-flex items-center gap-2.5 border focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/50 ${
+              className={`font-display lowercase px-4 py-2 rounded-2xl text-base sm:text-lg tracking-wide transition-all duration-300 inline-flex items-center gap-2.5 border focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/50 ${
                 active
                   ? 'bg-purple-600 text-white border-purple-600 shadow-[0_0_20px_rgba(138,108,255,0.6)]'
                   : 'bg-zinc-900/80 text-zinc-400 border-purple-500/20 hover:border-purple-500/60 hover:text-purple-200 hover:bg-purple-500/10 hover:shadow-[0_0_15px_rgba(138,108,255,0.3)]'
@@ -57,7 +57,7 @@ export default function Catalog() {
             >
               <span>{g}</span>
               <span
-                className={`text-[10px] tabular-nums font-body font-semibold px-2 py-0.5 rounded-2xl ${
+                className={`text-xs tabular-nums font-body font-semibold px-2 py-0.5 rounded-2xl ${
                   active ? 'bg-white/20 text-white' : 'bg-zinc-800 text-zinc-500'
                 }`}
               >

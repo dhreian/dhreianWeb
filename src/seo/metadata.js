@@ -195,7 +195,7 @@ const ROUTE_LABELS = {
 const SOCIAL_PROFILES = [
   'https://instagram.com/dhreian',
   'https://x.com/dhreian',
-  'https://tiktok.com/@dhreian.als',
+  'https://tiktok.com/@dhreian_',
   'https://open.spotify.com/artist/5Sv40N0flsAfHMxy6NrB1m',
   'https://music.amazon.com/artists/B0GQXHF7ZR/dhreian',
   'https://www.youtube.com/@dhreian',
@@ -210,7 +210,7 @@ const RELEASES = [
     image: '/collabs/art-calma.jpg',
     spotify: 'https://open.spotify.com/track/4mjzHteHfr9uHM9irpqhCl',
     apple: 'https://music.apple.com/cl/song/calma-feat-rayxn-antu/6794247468',
-    youtube: 'https://music.youtube.com/watch?v=dcPpLZpq6gI',
+    youtube: 'https://youtu.be/xMQ4w3qaRGM',
   },
   {
     slug: 'artificial',

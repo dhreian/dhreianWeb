@@ -61,7 +61,7 @@ const SOCIAL = [
   { label: 'Spotify', url: 'https://open.spotify.com/intl-es/artist/5Sv40N0flsAfHMxy6NrB1m' },
   { label: 'YouTube', url: 'https://www.youtube.com/@dhreian' },
   { label: 'Instagram', url: 'https://instagram.com/dhreian' },
-  { label: 'TikTok', url: 'https://tiktok.com/@dhreian.als' },
+  { label: 'TikTok', url: 'https://tiktok.com/@dhreian_' },
   { label: 'X', url: 'https://x.com/dhreian' },
 ];
 

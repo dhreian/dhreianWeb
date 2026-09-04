@@ -1,48 +1,13 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Montserrat";
+  font-family: "Cormorant";
   font-style: normal;
-  font-weight: 300;
+  font-weight: 300 700;
   font-display: block;
-  src: url("/fonts/montserrat-v31-latin.woff2") format("woff2");
+  src: url("/fonts/cormorant-v24-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  src: url("/fonts/montserrat-v31-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 500;
-  font-display: block;
-  src: url("/fonts/montserrat-v31-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 600;
-  font-display: block;
-  src: url("/fonts/montserrat-v31-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 700;
-  font-display: block;
-  src: url("/fonts/montserrat-v31-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  size-adjust: 125%;
 }
 
 @font-face {
@@ -58,7 +23,11 @@ html {
   scroll-padding-top: 5rem;
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
+
 
 @media (min-width: 1024px) and (max-height: 860px) {
   .hero-banner {
@@ -92,8 +61,8 @@ html {
 }
 
 @theme {
-  --font-display: "Quintessential", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-  --font-body: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Quintessential", serif;
+  --font-body: "Cormorant", serif;
 
   --color-purple-50: #f4f2ff;
   --color-purple-100: #eae5ff;
@@ -106,18 +75,6 @@ html {
   --color-purple-800: #4c2ab8;
   --color-purple-900: #3f2496;
   --color-purple-950: #261367;
-
-  --color-fuchsia-50: #f0f5fa;
-  --color-fuchsia-100: #deebf5;
-  --color-fuchsia-200: #c2dbeb;
-  --color-fuchsia-300: #96c2de;
-  --color-fuchsia-400: #5fa1cc;
-  --color-fuchsia-500: #3881b5;
-  --color-fuchsia-600: #266699;
-  --color-fuchsia-700: #1d527d;
-  --color-fuchsia-800: #174366;
-  --color-fuchsia-900: #153b59;
-  --color-fuchsia-950: #0E2A47;
 }
 
 @custom-variant touch {
@@ -133,13 +90,6 @@ html {
     0 0 60px rgba(138, 108, 255, 0.2);
 }
 
-@utility neon-text-fuchsia {
-  text-shadow:
-    0 0 10px rgba(56, 129, 181, 0.5),
-    0 0 30px rgba(56, 129, 181, 0.35),
-    0 0 60px rgba(56, 129, 181, 0.2);
-}
-
 @utility neon-glow-purple {
   box-shadow:
     0 0 15px rgba(138, 108, 255, 0.45),
@@ -153,18 +103,8 @@ html {
     inset 0 0 15px rgba(138, 108, 255, 0.2);
 }
 
-@utility neon-glow-fuchsia {
-  box-shadow:
-    0 0 15px rgba(56, 129, 181, 0.45),
-    0 0 40px rgba(56, 129, 181, 0.25);
-}
-
 @utility neon-shadow-card-purple {
   box-shadow: 0 0 50px -10px rgba(138,108,255,0.6);
-}
-
-@utility neon-shadow-card-fuchsia {
-  box-shadow: 0 0 50px -10px rgba(56,129,181,0.6);
 }
 
 @utility neon-shadow-card-subtle {
@@ -243,7 +183,7 @@ html {
     linear-gradient(
       to right,
       var(--color-purple-500) 0 var(--progress),
-      var(--color-fuchsia-950) var(--progress) 100%
+      var(--color-purple-950) var(--progress) 100%
     );
   box-shadow: 0 0 12px rgba(138, 108, 255, 0.45);
 }
@@ -264,7 +204,7 @@ html {
   height: 0.375rem;
   border: 0;
   border-radius: 999px;
-  background: var(--color-fuchsia-950);
+  background: var(--color-purple-950);
 }
 
 .beat-progress-range::-moz-range-progress {

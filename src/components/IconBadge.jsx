@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const VARIANTS = {
   purple: 'bg-purple-500/10 text-purple-400 border border-purple-500/20 group-hover:bg-purple-500/20 group-hover:border-purple-400/40',
-  fuchsia: 'bg-fuchsia-500/10 text-fuchsia-400 border border-fuchsia-500/20 group-hover:bg-fuchsia-500/20 group-hover:border-fuchsia-400/40',
   zinc: 'bg-zinc-800/50 text-zinc-300 border border-white/5 group-hover:bg-purple-500/10 group-hover:text-purple-400 group-hover:border-purple-500/30',
   glow: 'bg-purple-500/10 text-purple-300 border border-purple-500/30 neon-glow-purple',
 };
@@ -23,10 +22,11 @@ export default function IconBadge({
 }) {
   const s = SIZES[size];
   const radius = shape === 'circle' ? 'rounded-full' : 'rounded-2xl';
+  const variantClass = VARIANTS[variant] || VARIANTS.purple;
 
   return (
     <div
-      className={`shrink-0 grid place-items-center transition-all duration-300 ${s.box} ${radius} ${VARIANTS[variant]} ${className}`}
+      className={`shrink-0 grid place-items-center transition-all duration-300 ${s.box} ${radius} ${variantClass} ${className}`}
     >
       <FontAwesomeIcon icon={icon} fixedWidth className={s.icon} />
     </div>

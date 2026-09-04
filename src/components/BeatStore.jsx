@@ -23,7 +23,7 @@ export default function BeatStore() {
   const steps = t('beatstore.steps');
 
   return (
-    <Section id="beats" divider={true} dividerAccent="fuchsia" glow={true} glowAccent="fuchsia">
+    <Section id="beats" divider={true} glow={true}>
       <SectionHeading
         eyebrow={t('beatstore.eyebrow')}
         title={t('beatstore.title')}
@@ -49,10 +49,10 @@ export default function BeatStore() {
                     className="text-purple-400"
                   />
                 </div>
-                <h3 className="font-display lowercase text-lg text-white mb-1">
+                <h3 className="font-body font-bold lowercase text-xl text-white mb-1">
                   {step.title}
                 </h3>
-                <p className="text-xs text-zinc-400 leading-relaxed">{step.description}</p>
+                <p className="text-sm text-white leading-relaxed">{step.description}</p>
               </Card>
             ))}
           </div>
@@ -67,7 +67,7 @@ export default function BeatStore() {
                 loading="lazy"
               />
               <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent pointer-events-none"></div>
-              <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-fuchsia-500/40 to-transparent pointer-events-none"></div>
+              <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent pointer-events-none"></div>
             </div>
           ) : (
             <Catalog />

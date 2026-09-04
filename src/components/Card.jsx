@@ -6,11 +6,6 @@ const ACCENTS = {
     shadow: 'hover:neon-shadow-card-purple',
     blur: 'bg-purple-500/15 group-hover:bg-purple-500/30',
   },
-  fuchsia: {
-    border: 'border-fuchsia-500/30 hover:border-fuchsia-400/70',
-    shadow: 'hover:neon-shadow-card-fuchsia',
-    blur: 'bg-fuchsia-500/15 group-hover:bg-fuchsia-500/30',
-  },
   subtle: {
     border: 'border-white/5 hover:border-purple-500/40',
     shadow: 'hover:neon-shadow-card-subtle',
@@ -24,7 +19,7 @@ export default function NeonCard({
   children,
   className = '',
 }) {
-  const a = ACCENTS[accent];
+  const a = ACCENTS[accent] || ACCENTS.subtle;
   const lift = '';
   const hoverShadow = interactive ? a.shadow : '';
 
@@ -37,9 +32,7 @@ export default function NeonCard({
       ></div>
 
       <div
-        className={`absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent ${
-          accent === 'fuchsia' ? 'via-fuchsia-400/40' : 'via-purple-400/40'
-        } to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-purple-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
       ></div>
 
       <div className="relative z-10 h-full">{children}</div>

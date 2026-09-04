@@ -44,20 +44,20 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-black/60 to-black pointer-events-none" />
 
       <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-600/15 rounded-full blur-[120px] animate-neon-pulse pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-fuchsia-600/15 rounded-full blur-[120px] animate-neon-pulse pointer-events-none" style={{ animationDelay: '1.5s' }} />
+      <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-purple-900/20 rounded-full blur-[120px] animate-neon-pulse pointer-events-none" style={{ animationDelay: '1.5s' }} />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto flex-grow flex flex-col">
 
         <header className="hero-banner__header text-center mb-12 md:mb-16 flex-grow flex flex-col justify-end">
           <h1 className="hero-banner__title font-display lowercase text-6xl sm:text-7xl md:text-8xl lg:text-8xl tracking-tight leading-none">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 via-purple-500 to-fuchsia-500 neon-text-purple">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-300 to-purple-500 neon-text-purple">
               dhreian
             </span>
           </h1>
           <p className="hero-banner__tagline mt-4 md:mt-5 font-body uppercase tracking-[0.3em] text-purple-200/90 text-sm sm:text-base md:text-lg font-medium">
             {t('hero.tagline')}
           </p>
-          <p className="hero-banner__copy text-zinc-400 text-sm md:text-base max-w-2xl mx-auto mt-5 font-light leading-relaxed">
+          <p className="hero-banner__copy text-white text-sm md:text-base max-w-2xl mx-auto mt-5 font-normal leading-relaxed">
             {t('hero.taglineRest')}
             <br />
             <strong className="font-semibold text-zinc-200">{t('hero.listen')}</strong>
@@ -86,11 +86,11 @@ export default function Hero() {
 
                 <div className="flex-1 min-w-0 flex flex-col items-center justify-center text-center gap-3 lg:gap-4">
 
-                  <span className="inline-flex items-center whitespace-nowrap text-[10px] lg:text-[11px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-2xl bg-fuchsia-500/10 border border-fuchsia-500/30 text-fuchsia-300 neon-text-fuchsia">
+                  <span className="inline-flex items-center whitespace-nowrap text-[10px] lg:text-[11px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-2xl bg-purple-500/15 border border-purple-400/40 text-purple-200 neon-text-purple">
                     {t('hero.latest')}
                   </span>
 
-                  <h2 className="font-display lowercase text-white text-3xl lg:text-4xl xl:text-5xl leading-[0.95] neon-text-fuchsia w-full break-words">
+                  <h2 className="font-display lowercase text-white text-3xl lg:text-4xl xl:text-5xl leading-[0.95] neon-text-purple w-full break-words">
                     {featuredTrack.title.split(' ').map((word, i) => (
                       <span key={i} className="block">{word}</span>
                     ))}
@@ -99,8 +99,8 @@ export default function Hero() {
                   <p className="font-body text-[11px] sm:text-sm lg:text-base font-bold uppercase tracking-[0.08em] sm:tracking-[0.15em] leading-tight w-full">
                     <span className="block whitespace-nowrap text-zinc-300">{featuredTrack.mainArtist}</span>
                     {featuredTrack.featArtist && (
-                      <span className="block whitespace-nowrap text-fuchsia-300">
-                        feat. {featuredTrack.featArtist}
+                      <span className="block whitespace-nowrap text-purple-300">
+                        ft. {featuredTrack.featArtist}
                       </span>
                     )}
                   </p>
@@ -170,15 +170,15 @@ export default function Hero() {
                       </div>
 
                       <div className="shrink-0 min-w-0 text-center">
-                        <p className="font-body text-[9px] lg:text-[10px] font-bold text-purple-300 uppercase tracking-widest truncate">
+                        <p className="font-body text-xs font-bold text-purple-300 uppercase tracking-widest truncate">
                           {track.mainArtist}
                         </p>
                         {track.featArtist && (
-                          <p className="font-body text-[9px] lg:text-[10px] font-bold text-fuchsia-300 uppercase tracking-widest truncate">
-                            feat. {track.featArtist}
+                          <p className="font-body text-xs font-bold text-purple-300 uppercase tracking-widest truncate">
+                            ft. {track.featArtist}
                           </p>
                         )}
-                        <h3 className="font-display lowercase text-sm lg:text-base text-white truncate group-hover:text-purple-300 transition-colors">
+                        <h3 className="font-body font-bold lowercase text-base lg:text-lg text-white truncate group-hover:text-purple-300 transition-colors">
                           {track.title}
                         </h3>
                       </div>

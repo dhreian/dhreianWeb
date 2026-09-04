@@ -102,7 +102,7 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
               className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300/70"
             >
               <span
-                className={`w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-fuchsia-950 grid place-items-center transition-all duration-300 active:scale-95 ${
+                className={`w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-purple-950 grid place-items-center transition-all duration-300 active:scale-95 ${
                   isActive
                     ? 'scale-100 opacity-100 shadow-[0_0_30px_rgba(138,108,255,0.9)]'
                     : 'scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 touch:scale-100 touch:opacity-100 shadow-[0_0_20px_rgba(138,108,255,0.7)]'
@@ -123,9 +123,9 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
         {(hasTags || hasAudio) && (
           <div className="absolute inset-x-0 bottom-0 z-20 p-4 pt-16 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none">
             {hasTags && (
-              <div className="flex flex-wrap items-center gap-1.5 text-[10px] font-body">
+              <div className="flex flex-wrap items-center gap-1.5 text-xs font-body">
                 {beat.musicalKey && (
-                  <span className="px-2 py-1 rounded-2xl bg-fuchsia-950/80 border border-fuchsia-400/50 text-fuchsia-100 font-bold tracking-wider uppercase shadow-[0_0_4px_rgba(0,0,0,0.3)]">
+                  <span className="px-2 py-1 rounded-2xl bg-purple-950/80 border border-purple-400/40 text-purple-200 font-bold tracking-wider uppercase shadow-[0_0_4px_rgba(0,0,0,0.3)]">
                     {beat.musicalKey.toUpperCase()}
                   </span>
                 )}
@@ -137,7 +137,7 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
                 {beat.genres?.map((genre) => (
                   <span
                     key={genre}
-                    className="px-2 py-1 rounded-2xl bg-fuchsia-950/70 border border-white/25 text-white font-bold tracking-wider uppercase shadow-[0_0_4px_rgba(0,0,0,0.3)]"
+                    className="px-2 py-1 rounded-2xl bg-black/60 border border-white/20 text-white font-bold tracking-wider uppercase shadow-[0_0_4px_rgba(0,0,0,0.3)]"
                   >
                     {genre.toUpperCase()}
                   </span>
@@ -147,7 +147,7 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
 
             {hasAudio && (
               <div
-                className={`${hasTags ? 'mt-3' : ''} grid grid-cols-[2.25rem_1fr_2.25rem] items-center gap-2 font-body text-[10px] font-semibold tabular-nums text-white/85 pointer-events-auto`}
+                className={`${hasTags ? 'mt-3' : ''} grid grid-cols-[2.25rem_1fr_2.25rem] items-center gap-2 font-body text-xs font-semibold tabular-nums text-white/85 pointer-events-auto`}
                 onClick={stopControlEvent}
                 onPointerDown={stopControlEvent}
               >
@@ -171,12 +171,12 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
         )}
       </div>
 
-      <div className="p-4 flex flex-col flex-grow gap-4">
+      <div className="p-4 flex flex-col flex-1 justify-between gap-3">
         <h3 className="font-display lowercase text-2xl text-white group-hover:text-purple-200 transition-colors truncate pb-1">
           {beat.title}
         </h3>
 
-        <div className="mt-auto flex items-center gap-3 w-full">
+        <div className="flex items-center gap-3 w-full">
           <div className="w-24 shrink-0 h-12 flex items-center justify-center px-2 rounded-2xl bg-zinc-800/50 border border-white/5 text-purple-200 font-body font-bold text-sm text-center truncate">
             {beat.price || '$29.99'}
           </div>
@@ -184,7 +184,7 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
             href={beat.beatstarsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 h-12 flex items-center justify-center gap-2 rounded-2xl border border-purple-600 bg-purple-600 text-white font-display lowercase text-lg transition-all duration-300 hover:bg-purple-500 hover:border-purple-500 hover:neon-glow-purple"
+            className="flex-1 h-12 flex items-center justify-center gap-2 rounded-2xl border border-purple-600 bg-purple-600 text-white font-display lowercase text-xl tracking-wide transition-all duration-300 hover:bg-purple-500 hover:border-purple-500 hover:neon-glow-purple"
           >
             <span>comprar</span>
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-sm" />

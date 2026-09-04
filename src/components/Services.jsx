@@ -30,7 +30,7 @@ export default function Services() {
                 <h3 className="font-display lowercase text-3xl text-white mb-3 group-hover:text-purple-200 transition-colors duration-300">
                   {t(`services.items.${service.key}.title`)}
                 </h3>
-                <p className="text-zinc-400 text-sm mb-6 leading-relaxed">
+                <p className="text-white text-sm mb-6 leading-relaxed">
                   {t(`services.items.${service.key}.description`)}
                 </p>
                 <FeatureList items={t(`services.items.${service.key}.features`)} accent="purple" dense />

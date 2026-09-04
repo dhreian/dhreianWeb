@@ -16,9 +16,7 @@ export default function Discography() {
       id="portfolio"
       className="bg-zinc-950/40"
       divider={true}
-      dividerAccent="fuchsia"
       glow={true}
-      glowAccent="fuchsia"
     >
 
         <SectionHeading
@@ -53,13 +51,13 @@ export default function Discography() {
                     <span className="text-purple-300">{track.mainArtist}</span>
                     {track.featArtist && (
                       <>
-                        <span className="text-zinc-500 mx-1.5 lowercase font-semibold">feat.</span>
+                        <span className="text-zinc-500 mx-1.5 lowercase font-semibold">ft.</span>
                         <span className="text-zinc-300">{track.featArtist}</span>
                       </>
                     )}
                   </p>
 
-                  <h4 className="font-display lowercase text-lg sm:text-3xl text-white leading-snug sm:leading-normal pb-0.5 w-full truncate group-hover:text-purple-300 transition-colors">
+                  <h4 className="font-display lowercase text-2xl sm:text-3xl text-white leading-snug sm:leading-normal pb-0.5 w-full truncate group-hover:text-purple-300 transition-colors">
                     {track.title}
                   </h4>
 

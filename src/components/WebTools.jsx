@@ -17,26 +17,22 @@ export default function WebTools() {
     <Section
       id="herramientas"
       divider={true}
-      dividerAccent="fuchsia"
+      dividerAccent="purple"
       glow={true}
-      glowAccent="fuchsia"
+      glowAccent="purple"
     >
       <SectionHeading
         eyebrow={t('webtools.eyebrow')}
         title={t('webtools.title')}
         subtitle={t('webtools.subtitle')}
-        accent="fuchsia"
+        accent="purple"
       />
 
       <div className="flex flex-wrap justify-center gap-6 md:gap-8">
         {WEB_TOOLS.map((tool) => (
-          <Card key={tool.key} accent="fuchsia" className="w-full max-w-sm">
+          <Card key={tool.key} accent="purple" className="w-full max-w-sm">
             <div className="flex h-full flex-col">
-              <div
-                className={`relative w-full shrink-0 overflow-hidden bg-gradient-to-br from-zinc-900 to-black ${
-                  tool.type === 'desktopApp' ? 'aspect-[4/3]' : 'aspect-video'
-                }`}
-              >
+              <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-gradient-to-br from-zinc-900 to-black">
                 {tool.image ? (
                   <img
                     src={tool.image}
@@ -45,10 +41,8 @@ export default function WebTools() {
                     height="1080"
                     loading="lazy"
                     decoding="async"
-                    className={`h-full w-full object-contain ${
-                      tool.type === 'desktopApp'
-                        ? 'origin-center scale-100 transform-gpu p-6 transition-transform duration-700 ease-in-out will-change-transform group-hover:scale-105'
-                        : ''
+                    className={`h-full w-full origin-center scale-100 transform-gpu object-contain transition-transform duration-700 ease-in-out will-change-transform group-hover:scale-105 ${
+                      tool.type === 'desktopApp' ? 'p-6' : ''
                     }`}
                   />
                 ) : (
@@ -56,12 +50,12 @@ export default function WebTools() {
                     <FontAwesomeIcon icon={faGlobe} className="text-5xl text-zinc-700" />
                   </div>
                 )}
-                <div className="pointer-events-none absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-fuchsia-500/40 to-transparent" />
+                <div className="pointer-events-none absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
               </div>
 
               <div className="flex flex-grow flex-col p-7">
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-                  <span className="rounded-2xl border border-fuchsia-400/30 bg-fuchsia-500/15 px-2.5 py-1 font-body text-[10px] font-bold uppercase tracking-wider text-fuchsia-200">
+                  <span className="rounded-2xl border border-purple-400/30 bg-purple-500/15 px-2.5 py-1 font-body text-xs font-bold uppercase tracking-wider text-purple-200">
                     {t(`webtools.${tool.type}`)}
                   </span>
                   {tool.formats && (
@@ -69,7 +63,7 @@ export default function WebTools() {
                       {tool.formats.map((format) => (
                         <span
                           key={format}
-                          className="rounded-2xl border border-white/10 bg-white/5 px-2 py-1 font-body text-[10px] font-bold uppercase tracking-wider text-zinc-400"
+                          className="rounded-2xl border border-white/10 bg-white/5 px-2 py-1 font-body text-xs font-bold uppercase tracking-wider text-zinc-400"
                         >
                           {format}
                         </span>
@@ -78,26 +72,26 @@ export default function WebTools() {
                   )}
                 </div>
 
-                <h3 className="mb-1 font-display text-3xl text-white transition-colors duration-300 group-hover:text-fuchsia-200">
+                <h3 className="mb-1 font-display text-3xl text-white transition-colors duration-300 group-hover:text-purple-200">
                   {tool.name}
                 </h3>
-                <p className="mb-4 font-body text-[10px] font-semibold uppercase tracking-[0.25em] text-fuchsia-300/80">
+                <p className="mb-4 font-body text-xs font-semibold uppercase tracking-[0.25em] text-purple-300/80">
                   {t('webtools.developedBy')}
                 </p>
-                <p className="mb-7 text-sm leading-relaxed text-zinc-400">
+                <p className="mb-7 text-sm leading-relaxed text-white">
                   {t(`webtools.items.${tool.key}.description`)}
                 </p>
 
                 <div className="mt-auto w-full">
                   {tool.downloadByEmail ? (
                     <div className="flex w-full items-center gap-3">
-                      <div className="flex h-12 min-w-24 shrink-0 items-center justify-center rounded-2xl border border-white/5 bg-zinc-800/50 px-3 text-center font-body text-sm font-bold uppercase text-fuchsia-200">
+                      <div className="flex h-12 min-w-24 shrink-0 items-center justify-center rounded-2xl border border-white/5 bg-zinc-800/50 px-3 text-center font-body text-sm font-bold uppercase text-purple-200">
                         {t('webtools.free')}
                       </div>
                       <button
                         type="button"
                         onClick={() => setSelectedTool(tool)}
-                        className="flex h-12 flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-2xl border border-fuchsia-600 bg-fuchsia-600 font-display text-lg lowercase text-white transition-all duration-300 hover:border-fuchsia-500 hover:bg-fuchsia-500 hover:neon-glow-fuchsia"
+                        className="flex h-12 flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-2xl border border-purple-600 bg-purple-600 font-display text-xl lowercase tracking-wide text-white transition-all duration-300 hover:border-purple-500 hover:bg-purple-500 hover:neon-glow-purple"
                         aria-label={`${t('webtools.download')} ${tool.name}`}
                       >
                         <span>{t('webtools.download')}</span>
@@ -110,7 +104,7 @@ export default function WebTools() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${t('webtools.cta')} ${tool.name}`}
-                      variant="fuchsia"
+                      variant="primary"
                       size="md"
                       icon={faArrowUpRightFromSquare}
                       className="h-12 w-full px-4 py-0 text-lg"

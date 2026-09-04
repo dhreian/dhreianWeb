@@ -2,9 +2,9 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
-export default function FeatureList({ items, accent = 'purple', dense = false }) {
+export default function FeatureList({ items, dense = false }) {
   if (dense) {
-    const dotColor = accent === 'fuchsia' ? 'bg-fuchsia-500' : 'bg-purple-500';
+    const dotColor = 'bg-purple-500';
     return (
       <ul className="space-y-2">
         {items.map((item) => (
@@ -17,7 +17,7 @@ export default function FeatureList({ items, accent = 'purple', dense = false })
     );
   }
 
-  const checkColor = accent === 'fuchsia' ? 'text-fuchsia-400' : 'text-purple-400';
+  const checkColor = 'text-purple-400';
   return (
     <ul className="space-y-3.5">
       {items.map((item) => (

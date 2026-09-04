@@ -57,10 +57,10 @@ export default function Navbar() {
           <a
             key={key}
             href={href}
-            className="relative font-display lowercase text-zinc-300 hover:text-white transition-colors duration-300 group whitespace-nowrap"
+            className="relative font-display text-lg lg:text-xl lowercase tracking-wide text-zinc-300 hover:text-white transition-colors duration-300 group whitespace-nowrap"
           >
             {t(`nav.${key}`)}
-            <span className="absolute left-0 -bottom-1 w-0 h-px bg-gradient-to-r from-purple-400 to-fuchsia-400 group-hover:w-full transition-all duration-300 shadow-[0_0_8px_rgba(138,108,255,0.8)]"></span>
+            <span className="absolute left-0 -bottom-1 w-0 h-px bg-gradient-to-r from-purple-400 to-white group-hover:w-full transition-all duration-300 shadow-[0_0_8px_rgba(138,108,255,0.8)]"></span>
           </a>
         ))}
       </div>
