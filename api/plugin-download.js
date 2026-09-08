@@ -33,10 +33,12 @@ const DOWNLOADABLE_PLUGINS = {
 function hasLocalInstallerFile(fileName) {
   if (!fileName) return false;
   const candidates = [
-    path.join(process.cwd(), 'public', 'tools', fileName),
     path.join(process.cwd(), 'public', 'plugins', fileName),
+    path.join(process.cwd(), 'public', 'tools', fileName),
     path.join(process.cwd(), 'public', 'downloads', fileName),
     path.join(process.cwd(), 'public', fileName),
+    path.join(process.cwd(), 'private-assets', 'plugins', fileName),
+    path.join(process.cwd(), 'private-assets', 'tools', fileName),
     path.join(process.cwd(), 'downloads', fileName),
     path.join(process.cwd(), fileName),
   ];

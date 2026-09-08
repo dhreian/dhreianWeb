@@ -29,18 +29,18 @@ Tips:
 INSTALADORES DESCARGABLES
 ==========================
 
-Los binarios de instalación no deben vivir en `public/` ni guardarse en Git.
-Se almacenan fuera del repositorio y su URL se configura exclusivamente como
-variable de entorno del servidor.
+Los binarios de instalación oficiales pueden almacenarse en `public/plugins/` y
+`public/tools/` para ser servidos por la web, o configurarse mediante URL privada
+en variables de entorno del servidor.
 
 Para una descarga gratuita gestionada por correo:
 
 1. En `src/data/site.js`, usa `url: null` y `downloadByEmail: true`.
-2. Agrega la key, el nombre y el nombre de la variable de entorno a
-   `DOWNLOADABLE_PLUGINS` en `api/plugin-download.js`.
-3. Configura la URL HTTPS privada y `PLUGIN_DOWNLOAD_SECRET` en Vercel.
-4. El botón abre el modal; el endpoint valida la key, registra la solicitud
+2. El instalador se ubica en `public/plugins/` (ej: `dhreVerb-1.0.0-windows-x64-installer.exe`)
+   o se configura su URL en la variable de entorno correspondiente.
+3. El botón abre el modal; el endpoint valida la key, registra la solicitud
    en Neon y envía mediante Resend un enlace firmado válido por 24 horas.
+4. Al abrir el enlace, el endpoint `/api/plugin-file` entrega el archivo binario.
 
 Las URLs de tiendas para plugins de pago sí permanecen en `url` dentro de
 `site.js`, porque esos CTA abren una plataforma externa.

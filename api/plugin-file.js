@@ -7,19 +7,23 @@ const DOWNLOADABLE_FILES = {
   dhreverb: {
     environmentVariable: 'DHREVERB_DOWNLOAD_URL',
     fileName: 'dhreVerb-1.0.0-windows-x64-installer.exe',
+    folder: 'plugins',
   },
   dhrelink: {
     environmentVariable: 'DHRELINK_DOWNLOAD_URL',
     fileName: 'dhreLink-1.0.0-x64-Setup.exe',
+    folder: 'tools',
   },
 };
 
 function findLocalFilePath(file) {
   const candidates = [
-    path.join(process.cwd(), 'public', 'tools', file.fileName),
     path.join(process.cwd(), 'public', 'plugins', file.fileName),
+    path.join(process.cwd(), 'public', 'tools', file.fileName),
     path.join(process.cwd(), 'public', 'downloads', file.fileName),
     path.join(process.cwd(), 'public', file.fileName),
+    path.join(process.cwd(), 'private-assets', 'plugins', file.fileName),
+    path.join(process.cwd(), 'private-assets', 'tools', file.fileName),
     path.join(process.cwd(), 'downloads', file.fileName),
     path.join(process.cwd(), file.fileName),
   ];
@@ -92,7 +96,8 @@ export default async function handler(req, res) {
 
   if (!sourceUrl) {
     const siteUrl = String(process.env.SITE_URL || 'https://dhreian.com').replace(/\/$/, '');
-    sourceUrl = `${siteUrl}/tools/${file.fileName}`;
+    const folder = file.folder || 'tools';
+    sourceUrl = `${siteUrl}/${folder}/${file.fileName}`;
   }
 
   try {
