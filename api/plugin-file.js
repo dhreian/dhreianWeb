@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { Readable } from 'node:stream';
 import { verifyPluginDownloadToken } from '../lib/plugin-download-token.js';
 
@@ -11,6 +13,25 @@ const DOWNLOADABLE_FILES = {
     fileName: 'dhreLink-1.0.0-x64-Setup.exe',
   },
 };
+
+function findLocalFilePath(file) {
+  const candidates = [
+    path.join(process.cwd(), 'public', 'tools', file.fileName),
+    path.join(process.cwd(), 'public', 'plugins', file.fileName),
+    path.join(process.cwd(), 'public', 'downloads', file.fileName),
+    path.join(process.cwd(), 'public', file.fileName),
+    path.join(process.cwd(), 'downloads', file.fileName),
+    path.join(process.cwd(), file.fileName),
+  ];
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  return null;
+}
 
 function getPrivateSourceUrl(file) {
   const value = String(process.env[file.environmentVariable] || '').trim();
@@ -40,11 +61,38 @@ export default async function handler(req, res) {
     return res.status(403).json({ error: 'Download link is invalid or has expired.' });
   }
 
-  const sourceUrl = getPrivateSourceUrl(file);
+  const localFilePath = findLocalFilePath(file);
+
+  if (localFilePath) {
+    try {
+      const stats = fs.statSync(localFilePath);
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/octet-stream');
+      res.setHeader('Content-Length', stats.size);
+      res.setHeader('Content-Disposition', `attachment; filename="${file.fileName}"`);
+
+      return await new Promise((resolve, reject) => {
+        const stream = fs.createReadStream(localFilePath);
+        stream.once('error', reject);
+        res.once('finish', resolve);
+        res.once('close', resolve);
+        stream.pipe(res);
+      });
+    } catch (error) {
+      console.error('Error al servir el instalador local:', error);
+      if (!res.headersSent) {
+        return res.status(500).json({ error: 'Download is temporarily unavailable.' });
+      }
+      res.destroy(error);
+      return undefined;
+    }
+  }
+
+  let sourceUrl = getPrivateSourceUrl(file);
 
   if (!sourceUrl) {
-    console.error(`Falta configurar ${file.environmentVariable}.`);
-    return res.status(503).json({ error: 'Download is temporarily unavailable.' });
+    const siteUrl = String(process.env.SITE_URL || 'https://dhreian.com').replace(/\/$/, '');
+    sourceUrl = `${siteUrl}/tools/${file.fileName}`;
   }
 
   try {

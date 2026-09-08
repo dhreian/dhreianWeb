@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { Resend } from 'resend';
 import {
   createPluginDownload,
@@ -18,15 +20,35 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DOWNLOADABLE_PLUGINS = {
   dhreverb: {
     name: 'dhreVerb',
+    fileName: 'dhreVerb-1.0.0-windows-x64-installer.exe',
     downloadUrlEnvironmentVariable: 'DHREVERB_DOWNLOAD_URL',
   },
   dhrelink: {
     name: 'dhreLink',
+    fileName: 'dhreLink-1.0.0-x64-Setup.exe',
     downloadUrlEnvironmentVariable: 'DHRELINK_DOWNLOAD_URL',
   },
 };
 
+function hasLocalInstallerFile(fileName) {
+  if (!fileName) return false;
+  const candidates = [
+    path.join(process.cwd(), 'public', 'tools', fileName),
+    path.join(process.cwd(), 'public', 'plugins', fileName),
+    path.join(process.cwd(), 'public', 'downloads', fileName),
+    path.join(process.cwd(), 'public', fileName),
+    path.join(process.cwd(), 'downloads', fileName),
+    path.join(process.cwd(), fileName),
+  ];
+
+  return candidates.some((candidate) => fs.existsSync(candidate));
+}
+
 function hasConfiguredDownloadSource(plugin) {
+  if (hasLocalInstallerFile(plugin.fileName)) {
+    return true;
+  }
+
   const value = String(process.env[plugin.downloadUrlEnvironmentVariable] || '').trim();
 
   try {
@@ -249,45 +271,48 @@ export default async function handler(req, res) {
     return res.status(503).json({ error: c.processError });
   }
 
-  try {
-    const rateLimit = await applyFormRateLimits(req, {
-      route: 'plugin-download',
-      email,
-    });
+  if (process.env.DATABASE_URL) {
+    try {
+      const rateLimit = await applyFormRateLimits(req, {
+        route: 'plugin-download',
+        email,
+      });
 
-    if (!rateLimit.allowed) {
-      res.setHeader('Retry-After', String(rateLimit.retryAfterSeconds));
-      return res.status(429).json({ error: c.processError });
+      if (!rateLimit.allowed) {
+        res.setHeader('Retry-After', String(rateLimit.retryAfterSeconds));
+        return res.status(429).json({ error: c.processError });
+      }
+    } catch (error) {
+      console.warn('Advertencia al aplicar los límites de descarga (continuando):', error.message);
     }
-  } catch (error) {
-    console.error('Error al aplicar los límites de descarga:', error);
-    return res.status(500).json({ error: c.serverError });
   }
 
   let downloadUrl;
 
   try {
     const token = createPluginDownloadToken(pluginKey);
-    downloadUrl = `${SITE_URL}/api/plugin-file?token=${encodeURIComponent(token)}`;
+    const siteUrl = String(process.env.SITE_URL || SITE_URL).replace(/\/$/, '');
+    downloadUrl = `${siteUrl}/api/plugin-file?token=${encodeURIComponent(token)}`;
   } catch (error) {
     console.error('Error al crear el enlace temporal del plugin:', error);
     return res.status(500).json({ error: c.serverError });
   }
 
-  let downloadId;
+  let downloadId = null;
 
-  try {
-    downloadId = await createPluginDownload({
-      name,
-      email,
-      pluginKey,
-      pluginName: plugin.name,
-      downloadUrl,
-      language: lang,
-    });
-  } catch (error) {
-    console.error('Error al guardar la descarga en Neon:', error);
-    return res.status(500).json({ error: c.serverError });
+  if (process.env.DATABASE_URL) {
+    try {
+      downloadId = await createPluginDownload({
+        name,
+        email,
+        pluginKey,
+        pluginName: plugin.name,
+        downloadUrl,
+        language: lang,
+      });
+    } catch (error) {
+      console.warn('Advertencia al guardar la descarga en Neon (continuando):', error.message);
+    }
   }
 
   const safe = {
@@ -299,38 +324,45 @@ export default async function handler(req, res) {
   };
 
   try {
+    const fromAddress = process.env.RESEND_FROM_EMAIL || FROM_EMAIL;
     const { data, error } = await resend.emails.send({
-      from: FROM_EMAIL,
-      to: CONTACT_EMAIL,
-      cc: email,
-      replyTo: email,
+      from: fromAddress,
+      to: email,
+      bcc: CONTACT_EMAIL,
+      replyTo: CONTACT_EMAIL,
       subject: c.subjectLine(plugin.name),
       html: getDownloadEmailHtml(c, safe),
     });
 
     if (error) {
       console.error('Error reportado por Resend al enviar la descarga:', error);
-      try {
-        await markPluginDownloadFailed(downloadId, error.message || c.processError);
-      } catch (databaseError) {
-        console.error('Error al actualizar la descarga fallida en Neon:', databaseError);
+      if (downloadId) {
+        try {
+          await markPluginDownloadFailed(downloadId, error.message || c.processError);
+        } catch (databaseError) {
+          console.error('Error al actualizar la descarga fallida en Neon:', databaseError);
+        }
       }
       return res.status(400).json({ error: c.processError });
     }
 
-    try {
-      await markPluginDownloadSent(downloadId, data?.id);
-    } catch (databaseError) {
-      console.error('El enlace se envió, pero no se actualizó su estado en Neon:', databaseError);
+    if (downloadId) {
+      try {
+        await markPluginDownloadSent(downloadId, data?.id);
+      } catch (databaseError) {
+        console.error('El enlace se envió, pero no se actualizó su estado en Neon:', databaseError);
+      }
     }
 
     return res.status(200).json({ success: true });
   } catch (error) {
     console.error('Error interno al enviar el enlace con Resend:', error);
-    try {
-      await markPluginDownloadFailed(downloadId, error.message || c.serverError);
-    } catch (databaseError) {
-      console.error('Error al actualizar la descarga fallida en Neon:', databaseError);
+    if (downloadId) {
+      try {
+        await markPluginDownloadFailed(downloadId, error.message || c.serverError);
+      } catch (databaseError) {
+        console.error('Error al actualizar la descarga fallida en Neon:', databaseError);
+      }
     }
     return res.status(500).json({ error: c.serverError });
   }
