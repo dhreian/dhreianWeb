@@ -5,7 +5,10 @@ import { TRACKS, PLATFORMS } from '../data/site';
 import Card from './Card';
 import NeonButton from './Button';
 import { useLang } from '../i18n/LanguageContext';
-import metallicLogo from '../../design/brand/logo/exports/dhreian-logo-transparent-512.png';
+
+// Keep the hero logo on the public asset path so the prerendered HTML and the
+// hydrated client use the same URL in production.
+const metallicLogo = '/icons/dhreian-logo-transparent-512.png';
 
 export default function Hero() {
   const { t } = useLang();
