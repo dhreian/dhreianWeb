@@ -24,6 +24,82 @@ body {
   line-height: 1.5;
 }
 
+:root {
+  --metal-silver-smooth:
+    radial-gradient(circle at 9% -22%, rgba(255, 255, 255, 1) 0 14%, transparent 38%),
+    radial-gradient(circle at 91% 118%, rgba(104, 28, 255, 0.13) 0 10%, transparent 42%),
+    linear-gradient(116deg, transparent 0 27%, rgba(255, 255, 255, 0.92) 36%, rgba(99, 89, 108, 0.14) 46%, transparent 57%),
+    linear-gradient(138deg, #ffffff 0%, #c9c5cf 20%, #faf9fc 38%, #afa9b6 59%, #ece9ef 76%, #c5bfcb 89%, #ffffff 100%);
+  --metal-gunmetal-smooth:
+    radial-gradient(circle at 18% -30%, rgba(255, 255, 255, 0.13) 0 10%, transparent 42%),
+    radial-gradient(circle at 82% 120%, rgba(104, 28, 255, 0.16) 0 10%, transparent 48%),
+    linear-gradient(138deg, #2c2931 0%, #111015 31%, #302c36 58%, #0b0a0e 100%);
+  --metal-social-dark:
+    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.42) 0 5%, transparent 24%),
+    linear-gradient(122deg, #77717e 0%, #29252f 16%, #09080b 34%, #68616f 48%, #17141c 64%, #403947 80%, #050407 100%);
+  --metal-purple:
+    radial-gradient(circle at 18% 0%, rgba(232, 218, 255, 0.86) 0 5%, transparent 24%),
+    linear-gradient(122deg, #b995ff 0%, #6f24f5 16%, #350677 34%, #a36fff 48%, #4b0aab 64%, #8a42ff 80%, #260452 100%);
+  --metal-instagram:
+    radial-gradient(circle at 18% 0%, rgba(255, 225, 237, 0.9) 0 5%, transparent 24%),
+    linear-gradient(122deg, #ff9cc0 0%, #e1306c 16%, #7f0c34 34%, #ff80ad 48%, #a71248 64%, #f04d86 80%, #590720 100%);
+  --metal-x:
+    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.96) 0 5%, transparent 24%),
+    linear-gradient(122deg, #ffffff 0%, #a9a9ae 16%, #343438 34%, #f4f4f5 48%, #69696f 64%, #c9c9cd 80%, #1a1a1d 100%);
+  --metal-tiktok:
+    radial-gradient(circle at 18% 0%, rgba(224, 255, 255, 0.94) 0 5%, transparent 24%),
+    linear-gradient(122deg, #8cffff 0%, #00f2fe 16%, #006970 34%, #ff6b99 48%, #ff0050 64%, #35dfe9 80%, #00383c 100%);
+  --metal-spotify:
+    radial-gradient(circle at 18% 0%, rgba(218, 255, 229, 0.9) 0 5%, transparent 24%),
+    linear-gradient(122deg, #85f5a7 0%, #1db954 16%, #075f29 34%, #70ef98 48%, #0b8538 64%, #35d66b 80%, #033b19 100%);
+  --metal-apple:
+    radial-gradient(circle at 18% 0%, rgba(255, 225, 229, 0.92) 0 5%, transparent 24%),
+    linear-gradient(122deg, #ff9aa7 0%, #fa243c 16%, #8f0819 34%, #ff7a8a 48%, #bd0b20 64%, #ff4259 80%, #60030e 100%);
+  --metal-youtube:
+    radial-gradient(circle at 18% 0%, rgba(255, 224, 224, 0.92) 0 5%, transparent 24%),
+    linear-gradient(122deg, #ff8e8e 0%, #ff0000 16%, #8d0000 34%, #ff7070 48%, #bd0000 64%, #ff3030 80%, #610000 100%);
+  --bevel-panel:
+    inset 0 4px 3px -1px rgba(255, 255, 255, 0.94),
+    inset 4px 0 4px -2px rgba(255, 255, 255, 0.48),
+    inset 0 -5px 4px -2px rgba(43, 34, 51, 0.38),
+    inset -4px 0 4px -2px rgba(56, 46, 65, 0.24),
+    0 4px 5px rgba(0, 0, 0, 0.22),
+    0 22px 50px rgba(0, 0, 0, 0.28);
+  --bevel-control:
+    inset 0 2px 1px rgba(255, 255, 255, 0.7),
+    inset 2px 0 2px -1px rgba(255, 255, 255, 0.3),
+    inset 0 -3px 2px -1px rgba(18, 12, 24, 0.46),
+    inset -2px 0 2px -1px rgba(29, 20, 37, 0.24),
+    0 3px 3px rgba(0, 0, 0, 0.22),
+    0 9px 20px rgba(0, 0, 0, 0.18);
+  --bevel-control-active:
+    inset 0 7px 11px rgba(7, 4, 11, 0.58),
+    inset 5px 0 7px rgba(10, 6, 15, 0.28),
+    inset 0 -3px 4px rgba(255, 255, 255, 0.28),
+    inset -3px 0 5px rgba(255, 255, 255, 0.1),
+    0 1px 1px rgba(255, 255, 255, 0.16),
+    0 2px 3px rgba(0, 0, 0, 0.22);
+  --bevel-badge:
+    inset 0 2px 1px rgba(255, 255, 255, 0.62),
+    inset 1px 0 1px rgba(255, 255, 255, 0.22),
+    inset 0 -2px 2px rgba(18, 12, 24, 0.4),
+    inset -1px 0 1px rgba(29, 20, 37, 0.2),
+    0 2px 2px rgba(0, 0, 0, 0.2),
+    0 5px 12px rgba(0, 0, 0, 0.16);
+  --bevel-recessed:
+    inset 0 4px 7px rgba(0, 0, 0, 0.48),
+    inset 3px 0 4px rgba(0, 0, 0, 0.18),
+    inset 0 -2px 2px rgba(255, 255, 255, 0.14),
+    inset -2px 0 3px rgba(255, 255, 255, 0.06),
+    0 2px 1px rgba(255, 255, 255, 0.28),
+    0 8px 18px rgba(0, 0, 0, 0.16);
+  --bevel-engraved:
+    inset 0 5px 8px rgba(0, 0, 0, 0.58),
+    inset 4px 0 6px rgba(0, 0, 0, 0.24),
+    inset 0 -3px 4px rgba(255, 255, 255, 0.2),
+    inset -3px 0 4px rgba(255, 255, 255, 0.08);
+}
+
 
 @media (min-width: 1024px) and (max-height: 860px) {
   .hero-banner {
@@ -108,10 +184,11 @@ body {
 }
 
 .brand-gradient-title {
-  color: #681cff;
-  background-image: none;
-  background-clip: border-box;
-  -webkit-background-clip: border-box;
+  color: transparent;
+  background-image: linear-gradient(180deg, #f2ebff 0%, #b58cff 20%, #681cff 46%, #330477 67%, #a66fff 82%, #681cff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .section-title-lockup {
@@ -120,14 +197,37 @@ body {
   grid-template-columns: auto minmax(0, auto) auto;
   align-items: center;
   column-gap: clamp(0.65rem, 2vw, 1.25rem);
+  /* Give the font's descenders room without changing section padding. */
+  line-height: 1.14;
   vertical-align: middle;
 }
 
 .section-title-accent {
   display: block;
   min-width: 0;
-  color: #681cff;
+  /* Extend only the paint area so glyphs and bevel shadows cannot be clipped. */
+  padding-block: 0.08em 0.22em;
+  margin-block: -0.08em -0.22em;
+  color: transparent;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ddceff 10%,
+    #8e54ff 29%,
+    #c4a7ff 42%,
+    #681cff 48%,
+    #2a025f 68%,
+    #9255ff 82%,
+    #48109a 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   line-height: inherit;
+  filter:
+    drop-shadow(0 0.018em 0 rgba(255, 255, 255, 0.7))
+    drop-shadow(0 0.055em 0 rgba(30, 0, 69, 0.95))
+    drop-shadow(0 0.09em 0.08em rgba(104, 28, 255, 0.22));
 }
 
 .section-title-ornament {
@@ -137,10 +237,27 @@ body {
   align-self: center;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: transparent;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 22%,
+    #b7b2bd 48%,
+    #f8f7fa 61%,
+    #77717d 82%,
+    #e7e4ea 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 0.42em;
   line-height: 1;
-  transform: translateY(0.45em);
+  /* Centre the star on the red reference axis through the lowercase x-height. */
+  transform: translateY(0.38em);
+  filter:
+    drop-shadow(0 -0.035em 0 rgba(255, 255, 255, 0.95))
+    drop-shadow(0 0.085em 0 rgba(35, 31, 40, 0.95))
+    drop-shadow(0 0.12em 0.1em rgba(255, 255, 255, 0.18));
 }
 
 @utility neon-glow-purple {
@@ -161,65 +278,238 @@ body {
 
 .liquid-glass-card {
   color: var(--color-zinc-950);
-  border: 1px solid #681cff;
-  background: #ffffff;
-  box-shadow: none;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
+  border: 1px solid rgba(163, 126, 255, 0.9);
+  background: var(--metal-silver-smooth);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(64, 53, 75, 0.28),
+    0 18px 48px rgba(0, 0, 0, 0.28),
+    0 0 22px rgba(104, 28, 255, 0.08);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  backdrop-filter: blur(18px) saturate(135%);
 }
 
 .liquid-glass-card:hover {
-  border-color: #681cff;
+  border-color: #b696ff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(64, 53, 75, 0.3),
+    0 20px 54px rgba(0, 0, 0, 0.32),
+    0 0 30px rgba(104, 28, 255, 0.15);
+}
+
+.metallic-surface {
+  background: var(--metal-silver-smooth);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(64, 53, 75, 0.24);
+}
+
+.metallic-control {
+  border-color: rgba(63, 51, 74, 0.75);
+  background: var(--metal-silver-smooth);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(55, 44, 66, 0.26),
+    0 5px 14px rgba(0, 0, 0, 0.12);
+}
+
+.metallic-control:hover,
+.metallic-control:active {
+  border-color: #b696ff;
+  background: var(--metal-gunmetal-smooth);
+  color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.7),
+    0 0 18px rgba(104, 28, 255, 0.2);
+}
+
+.metallic-purple-control {
+  border-color: #b696ff;
+  background: var(--metal-purple);
+  color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 0 rgba(21, 0, 53, 0.72),
+    0 6px 18px rgba(104, 28, 255, 0.2);
+}
+
+.metallic-purple-control:hover,
+.metallic-purple-control:active {
+  border-color: #ffffff;
+  background: var(--metal-gunmetal-smooth);
+  color: #ffffff;
+}
+
+.metallic-dark-control {
+  border-color: rgba(173, 143, 246, 0.58);
+  background: var(--metal-gunmetal-smooth);
+  color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.72),
+    0 5px 16px rgba(0, 0, 0, 0.18);
+}
+
+.metallic-dark-control:hover,
+.metallic-dark-control:active {
+  border-color: #b696ff;
+  background: var(--metal-gunmetal-smooth);
+  color: #ffffff;
+  filter: brightness(1.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.72),
+    0 0 18px rgba(104, 28, 255, 0.22);
+}
+
+.platform-metallic-button {
+  border-color: #b696ff;
+  background: var(--metal-purple);
+  color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 0 rgba(21, 0, 53, 0.72),
+    0 6px 18px rgba(104, 28, 255, 0.2);
+}
+
+.platform-metallic-button:hover,
+.platform-metallic-button:active {
+  border-color: #ffffff;
+  background: var(--metal-purple);
+  color: #ffffff;
+  filter: brightness(1.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(21, 0, 53, 0.72),
+    0 0 22px rgba(104, 28, 255, 0.34);
+}
+
+.metallic-purple-badge,
+.metallic-dark-badge,
+.metallic-silver-badge {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.36),
+    0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.metallic-purple-badge {
+  border-color: #b696ff;
+  background: var(--metal-purple);
+  color: #ffffff;
+}
+
+.metallic-dark-badge {
+  border-color: rgba(173, 143, 246, 0.5);
+  background: var(--metal-gunmetal-smooth);
+  color: #ffffff;
+}
+
+.metallic-silver-badge {
+  border-color: rgba(97, 86, 107, 0.58);
+  background: var(--metal-silver-smooth);
+  color: #27232d;
+}
+
+.metallic-field {
+  border-color: rgba(173, 143, 246, 0.58);
+  background: var(--metal-gunmetal-smooth);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.72),
+    0 5px 16px rgba(0, 0, 0, 0.14);
+}
+
+.metallic-field:focus {
+  border-color: #b696ff;
+  background: var(--metal-gunmetal-smooth);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 0 2px rgba(104, 28, 255, 0.34),
+    0 0 20px rgba(104, 28, 255, 0.16);
+}
+
+.metallic-purple-text {
+  color: transparent;
+  background: linear-gradient(180deg, #d7c3ff 0%, #8b4cff 30%, #3d0788 57%, #9f69ff 76%, #681cff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .service-gothic-icon {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 1rem;
+  right: 1rem;
   z-index: 1;
+  isolation: isolate;
   display: grid;
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 4.875rem;
+  height: 4.875rem;
   place-items: center;
-  background: #000000;
   color: #ffffff;
-  font-size: 1.1rem;
-  transition: background-color 300ms ease;
+  font-size: 1.65rem;
+}
+
+.service-gothic-icon::before,
+.service-gothic-icon::after {
+  position: absolute;
+  z-index: -1;
+  inset: 50% auto auto 50%;
+  content: "✦";
+  font-family: "Cormorant Infant", serif;
+  font-size: 6.375rem;
+  font-weight: 600;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.035rem rgba(255, 255, 255, 0.16);
 }
 
 .service-gothic-icon::before {
-  position: absolute;
-  top: 0.16rem;
-  right: 0.28rem;
-  color: #ffffff;
-  content: "✦";
-  font-size: 0.5rem;
-  line-height: 1;
+  background-image: var(--metal-gunmetal-smooth);
+  filter:
+    drop-shadow(-0.035rem -0.07rem 0 rgba(255, 255, 255, 0.78))
+    drop-shadow(0.035rem 0.105rem 0 rgba(0, 0, 0, 0.9))
+    drop-shadow(0 0.24rem 0.21rem rgba(0, 0, 0, 0.48));
+}
+
+.service-gothic-icon::after {
+  background-image: var(--metal-purple);
+  opacity: 0;
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.liquid-glass-card:hover .service-gothic-icon::after {
+  opacity: 1;
 }
 
 .service-gothic-icon svg {
   position: relative;
-  z-index: 1;
-}
-
-.liquid-glass-card:hover .service-gothic-icon {
-  background: #681cff;
+  z-index: 2;
 }
 
 @media (min-width: 768px) {
   .service-gothic-icon {
-    top: 2rem;
-    right: 2rem;
+    top: 1rem;
+    right: 1rem;
   }
 }
 
 .liquid-glass-nav--scrolled {
-  border-color: #681cff;
-  box-shadow: none;
+  border-color: #b696ff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    inset 0 -1px 0 rgba(64, 53, 75, 0.3),
+    0 16px 40px rgba(0, 0, 0, 0.34),
+    0 0 24px rgba(104, 28, 255, 0.16);
 }
 
 .liquid-glass-button {
-  background-image: none;
   box-shadow: none;
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
@@ -256,21 +546,29 @@ body {
 }
 
 .primary-action-button {
-  border-color: #681cff;
-  background-color: #681cff;
+  border-color: #b696ff;
+  background: var(--metal-purple);
   color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 0 rgba(21, 0, 53, 0.72),
+    0 7px 20px rgba(104, 28, 255, 0.2);
 }
 
 .secondary-action-button {
-  border-color: #ffffff;
-  background-color: #ffffff;
+  border-color: rgba(163, 126, 255, 0.78);
+  background: var(--metal-silver-smooth);
   color: #000000;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(55, 44, 66, 0.26),
+    0 7px 18px rgba(0, 0, 0, 0.15);
 }
 
 .secondary-action-label {
-  border: 1px solid #000000;
+  border: 1px solid rgba(173, 143, 246, 0.58);
   border-radius: 1rem;
-  background-color: #000000;
+  background: var(--metal-gunmetal-smooth);
   color: #ffffff;
   font-family: "Cormorant Infant", serif;
   font-size: var(--text-button);
@@ -281,27 +579,33 @@ body {
 
 .primary-action-button:hover {
   border-color: #ffffff;
-  background-color: #ffffff;
+  background: var(--metal-silver-smooth);
   color: #000000;
-  box-shadow: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    inset 0 -1px 0 rgba(55, 44, 66, 0.26),
+    0 8px 22px rgba(0, 0, 0, 0.18);
 }
 
 .primary-action-button--on-light:hover {
-  border-color: #000000;
-  background-color: #000000;
+  border-color: #b696ff;
+  background: var(--metal-gunmetal-smooth);
   color: #ffffff;
 }
 
 .secondary-action-button:hover {
-  border-color: #681cff;
-  background-color: #681cff;
+  border-color: #b696ff;
+  background: var(--metal-purple);
   color: #ffffff;
-  box-shadow: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 0 rgba(21, 0, 53, 0.72),
+    0 7px 20px rgba(104, 28, 255, 0.2);
 }
 
 .catalog-filter-button:hover {
-  border-color: #681cff;
-  background-color: #681cff;
+  border-color: #b696ff;
+  background: var(--metal-purple);
   color: #ffffff;
 }
 
@@ -316,21 +620,25 @@ body {
 .catalog-filter-button[aria-pressed="true"],
 .catalog-filter-button[aria-pressed="true"]:hover,
 .catalog-filter-button:active {
-  border-color: #681cff;
-  background-color: #681cff;
+  border-color: #b696ff;
+  background: var(--metal-purple);
   color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 0 rgba(21, 0, 53, 0.72),
+    0 6px 18px rgba(104, 28, 255, 0.2);
 }
 
 .catalog-filter-count {
-  border-color: #000000;
-  background-color: #000000;
+  border-color: rgba(173, 143, 246, 0.58);
+  background: var(--metal-gunmetal-smooth);
   color: #ffffff;
 }
 
 .catalog-filter-button:hover .catalog-filter-count,
 .catalog-filter-button[aria-pressed="true"] .catalog-filter-count {
   border-color: #ffffff;
-  background-color: #ffffff;
+  background: var(--metal-silver-smooth);
   color: #681cff;
 }
 
@@ -342,8 +650,8 @@ body {
 
 .catalog-filter-button.primary-action-button:active,
 .catalog-filter-button.secondary-action-button:active {
-  border-color: #681cff;
-  background-color: #681cff;
+  border-color: #b696ff;
+  background: var(--metal-purple);
   color: #ffffff;
 }
 
@@ -604,4 +912,287 @@ body {
 
 .bg-neon-grid {
   background-image: none;
+}
+
+/* Metallic depth comes from light and shadow, never from outlined edges. */
+.liquid-glass-card,
+.liquid-glass-card:hover,
+.liquid-glass-nav--scrolled,
+.liquid-glass-button,
+.liquid-glass-button:hover,
+.liquid-glass-button:active,
+.metallic-field,
+.metallic-field:focus,
+.metallic-purple-badge,
+.metallic-dark-badge,
+.metallic-silver-badge,
+.secondary-action-label,
+.catalog-filter-count,
+.liquid-glass-card [class~="border"] {
+  border-width: 0;
+  border-color: transparent;
+}
+
+/* Unified bevel language: raised panels, raised controls and recessed fields. */
+.liquid-glass-card,
+.metallic-surface {
+  box-shadow: var(--bevel-panel);
+}
+
+.liquid-glass-card:hover {
+  box-shadow: var(--bevel-panel);
+}
+
+.liquid-glass-button,
+.metallic-control,
+.metallic-purple-control,
+.metallic-dark-control,
+.platform-metallic-button,
+.social-metallic-button {
+  box-shadow: var(--bevel-control);
+  transition:
+    box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 180ms ease,
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.metallic-purple-badge,
+.metallic-dark-badge,
+.metallic-silver-badge,
+.secondary-action-label,
+.catalog-filter-count {
+  box-shadow: var(--bevel-badge);
+}
+
+.contact-channel-button {
+  transition:
+    box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 180ms ease,
+    background 180ms ease;
+}
+
+.social-metallic-button {
+  background: var(--metal-silver-smooth);
+  color: #111015;
+}
+
+.contact-channel-button.social-metallic-button {
+  background: var(--metal-social-dark);
+  color: #ffffff;
+}
+
+.contact-channel-link--email:hover .contact-channel-button {
+  background: var(--metal-purple);
+  color: #ffffff;
+}
+
+.contact-channel-link--instagram:hover .contact-channel-button {
+  background: var(--metal-instagram);
+  color: #ffffff;
+}
+
+.contact-channel-link:hover .contact-channel-button {
+  box-shadow: var(--bevel-control);
+}
+
+@media (hover: hover) {
+  .social-metallic-button[data-social="instagram"]:hover {
+    background: var(--metal-instagram);
+    color: #ffffff;
+  }
+
+  .contact-channel-link--instagram:hover .social-metallic-button {
+    background: var(--metal-instagram);
+    color: #ffffff;
+  }
+
+  .social-metallic-button[data-social="x"]:hover {
+    background: var(--metal-x);
+    color: #ffffff;
+  }
+
+  .social-metallic-button[data-social="tiktok"]:hover {
+    background: var(--metal-tiktok);
+    color: #ffffff;
+  }
+
+  .social-metallic-button[data-social="spotify"]:hover {
+    background: var(--metal-spotify);
+    color: #ffffff;
+  }
+
+  .social-metallic-button[data-social="youtube"]:hover {
+    background: var(--metal-youtube);
+    color: #ffffff;
+  }
+
+  .social-metallic-button[data-social]:hover,
+  .contact-channel-link:hover .social-metallic-button {
+    filter: none;
+    box-shadow: var(--bevel-control);
+  }
+}
+
+.secondary-action-label {
+  box-shadow: var(--bevel-engraved);
+}
+
+.release-cover-recessed {
+  position: relative;
+  box-shadow: var(--bevel-engraved);
+}
+
+.release-cover-recessed::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: var(--bevel-engraved);
+  pointer-events: none;
+}
+
+.card-media-frame {
+  margin: 0.75rem 0.75rem 0;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  background: var(--metal-silver-smooth);
+  box-shadow: var(--bevel-engraved);
+  isolation: isolate;
+}
+
+.card-media-frame::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: var(--bevel-engraved);
+  pointer-events: none;
+}
+
+.metallic-divider-horizontal {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(93, 84, 102, 0.7) 8%,
+    #f7f5fa 24%,
+    #77707f 38%,
+    #d7c6ff 47%,
+    #681cff 50%,
+    #d7c6ff 53%,
+    #77707f 62%,
+    #f7f5fa 76%,
+    rgba(93, 84, 102, 0.7) 92%,
+    transparent 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(20, 14, 26, 0.72),
+    0 0 8px rgba(104, 28, 255, 0.28);
+}
+
+.metallic-divider-vertical {
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    #6e6874 8%,
+    #f8f7fa 24%,
+    #4d4753 48%,
+    #d7d2dc 68%,
+    #746d7c 92%,
+    transparent 100%
+  );
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, 0.88),
+    inset -1px 0 0 rgba(18, 12, 23, 0.65),
+    0 0 7px rgba(104, 28, 255, 0.16);
+}
+
+@media (hover: hover) {
+  .platform-metallic-button[data-platform="spotify"]:hover {
+    background: var(--metal-spotify);
+  }
+
+  .platform-metallic-button[data-platform="apple"]:hover {
+    background: var(--metal-apple);
+  }
+
+  .platform-metallic-button[data-platform="youtube"]:hover {
+    background: var(--metal-youtube);
+  }
+
+  .platform-metallic-button[data-platform]:hover {
+    filter: none;
+    box-shadow: var(--bevel-control);
+  }
+}
+
+.metallic-field {
+  box-shadow: var(--bevel-recessed);
+}
+
+.metallic-field:focus {
+  box-shadow:
+    var(--bevel-recessed),
+    0 0 0 3px rgba(104, 28, 255, 0.3),
+    0 0 24px rgba(104, 28, 255, 0.2);
+}
+
+@media (hover: hover) {
+  .liquid-glass-button:hover,
+  .metallic-control:hover,
+  .metallic-purple-control:hover,
+  .metallic-dark-control:hover,
+  .platform-metallic-button:hover,
+  .social-metallic-button:hover {
+    transform: none;
+    box-shadow: var(--bevel-control);
+  }
+}
+
+.catalog-filter-button[aria-pressed="true"],
+.catalog-filter-button[aria-pressed="true"]:hover {
+  transform: none;
+  box-shadow: var(--bevel-control);
+}
+
+.liquid-glass-button:active,
+.metallic-control:active,
+.metallic-purple-control:active,
+.metallic-dark-control:active,
+.platform-metallic-button:active,
+.social-metallic-button:active {
+  transform: none;
+  filter: brightness(0.88) contrast(1.08);
+  box-shadow: var(--bevel-control-active);
+  transition-duration: 70ms;
+}
+
+/* Brand hover colors remain, but physical pressure always carves the metal. */
+.platform-metallic-button[data-platform]:active,
+.social-metallic-button[data-social]:active,
+.contact-channel-link:active .social-metallic-button {
+  transform: none;
+  filter: brightness(0.88) contrast(1.08);
+  box-shadow: var(--bevel-control-active);
+  transition-duration: 70ms;
+}
+
+.catalog-filter-button[aria-pressed="true"]:active {
+  transform: none;
+  filter: brightness(0.88) contrast(1.08);
+  box-shadow: var(--bevel-control-active);
+  transition-duration: 70ms;
+}
+
+.liquid-glass-button:focus-visible,
+.metallic-field:focus-visible {
+  outline: 2px solid rgba(192, 164, 255, 0.9);
+  outline-offset: 3px;
 }

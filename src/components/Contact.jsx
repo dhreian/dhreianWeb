@@ -18,7 +18,7 @@ import Card from './Card';
 import { useLang } from '../i18n/LanguageContext';
 
 const inputBase =
-  "w-full rounded-2xl border border-zinc-700 bg-zinc-900 py-3.5 pl-12 pr-4 text-body-compact text-white placeholder:text-zinc-600 transition-colors duration-300 focus:border-purple-500 focus:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-purple-500";
+  "metallic-field w-full rounded-2xl border py-3.5 pl-12 pr-4 text-body-compact text-white placeholder:text-zinc-500 transition-all duration-300 focus:outline-none";
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -102,7 +102,7 @@ export default function Contact() {
 
           <div className="flex flex-col justify-between py-2">
             <div>
-              <h3 className="font-body text-label text-purple-700 uppercase tracking-[0.2em] font-medium mb-6">
+              <h3 className="font-body text-label text-black uppercase tracking-[0.2em] font-medium mb-6">
                 {t('contact.channels')}
               </h3>
               <div className="space-y-6">
@@ -110,9 +110,9 @@ export default function Contact() {
                   <a
                     href="mailto:contact@dhreian.com"
                     onClick={handleCopyEmail}
-                    className="flex items-center gap-4 text-black transition-colors duration-300 hover:text-purple-500"
+                    className="contact-channel-link contact-channel-link--email flex items-center gap-4 text-black transition-colors duration-300 hover:text-purple-500"
                   >
-                    <div className="liquid-glass-button grid h-14 w-14 shrink-0 place-items-center rounded-full border border-black bg-black text-white transition-colors duration-300 group-hover/contact:border-purple-500 group-hover/contact:bg-purple-500 group-hover/contact:text-white">
+                    <div data-social="email" className="contact-channel-button social-metallic-button metallic-dark-control liquid-glass-button grid h-14 w-14 shrink-0 place-items-center rounded-full border text-white transition-all duration-300">
                       <FontAwesomeIcon icon={faEnvelope} fixedWidth className="text-xl" />
                     </div>
                     <div className="flex flex-col min-w-0">
@@ -130,14 +130,14 @@ export default function Contact() {
                     href="https://instagram.com/dhreian"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 text-black transition-colors duration-300 hover:text-purple-500"
+                    className="contact-channel-link contact-channel-link--instagram flex items-center gap-4 text-black transition-colors duration-300 hover:text-[#E1306C]"
                   >
-                    <div className="liquid-glass-button grid h-14 w-14 shrink-0 place-items-center rounded-full border border-black bg-black text-white transition-colors duration-300 group-hover/insta:border-purple-500 group-hover/insta:bg-purple-500 group-hover/insta:text-white">
+                    <div data-social="instagram" className="contact-channel-button social-metallic-button metallic-dark-control liquid-glass-button grid h-14 w-14 shrink-0 place-items-center rounded-full border text-white transition-all duration-300">
                       <FontAwesomeIcon icon={faInstagram} fixedWidth className="text-xl" />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-body font-medium">@dhreian</span>
-                      <span className="text-meta font-medium uppercase tracking-wider text-black transition-colors duration-300 group-hover/insta:text-purple-500">
+                      <span className="text-meta font-medium uppercase tracking-wider text-black transition-colors duration-300 group-hover/insta:text-[#E1306C]">
                         {t('contact.instaOfficial')}
                       </span>
                     </div>
@@ -148,12 +148,12 @@ export default function Contact() {
 
           </div>
 
-          <div className="hidden w-px self-stretch bg-black md:block"></div>
+          <div className="metallic-divider-vertical hidden self-stretch md:block"></div>
 
           <div className="relative flex flex-col justify-center min-h-[350px]">
             {status === 'success' ? (
               <div className="flex flex-col items-center justify-center text-center py-8 px-4 h-full animate-contact-success-in">
-                <div className="mb-6 grid h-20 w-20 place-items-center rounded-full border border-purple-500 bg-purple-500 animate-contact-success-pop">
+                <div className="metallic-purple-control mb-6 grid h-20 w-20 place-items-center rounded-full border animate-contact-success-pop">
                   <FontAwesomeIcon icon={faCircleCheck} fixedWidth className="text-4xl text-white" />
                 </div>
                 <h3 className="font-display lowercase text-card text-black mb-3">
@@ -218,7 +218,7 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-3">
-                  <label className="font-body text-label text-purple-700 uppercase tracking-[0.2em] font-medium block">
+                  <label className="font-body text-label text-black uppercase tracking-[0.2em] font-medium block">
                     {t('contact.subject')}
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -232,8 +232,8 @@ export default function Contact() {
                           disabled={status === 'sending'}
                           className={`liquid-glass-button px-4 py-3 rounded-2xl border text-label font-semibold uppercase tracking-wider transition-all duration-300 text-left flex items-center gap-2.5 group/chip cursor-pointer ${
                             isSelected
-                              ? 'border-purple-500 bg-purple-500 text-white hover:border-black hover:bg-black hover:text-white active:border-black active:bg-black active:text-white'
-                              : 'border-black bg-white text-black hover:border-black hover:bg-black hover:text-white active:border-black active:bg-black active:text-white'
+                              ? 'metallic-purple-control'
+                              : 'metallic-control text-black'
                           }`}
                         >
                           <span className="truncate">{s}</span>
@@ -305,7 +305,7 @@ export default function Contact() {
 function InputField({ label, icon, isTextarea = false, children }) {
   return (
     <div className="space-y-2 group/field relative">
-      <label className="font-body text-label text-purple-700 uppercase tracking-[0.2em] font-medium block">
+      <label className="font-body text-label text-black uppercase tracking-[0.2em] font-medium block">
         {label}
       </label>
       <div className="relative">

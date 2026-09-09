@@ -19,8 +19,8 @@ const SOCIAL_ICONS = {
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-purple-500 bg-black py-12 text-center">
-      <div className="absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-purple-500"></div>
+    <footer className="relative overflow-hidden bg-black py-12 text-center">
+      <div className="metallic-divider-horizontal absolute inset-x-0 top-0 w-full"></div>
 
       <div className="relative z-10">
         <p className="mb-6 font-display text-section lowercase text-white">
@@ -38,7 +38,8 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className={`liquid-glass-button grid h-10 w-10 place-items-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-400 transition-colors duration-300 ${hoverClass || 'hover:border-purple-500 hover:text-purple-500'}`}
+                data-social={platform}
+                className={`social-metallic-button metallic-dark-control liquid-glass-button grid h-10 w-10 place-items-center rounded-full border text-zinc-300 transition-all duration-300 ${hoverClass || ''}`}
               >
                 <FontAwesomeIcon icon={icon} fixedWidth />
               </a>

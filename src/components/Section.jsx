@@ -15,7 +15,7 @@ export function Section({
 
       {divider && (
         <div
-          className="absolute bottom-0 left-1/2 h-px w-2/3 -translate-x-1/2 bg-purple-500 md:w-1/2 pointer-events-none"
+          className="metallic-divider-horizontal absolute inset-x-0 bottom-0 w-full pointer-events-none"
         />
       )}
     </section>

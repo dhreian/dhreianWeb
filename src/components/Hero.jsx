@@ -5,6 +5,7 @@ import { TRACKS, PLATFORMS } from '../data/site';
 import Card from './Card';
 import NeonButton from './Button';
 import { useLang } from '../i18n/LanguageContext';
+import metallicLogo from '../../design/brand/logo/exports/dhreian-logo-transparent-512.png';
 
 export default function Hero() {
   const { t } = useLang();
@@ -46,7 +47,7 @@ export default function Hero() {
         <header className="hero-banner__header text-center mb-12 md:mb-16 flex-grow flex flex-col justify-end">
           <h1 className="sr-only">dhreian</h1>
           <img
-            src="/icons/seo-organization-logo-512.png"
+            src={metallicLogo}
             width="512"
             height="512"
             alt="Logo de dhreian"
@@ -70,7 +71,7 @@ export default function Hero() {
 
               <div className="flex items-center h-full p-3 lg:p-4 gap-3 lg:gap-4">
 
-                <div className="relative aspect-square w-[45%] shrink-0 overflow-hidden rounded-2xl">
+                <div className="release-cover-recessed relative aspect-square w-[45%] shrink-0 overflow-hidden rounded-2xl">
                   <img
                     src={featuredTrack.cover}
                     alt={`${t('hero.coverOf')} ${featuredTrack.title}`}
@@ -107,7 +108,8 @@ export default function Hero() {
                         target="_blank"
                         rel="noopener noreferrer"
                         title={`${t('hero.listenOn')} ${p.key === 'youtube' && featuredTrack.links.youtube.includes('music.youtube.com') ? 'YouTube Music' : p.title}`}
-                        className={`liquid-glass-button grid h-14 w-14 place-items-center rounded-full border border-black bg-white leading-none text-black transition-colors duration-300 lg:h-16 lg:w-16 ${p.hoverClass}`}
+                        data-platform={p.key}
+                        className="platform-metallic-button liquid-glass-button grid h-14 w-14 place-items-center rounded-full border leading-none text-white transition-all duration-300 lg:h-16 lg:w-16"
                       >
                         <FontAwesomeIcon icon={p.icon} fixedWidth className="block text-2xl lg:text-[1.75rem]" />
                       </a>
@@ -125,7 +127,7 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => scrollOtherTracks(-1)}
-                className="liquid-glass-button grid h-8 w-8 shrink-0 place-items-center self-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-200 transition-colors hover:border-purple-500 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500 lg:h-10 lg:w-10"
+                className="metallic-dark-control liquid-glass-button grid h-8 w-8 shrink-0 place-items-center self-center rounded-full border text-zinc-200 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500 lg:h-10 lg:w-10"
                 aria-label={t('hero.previousRelease')}
               >
                 <FontAwesomeIcon icon={faChevronLeft} />
@@ -151,7 +153,7 @@ export default function Hero() {
                   <Card accent="subtle" className="h-full">
                     <div className="flex flex-col h-full p-2.5 lg:p-3 gap-2 justify-between">
 
-                      <div className="aspect-square shrink-0 overflow-hidden rounded-2xl">
+                      <div className="release-cover-recessed aspect-square shrink-0 overflow-hidden rounded-2xl">
                         <img
                           src={track.cover}
                           alt={`${t('hero.coverOf')} ${track.title}`}
@@ -187,7 +189,8 @@ export default function Hero() {
                             target="_blank"
                             rel="noopener noreferrer"
                             title={`${t('hero.listenOn')} ${p.key === 'youtube' && track.links.youtube.includes('music.youtube.com') ? 'YouTube Music' : p.title}`}
-                            className={`liquid-glass-button grid h-9 w-9 shrink-0 place-items-center rounded-full border border-black bg-white leading-none text-black transition-colors duration-300 lg:h-10 lg:w-10 ${p.hoverClass || 'hover:border-purple-500 hover:text-purple-500'}`}
+                            data-platform={p.key}
+                            className="platform-metallic-button liquid-glass-button grid h-9 w-9 shrink-0 place-items-center rounded-full border leading-none text-white transition-all duration-300 lg:h-10 lg:w-10"
                           >
                             <FontAwesomeIcon icon={p.icon} fixedWidth className="block text-base lg:text-lg" />
                           </a>
@@ -204,7 +207,7 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => scrollOtherTracks(1)}
-                className="liquid-glass-button grid h-8 w-8 shrink-0 place-items-center self-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-200 transition-colors hover:border-purple-500 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500 lg:h-10 lg:w-10"
+                className="metallic-dark-control liquid-glass-button grid h-8 w-8 shrink-0 place-items-center self-center rounded-full border text-zinc-200 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500 lg:h-10 lg:w-10"
                 aria-label={t('hero.nextRelease')}
               >
                 <FontAwesomeIcon icon={faChevronRight} />
@@ -223,7 +226,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute bottom-0 left-1/2 h-px w-2/3 -translate-x-1/2 bg-purple-500 md:w-1/2" />
+      <div className="metallic-divider-horizontal pointer-events-none absolute inset-x-0 bottom-0 w-full" />
     </section>
   );
 }

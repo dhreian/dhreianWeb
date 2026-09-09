@@ -32,7 +32,7 @@ export default function WebTools() {
         {WEB_TOOLS.map((tool) => (
           <Card key={tool.key} accent="purple" className="w-full max-w-sm">
             <div className="flex h-full flex-col">
-              <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-zinc-950">
+              <div className="card-media-frame relative aspect-video shrink-0 overflow-hidden">
                 {tool.image ? (
                   <img
                     src={tool.image}
@@ -41,21 +41,18 @@ export default function WebTools() {
                     height="1080"
                     loading="lazy"
                     decoding="async"
-                    className={`h-full w-full object-contain ${
-                      tool.type === 'desktopApp' ? 'p-6' : ''
-                    }`}
+                    className="h-full w-full object-contain"
                   />
                 ) : (
                   <div className="grid h-full w-full place-items-center">
                     <FontAwesomeIcon icon={faGlobe} className="text-5xl text-zinc-700" />
                   </div>
                 )}
-                <div className="pointer-events-none absolute bottom-0 left-0 h-px w-full bg-purple-500" />
               </div>
 
               <div className="flex flex-grow flex-col p-7">
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-                  <span className="rounded-2xl border border-purple-500 bg-purple-500 px-2.5 py-1 font-body text-label font-semibold uppercase tracking-wider text-white">
+                  <span className="metallic-purple-badge rounded-2xl border px-2.5 py-1 font-body text-label font-semibold uppercase tracking-wider">
                     {t(`webtools.${tool.type}`)}
                   </span>
                   {tool.formats && (
@@ -63,7 +60,7 @@ export default function WebTools() {
                       {tool.formats.map((format) => (
                         <span
                           key={format}
-                          className="rounded-2xl border border-black bg-black px-2 py-1 font-body text-label font-semibold uppercase tracking-wider text-white"
+                          className="metallic-dark-badge rounded-2xl border px-2 py-1 font-body text-label font-semibold uppercase tracking-wider"
                         >
                           {format}
                         </span>

@@ -32,7 +32,7 @@ export default function Plugins() {
           return (
             <Card key={plugin.key} accent="purple" className="w-full max-w-sm">
               <div className="flex flex-col h-full">
-                <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-zinc-950">
+                <div className="card-media-frame relative aspect-video shrink-0 overflow-hidden">
                   {plugin.image ? (
                     <img
                       src={plugin.image}
@@ -41,26 +41,25 @@ export default function Plugins() {
                       height="600"
                       loading="lazy"
                       decoding="async"
-                      className="h-full w-full object-contain p-6"
+                      className="h-full w-full object-contain"
                     />
                   ) : (
                     <div className="w-full h-full grid place-items-center">
                       <FontAwesomeIcon icon={faWaveSquare} className="text-zinc-700 text-5xl" />
                     </div>
                   )}
-                  <div className="pointer-events-none absolute bottom-0 left-0 h-px w-full bg-purple-500"></div>
                 </div>
 
                 <div className="p-7 flex flex-col flex-grow">
                   <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="rounded-2xl border border-purple-500 bg-purple-500 px-2.5 py-1 font-body text-label font-semibold uppercase tracking-wider text-white">
+                    <span className="metallic-purple-badge rounded-2xl border px-2.5 py-1 font-body text-label font-semibold uppercase tracking-wider">
                       {plugin.type.toUpperCase()}
                     </span>
                     <div className="flex gap-1.5">
                       {plugin.formats.map((format) => (
                         <span
                           key={format}
-                          className="rounded-2xl border border-black bg-black px-2 py-1 font-body text-label font-semibold uppercase tracking-wider text-white"
+                          className="metallic-dark-badge rounded-2xl border px-2 py-1 font-body text-label font-semibold uppercase tracking-wider"
                         >
                           {format.toUpperCase()}
                         </span>
@@ -81,13 +80,13 @@ export default function Plugins() {
                   <div className="mt-auto">
                     {plugin.comingSoon ? (
                       <div className="flex flex-col items-start gap-4">
-                        <span className="inline-flex items-center gap-2 rounded-2xl border border-purple-500 bg-purple-500 px-3.5 py-1.5 font-body text-label font-medium uppercase tracking-wider text-white">
+                        <span className="metallic-purple-badge inline-flex items-center gap-2 rounded-2xl border px-3.5 py-1.5 font-body text-label font-medium uppercase tracking-wider">
                           <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-neon-pulse"></span>
                           {t('plugins.soonBadge')}
                         </span>
                         <a
                           href="/contacto"
-                          className="liquid-glass-button flex h-12 w-full items-center justify-center gap-2 rounded-2xl border border-zinc-300 bg-zinc-100 font-display text-button-sm lowercase tracking-wide text-black transition-colors duration-300 hover:border-black hover:bg-black hover:text-white"
+                          className="metallic-control liquid-glass-button flex h-12 w-full items-center justify-center gap-2 rounded-2xl border font-display text-button-sm lowercase tracking-wide text-black transition-colors duration-300"
                         >
                           <span>{t('plugins.notify')}</span>
                           <FontAwesomeIcon icon={faBell} className="w-4 h-4" />

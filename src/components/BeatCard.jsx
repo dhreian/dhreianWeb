@@ -126,19 +126,19 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
             {hasTags && (
               <div className="flex flex-wrap items-center gap-1.5 text-meta font-body">
                 {beat.musicalKey && (
-                  <span className="rounded-2xl border border-purple-500 bg-purple-500 px-2 py-1 font-bold uppercase tracking-wider text-white">
+                  <span className="metallic-purple-badge rounded-2xl border px-2 py-1 font-bold uppercase tracking-wider">
                     {beat.musicalKey.toUpperCase()}
                   </span>
                 )}
                 {beat.bpm && (
-                  <span className="rounded-2xl border border-purple-500 bg-purple-500 px-2 py-1 font-bold tracking-wider text-white">
+                  <span className="metallic-purple-badge rounded-2xl border px-2 py-1 font-bold tracking-wider">
                     {beat.bpm} BPM
                   </span>
                 )}
                 {beat.genres?.map((genre) => (
                   <span
                     key={genre}
-                    className="rounded-2xl border border-zinc-700 bg-black px-2 py-1 font-bold uppercase tracking-wider text-white"
+                    className="metallic-dark-badge rounded-2xl border px-2 py-1 font-bold uppercase tracking-wider"
                   >
                     {genre.toUpperCase()}
                   </span>

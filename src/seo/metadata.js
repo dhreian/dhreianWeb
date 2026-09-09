@@ -211,7 +211,7 @@ const RELEASES = [
     image: '/collabs/art-calma.jpg',
     spotify: 'https://open.spotify.com/track/4mjzHteHfr9uHM9irpqhCl',
     apple: 'https://music.apple.com/cl/song/calma-feat-rayxn-antu/6794247468',
-    youtube: 'https://youtu.be/xMQ4w3qaRGM',
+    youtube: 'https://www.youtube.com/watch?v=GvRCFjjOCO0',
   },
   {
     slug: 'artificial',

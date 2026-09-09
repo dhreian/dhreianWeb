@@ -109,7 +109,7 @@ export const TRACKS = [
     links: {
       spotify: 'https://open.spotify.com/intl-es/track/4mjzHteHfr9uHM9irpqhCl',
       apple: 'https://music.apple.com/cl/song/calma-feat-rayxn-antu/6794247468',
-      youtube: 'https://youtu.be/xMQ4w3qaRGM',
+      youtube: 'https://www.youtube.com/watch?v=GvRCFjjOCO0',
     }
   },
   {
@@ -170,10 +170,10 @@ export const TRACK_TAG_ICONS = {
 };
 
 export const TRACK_TAG_STYLES = {
-  prod: 'bg-purple-500 text-white border-purple-500',
-  beatmaker: 'bg-purple-500 text-white border-purple-500',
-  mezcla: 'bg-zinc-100 text-zinc-800 border-zinc-300',
-  mastering: 'bg-purple-500 text-white border-purple-500',
+  prod: 'metallic-purple-badge',
+  beatmaker: 'metallic-purple-badge',
+  mezcla: 'metallic-silver-badge',
+  mastering: 'metallic-purple-badge',
 };
 
 export const PLATFORMS = [

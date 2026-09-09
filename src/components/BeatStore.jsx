@@ -58,7 +58,7 @@ export default function BeatStore() {
           </div>
 
           {hasEmbed ? (
-            <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-purple-500 bg-zinc-900 md:aspect-[16/10]">
+            <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-zinc-900 md:aspect-[16/10]">
               <iframe
                 src={BEATSTARS_EMBED_URL}
                 title="dhreian — BeatStars catalog"
@@ -66,8 +66,6 @@ export default function BeatStore() {
                 allow="autoplay; clipboard-write; encrypted-media"
                 loading="lazy"
               />
-              <div className="pointer-events-none absolute left-0 top-0 h-px w-full bg-purple-500"></div>
-              <div className="pointer-events-none absolute bottom-0 left-0 h-px w-full bg-purple-500"></div>
             </div>
           ) : (
             <Catalog />

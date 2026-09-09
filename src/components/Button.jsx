@@ -7,11 +7,11 @@ const VARIANTS = {
   outline:
     "secondary-action-button",
   glass:
-    "border border-zinc-300 bg-white text-zinc-950 hover:border-black hover:bg-black hover:text-white",
+    "metallic-control border text-zinc-950",
   ghost:
-    "border border-zinc-800 bg-black text-white hover:border-purple-500 hover:text-purple-500",
+    "metallic-dark-control border text-white",
   light:
-    "border border-zinc-300 bg-white text-black hover:border-black hover:bg-black hover:text-white",
+    "metallic-control border text-black",
 };
 
 const SIZES = {

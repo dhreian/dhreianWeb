@@ -47,7 +47,7 @@ export default function Navbar() {
     >
       <a
         href="/"
-        className="font-display lowercase text-card-compact tracking-tight text-purple-800 shrink-0"
+        className="metallic-purple-text font-display lowercase text-card-compact tracking-tight shrink-0"
       >
         dhreian
       </a>
@@ -93,7 +93,7 @@ export default function Navbar() {
         type="button"
         onClick={toggleLang}
         aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a español'}
-        className="liquid-glass-button flex shrink-0 cursor-pointer items-center gap-1.5 rounded-2xl border border-black bg-black px-3 py-1.5 text-white transition-colors duration-300 hover:border-purple-500 hover:bg-purple-500 hover:text-white"
+        className="metallic-purple-control liquid-glass-button flex shrink-0 cursor-pointer items-center gap-1.5 rounded-2xl border px-3 py-1.5 text-white transition-all duration-300"
       >
         <span className="font-body text-meta font-semibold tracking-wider">
           {lang === 'es' ? 'EN' : 'ES'}

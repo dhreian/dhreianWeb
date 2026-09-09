@@ -37,7 +37,6 @@ export default function Services() {
               <FeatureList items={t(`services.items.${service.key}.features`)} accent="purple" dense />
 
               <div className="mt-auto pt-6">
-                <div className="mb-4 h-px w-full bg-purple-500"></div>
                 <div className="flex items-baseline justify-between gap-4 flex-wrap">
                   <span className="font-body text-label uppercase tracking-[0.25em] text-black font-medium">
                     {t('services.priceLabel')}

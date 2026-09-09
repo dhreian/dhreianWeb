@@ -13,7 +13,7 @@ import NeonButton from './Button';
 import { useLang } from '../i18n/LanguageContext';
 
 const inputBase =
-  'w-full rounded-2xl border border-zinc-700 bg-zinc-900 py-3.5 pl-12 pr-4 text-body-compact text-white placeholder:text-zinc-600 transition-colors duration-300 focus:border-purple-500 focus:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:cursor-wait disabled:opacity-70';
+  'metallic-field w-full rounded-2xl border py-3.5 pl-12 pr-4 text-body-compact text-white placeholder:text-zinc-500 transition-all duration-300 focus:outline-none disabled:cursor-wait disabled:opacity-70';
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -136,10 +136,10 @@ export default function PluginDownloadModal({ plugin, onClose }) {
         className="w-full max-w-lg animate-contact-success-in"
       >
         <Card accent="purple" interactive={false}>
-          <div className="bg-white p-8 md:p-12">
+          <div className="metallic-surface p-8 md:p-12">
             {status === 'success' ? (
               <div className="flex flex-col items-center py-3 text-center" aria-live="polite">
-                <div className="mb-6 grid h-20 w-20 place-items-center rounded-full border border-purple-500 bg-purple-500 animate-contact-success-pop">
+                <div className="metallic-purple-control mb-6 grid h-20 w-20 place-items-center rounded-full border animate-contact-success-pop">
                   <FontAwesomeIcon icon={faCircleCheck} fixedWidth className="text-4xl text-white" />
                 </div>
                 <p className="mb-3 text-label font-medium uppercase tracking-[0.25em] text-purple-700">

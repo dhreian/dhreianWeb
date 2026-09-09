@@ -34,7 +34,7 @@ export default function Discography() {
                 key={idx}
                 className="liquid-glass-card group flex flex-row items-center gap-3 rounded-2xl border border-purple-500 p-3 text-left transition-colors duration-300 hover:border-purple-500 sm:gap-6 sm:p-4"
               >
-                <div className="h-28 w-28 shrink-0 overflow-hidden rounded-2xl sm:h-32 sm:w-32">
+                <div className="release-cover-recessed h-28 w-28 shrink-0 overflow-hidden rounded-2xl sm:h-32 sm:w-32">
                   <img
                     src={track.cover}
                     width="600"
@@ -81,7 +81,8 @@ export default function Discography() {
                       href={track.links[p.key]}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`liquid-glass-button grid h-8 w-8 place-items-center rounded-full border border-black bg-white text-black transition-colors duration-300 sm:h-12 sm:w-12 ${p.hoverClass || 'hover:border-purple-500 hover:text-purple-500'}`}
+                      data-platform={p.key}
+                      className="platform-metallic-button liquid-glass-button grid h-8 w-8 place-items-center rounded-full border text-white transition-all duration-300 sm:h-12 sm:w-12"
                       title={`Escuchar en ${p.title}`}
                     >
                       <FontAwesomeIcon icon={p.icon} className="text-sm sm:text-lg" fixedWidth />
