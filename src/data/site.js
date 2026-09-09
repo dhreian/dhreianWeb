@@ -36,11 +36,11 @@ export const SECTION_ROUTES = {
 };
 
 export const SOCIAL_LINKS = [
-  { platform: 'instagram', href: 'https://instagram.com/dhreian', label: 'Instagram', hoverClass: 'hover:text-[#E1306C] hover:border-[#E1306C]/50 hover:bg-[#E1306C]/10 hover:shadow-[0_0_15px_rgba(225,48,108,0.4)]' },
-  { platform: 'x', href: 'https://x.com/dhreian', label: 'X (Twitter)', hoverClass: 'hover:text-[#FFFFFF] hover:border-[#FFFFFF]/50 hover:bg-[#FFFFFF]/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]' },
-  { platform: 'tiktok', href: 'https://tiktok.com/@dhreian_', label: 'TikTok', hoverClass: 'hover:text-[#00F2FE] hover:border-[#00F2FE]/50 hover:bg-[#00F2FE]/10 hover:shadow-[0_0_15px_rgba(0,242,254,0.4)]' },
-  { platform: 'spotify', href: 'https://open.spotify.com/intl-es/artist/5Sv40N0flsAfHMxy6NrB1m', label: 'Spotify', hoverClass: 'hover:text-[#1DB954] hover:border-[#1DB954]/50 hover:bg-[#1DB954]/10 hover:shadow-[0_0_15px_rgba(29,185,84,0.4)]' },
-  { platform: 'youtube', href: 'https://www.youtube.com/@dhreian', label: 'YouTube', hoverClass: 'hover:text-[#FF0000] hover:border-[#FF0000]/50 hover:bg-[#FF0000]/10 hover:shadow-[0_0_15px_rgba(255,0,0,0.4)]' },
+  { platform: 'instagram', href: 'https://instagram.com/dhreian', label: 'Instagram', hoverClass: 'hover:text-[#E1306C] hover:border-[#E1306C]' },
+  { platform: 'x', href: 'https://x.com/dhreian', label: 'X (Twitter)', hoverClass: 'hover:text-white hover:border-white' },
+  { platform: 'tiktok', href: 'https://tiktok.com/@dhreian_', label: 'TikTok', hoverClass: 'hover:text-[#00F2FE] hover:border-[#00F2FE]' },
+  { platform: 'spotify', href: 'https://open.spotify.com/intl-es/artist/5Sv40N0flsAfHMxy6NrB1m', label: 'Spotify', hoverClass: 'hover:text-[#1DB954] hover:border-[#1DB954]' },
+  { platform: 'youtube', href: 'https://www.youtube.com/@dhreian', label: 'YouTube', hoverClass: 'hover:text-[#FF0000] hover:border-[#FF0000]' },
 ];
 
 export const BEATS = [
@@ -101,7 +101,7 @@ export const WEB_TOOLS = [
 
 export const TRACKS = [
   {
-    title: 'CALMA',
+    title: 'calma',
     mainArtist: 'dhreian & Nanae',
     featArtist: 'Rayxn Antu',
     tags: ['prod'],
@@ -114,7 +114,7 @@ export const TRACKS = [
   },
   {
     title: 'artificial',
-    mainArtist: 'dhreian & nanae',
+    mainArtist: 'dhreian & Nanae',
     featArtist: null,
     tags: ['prod'],
     cover: '/collabs/art-artificial.jpg',
@@ -126,7 +126,7 @@ export const TRACKS = [
   },
   {
     title: 'hilos de ternura',
-    mainArtist: 'dhreian & nanae',
+    mainArtist: 'dhreian & Nanae',
     featArtist: null,
     tags: ['prod'],
     cover: '/collabs/art-hilos.webp',
@@ -138,7 +138,7 @@ export const TRACKS = [
   },
   {
     title: 'amanecer contigo',
-    mainArtist: 'dhreian & nanae',
+    mainArtist: 'dhreian & Nanae',
     featArtist: null,
     tags: ['prod'],
     cover: '/collabs/art-amanecer.webp',
@@ -150,7 +150,7 @@ export const TRACKS = [
   },
   {
     title: 'señales',
-    mainArtist: 'dhreian & nanae',
+    mainArtist: 'dhreian & Nanae',
     featArtist: null,
     tags: ['prod'],
     cover: '/collabs/art-senales.webp',
@@ -170,16 +170,16 @@ export const TRACK_TAG_ICONS = {
 };
 
 export const TRACK_TAG_STYLES = {
-  prod: 'bg-purple-500/20 text-purple-200 border-purple-400/40',
-  beatmaker: 'bg-purple-950/70 text-purple-300 border-purple-500/30',
-  mezcla: 'bg-white/10 text-white border-white/20',
-  mastering: 'bg-purple-600/25 text-purple-100 border-purple-300/40',
+  prod: 'bg-purple-500 text-white border-purple-500',
+  beatmaker: 'bg-purple-500 text-white border-purple-500',
+  mezcla: 'bg-zinc-100 text-zinc-800 border-zinc-300',
+  mastering: 'bg-purple-500 text-white border-purple-500',
 };
 
 export const PLATFORMS = [
-  { key: 'spotify', icon: faSpotify, brandColor: '#1DB954', hoverClass: 'hover:text-[#1DB954] hover:border-[#1DB954]/50 hover:bg-[#1DB954]/10 hover:shadow-[0_0_15px_rgba(29,185,84,0.4)]', title: 'Spotify' },
-  { key: 'apple', icon: faApple, brandColor: '#FA243C', hoverClass: 'hover:text-[#FA243C] hover:border-[#FA243C]/50 hover:bg-[#FA243C]/10 hover:shadow-[0_0_15px_rgba(250,36,60,0.4)]', title: 'Apple Music' },
-  { key: 'youtube', icon: faYoutube, brandColor: '#FF0000', hoverClass: 'hover:text-[#FF0000] hover:border-[#FF0000]/50 hover:bg-[#FF0000]/10 hover:shadow-[0_0_15px_rgba(255,0,0,0.4)]', title: 'YouTube' },
+  { key: 'spotify', icon: faSpotify, brandColor: '#1DB954', hoverClass: 'hover:text-[#1DB954] hover:border-[#1DB954]', title: 'Spotify' },
+  { key: 'apple', icon: faApple, brandColor: '#FA243C', hoverClass: 'hover:text-[#FA243C] hover:border-[#FA243C]', title: 'Apple Music' },
+  { key: 'youtube', icon: faYoutube, brandColor: '#FF0000', hoverClass: 'hover:text-[#FF0000] hover:border-[#FF0000]', title: 'YouTube' },
 ];
 
 export { faStar, faMusic };

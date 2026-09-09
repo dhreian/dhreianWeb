@@ -21,7 +21,7 @@ const SOCIAL_ICONS = {
 
 const SOCIAL_HOVER = {
   instagram: 'hover:text-[#E1306C]',
-  x: 'hover:text-white',
+  x: 'hover:text-zinc-950',
   tiktok: 'hover:text-[#00F2FE]',
   spotify: 'hover:text-[#1DB954]',
   youtube: 'hover:text-[#FF0000]',
@@ -39,68 +39,67 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 border rounded-2xl flex justify-between items-center gap-3 lg:gap-6 transition-all duration-500 w-[95%] md:w-max max-w-4xl px-4 lg:px-6 py-3 ${
+      className={`liquid-glass-card fixed top-6 left-1/2 -translate-x-1/2 z-50 border rounded-2xl flex items-center [--nav-space:clamp(0.5rem,1.2vw,1rem)] gap-[var(--nav-space)] transition-all duration-500 w-fit max-w-[95vw] px-[var(--nav-space)] py-3 ${
         scrolled
-          ? 'bg-black/90 border-purple-500/20 shadow-[0_0_30px_rgba(138,108,255,0.25)]'
-          : 'bg-black/75 border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)]'
+          ? 'liquid-glass-nav--scrolled border-purple-500'
+          : 'border-zinc-300'
       }`}
     >
       <a
         href="/"
-        className="font-display lowercase text-xl text-purple-400 font-bold tracking-wider neon-text-purple shrink-0"
+        className="font-display lowercase text-card-compact tracking-tight text-purple-800 shrink-0"
       >
         dhreian
       </a>
 
-      <div className="hidden md:flex gap-3 lg:gap-6 items-center">
+      <div className="hidden md:contents">
         {NAV_LINKS.map(({ key, href }) => (
           <a
             key={key}
             href={href}
-            className="relative font-display text-lg lg:text-xl lowercase tracking-wide text-zinc-300 hover:text-white transition-colors duration-300 group whitespace-nowrap"
+            className="relative font-display text-nav lowercase tracking-wide text-black hover:text-purple-900 transition-colors duration-300 group whitespace-nowrap"
           >
             {t(`nav.${key}`)}
-            <span className="absolute left-0 -bottom-1 w-0 h-px bg-gradient-to-r from-purple-400 to-white group-hover:w-full transition-all duration-300 shadow-[0_0_8px_rgba(138,108,255,0.8)]"></span>
+            <span className="absolute -bottom-1 left-0 h-px w-0 bg-purple-500 transition-all duration-300 group-hover:w-full"></span>
           </a>
         ))}
       </div>
 
-      <div className="flex items-center gap-3 lg:gap-4 shrink-0">
-        <span className="hidden md:block w-px h-4 bg-white/15"></span>
+      <span
+        aria-hidden="true"
+        className="hidden h-5 w-px shrink-0 bg-black md:block"
+      />
 
-        <div className="flex gap-3 lg:gap-4 items-center">
-          {SOCIAL_LINKS.map(({ platform, href, label }) => {
-            const icon = SOCIAL_ICONS[platform];
-            if (!icon) return null;
-            return (
-              <a
-                key={platform}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className={`text-zinc-400 hover:scale-110 transition-all duration-300 ${SOCIAL_HOVER[platform] || 'hover:text-purple-300'}`}
-              >
-                <FontAwesomeIcon icon={icon} fixedWidth className="text-base" />
-              </a>
-            );
-          })}
-        </div>
-
-        <span className="w-px h-4 bg-white/15"></span>
-
-        <button
-          type="button"
-          onClick={toggleLang}
-          aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a español'}
-          className="flex items-center gap-1.5 rounded-2xl border border-white/10 px-3 py-1.5 text-zinc-300 hover:text-purple-300 hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300 cursor-pointer shrink-0"
-        >
-          <span className="font-body text-xs font-semibold tracking-wider">
-            {lang === 'es' ? 'EN' : 'ES'}
-          </span>
-          <FontAwesomeIcon icon={faGlobe} className="text-xs" />
-        </button>
+      <div className="contents">
+        {SOCIAL_LINKS.map(({ platform, href, label }) => {
+          const icon = SOCIAL_ICONS[platform];
+          if (!icon) return null;
+          return (
+            <a
+              key={platform}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className={`shrink-0 text-black transition-colors duration-300 ${SOCIAL_HOVER[platform] || 'hover:text-purple-800'}`}
+            >
+              <FontAwesomeIcon icon={icon} fixedWidth className="text-base" />
+            </a>
+          );
+        })}
       </div>
+
+      <button
+        type="button"
+        onClick={toggleLang}
+        aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a español'}
+        className="liquid-glass-button flex shrink-0 cursor-pointer items-center gap-1.5 rounded-2xl border border-black bg-black px-3 py-1.5 text-white transition-colors duration-300 hover:border-purple-500 hover:bg-purple-500 hover:text-white"
+      >
+        <span className="font-body text-meta font-semibold tracking-wider">
+          {lang === 'es' ? 'EN' : 'ES'}
+        </span>
+        <FontAwesomeIcon icon={faGlobe} className="text-xs" />
+      </button>
     </nav>
   );
 }

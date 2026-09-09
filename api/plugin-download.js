@@ -1,5 +1,3 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import { Resend } from 'resend';
 import {
   createPluginDownload,
@@ -8,6 +6,10 @@ import {
 } from '../lib/database.js';
 import { createPluginDownloadToken } from '../lib/plugin-download-token.js';
 import { applyFormRateLimits, inspectFormRequest } from '../lib/request-security.js';
+import {
+  getDownloadableProduct,
+  hasDownloadSource,
+} from '../lib/downloadable-products.js';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -16,50 +18,6 @@ const CONTACT_EMAIL = 'contact@dhreian.com';
 const FROM_EMAIL = `dhreian plugins <${CONTACT_EMAIL}>`;
 const LOGO_URL = `${SITE_URL}/email/dhreian-logo.png`;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-const DOWNLOADABLE_PLUGINS = {
-  dhreverb: {
-    name: 'dhreVerb',
-    fileName: 'dhreVerb-1.0.0-windows-x64-installer.exe',
-    downloadUrlEnvironmentVariable: 'DHREVERB_DOWNLOAD_URL',
-  },
-  dhrelink: {
-    name: 'dhreLink',
-    fileName: 'dhreLink-1.0.0-x64-Setup.exe',
-    downloadUrlEnvironmentVariable: 'DHRELINK_DOWNLOAD_URL',
-  },
-};
-
-function hasLocalInstallerFile(fileName) {
-  if (!fileName) return false;
-  const candidates = [
-    path.join(process.cwd(), 'public', 'plugins', fileName),
-    path.join(process.cwd(), 'public', 'tools', fileName),
-    path.join(process.cwd(), 'public', 'downloads', fileName),
-    path.join(process.cwd(), 'public', fileName),
-    path.join(process.cwd(), 'private-assets', 'plugins', fileName),
-    path.join(process.cwd(), 'private-assets', 'tools', fileName),
-    path.join(process.cwd(), 'downloads', fileName),
-    path.join(process.cwd(), fileName),
-  ];
-
-  return candidates.some((candidate) => fs.existsSync(candidate));
-}
-
-function hasConfiguredDownloadSource(plugin) {
-  if (hasLocalInstallerFile(plugin.fileName)) {
-    return true;
-  }
-
-  const value = String(process.env[plugin.downloadUrlEnvironmentVariable] || '').trim();
-
-  try {
-    const url = new URL(value);
-    return url.protocol === 'https:';
-  } catch {
-    return false;
-  }
-}
 
 const C = {
   accent: '#3881b5',
@@ -78,8 +36,8 @@ const C = {
   zinc600: '#52525b',
 };
 
-const FONT_LOGO = "'Quintessential', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif";
-const FONT_BODY = "system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
+const FONT_LOGO = "'Cormorant Infant', Georgia, serif";
+const FONT_BODY = "'Cormorant Infant', Georgia, serif";
 
 const SOCIAL = [
   { label: 'Spotify', url: 'https://open.spotify.com/intl-es/artist/5Sv40N0flsAfHMxy6NrB1m' },
@@ -254,7 +212,7 @@ export default async function handler(req, res) {
   const name = String(req.body?.name || '').trim();
   const email = String(req.body?.email || '').trim();
   const pluginKey = String(req.body?.pluginKey || '').trim().toLowerCase();
-  const plugin = DOWNLOADABLE_PLUGINS[pluginKey];
+  const plugin = getDownloadableProduct(pluginKey);
 
   if (!name || !email || !pluginKey) {
     return res.status(400).json({ error: c.requiredFields });
@@ -268,8 +226,8 @@ export default async function handler(req, res) {
     return res.status(404).json({ error: c.pluginNotFound });
   }
 
-  if (!hasConfiguredDownloadSource(plugin)) {
-    console.error(`Falta configurar ${plugin.downloadUrlEnvironmentVariable}.`);
+  if (!hasDownloadSource(plugin)) {
+    console.error(`Falta configurar ${plugin.sourceUrlEnvironmentVariable}.`);
     return res.status(503).json({ error: c.processError });
   }
 

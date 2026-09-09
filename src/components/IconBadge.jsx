@@ -2,9 +2,9 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const VARIANTS = {
-  purple: 'bg-purple-500/10 text-purple-400 border border-purple-500/20 group-hover:bg-purple-500/20 group-hover:border-purple-400/40',
-  zinc: 'bg-zinc-800/50 text-zinc-300 border border-white/5 group-hover:bg-purple-500/10 group-hover:text-purple-400 group-hover:border-purple-500/30',
-  glow: 'bg-purple-500/10 text-purple-300 border border-purple-500/30 neon-glow-purple',
+  purple: 'bg-purple-500 text-white border border-purple-500',
+  zinc: 'bg-zinc-100 text-zinc-700 border border-zinc-300 group-hover:border-purple-500 group-hover:text-purple-500',
+  glow: 'bg-purple-500 text-white border border-purple-500',
 };
 
 const SIZES = {

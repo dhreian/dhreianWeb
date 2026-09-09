@@ -18,7 +18,7 @@ import Card from './Card';
 import { useLang } from '../i18n/LanguageContext';
 
 const inputBase =
-  "w-full bg-zinc-900/60 border border-white/5 rounded-2xl pl-12 pr-4 py-3.5 text-white placeholder:text-zinc-600 focus:outline-none focus:border-purple-400/50 focus:ring-2 focus:ring-purple-500/30 focus:bg-zinc-900 transition-all duration-300 text-sm md:text-base";
+  "w-full rounded-2xl border border-zinc-700 bg-zinc-900 py-3.5 pl-12 pr-4 text-body-compact text-white placeholder:text-zinc-600 transition-colors duration-300 focus:border-purple-500 focus:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-purple-500";
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -102,7 +102,7 @@ export default function Contact() {
 
           <div className="flex flex-col justify-between py-2">
             <div>
-              <h3 className="font-body text-xs text-purple-300/80 uppercase tracking-[0.2em] font-semibold mb-6">
+              <h3 className="font-body text-label text-purple-700 uppercase tracking-[0.2em] font-medium mb-6">
                 {t('contact.channels')}
               </h3>
               <div className="space-y-6">
@@ -110,14 +110,14 @@ export default function Contact() {
                   <a
                     href="mailto:contact@dhreian.com"
                     onClick={handleCopyEmail}
-                    className="flex items-center gap-4 text-zinc-300 hover:text-purple-300 transition-colors duration-300"
+                    className="flex items-center gap-4 text-black transition-colors duration-300 hover:text-purple-500"
                   >
-                    <div className="w-14 h-14 rounded-full border border-white/10 text-zinc-400 grid place-items-center transition-all duration-300 group-hover/contact:text-purple-300 group-hover/contact:border-purple-500/50 group-hover/contact:bg-purple-500/10 group-hover/contact:shadow-[0_0_15px_rgba(138,108,255,0.4)] shrink-0">
+                    <div className="liquid-glass-button grid h-14 w-14 shrink-0 place-items-center rounded-full border border-black bg-black text-white transition-colors duration-300 group-hover/contact:border-purple-500 group-hover/contact:bg-purple-500 group-hover/contact:text-white">
                       <FontAwesomeIcon icon={faEnvelope} fixedWidth className="text-xl" />
                     </div>
                     <div className="flex flex-col min-w-0">
-                      <span className="text-base md:text-lg font-medium truncate">contact@dhreian.com</span>
-                      <span className="text-xs text-zinc-400 font-semibold uppercase tracking-wider flex items-center gap-1.5 group-hover/contact:text-purple-400 transition-colors duration-300">
+                      <span className="text-body font-medium truncate">contact@dhreian.com</span>
+                      <span className="text-meta flex items-center gap-1.5 font-medium uppercase tracking-wider text-black transition-colors duration-300 group-hover/contact:text-purple-500">
                         <FontAwesomeIcon icon={copied ? faCheck : faCopy} className="text-[10px]" />
                         {copied ? t('contact.copied') : t('contact.copy')}
                       </span>
@@ -130,14 +130,14 @@ export default function Contact() {
                     href="https://instagram.com/dhreian"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 text-zinc-300 hover:text-purple-300 transition-colors duration-300"
+                    className="flex items-center gap-4 text-black transition-colors duration-300 hover:text-purple-500"
                   >
-                    <div className="w-14 h-14 rounded-full border border-white/10 text-zinc-400 grid place-items-center transition-all duration-300 group-hover/insta:text-purple-300 group-hover/insta:border-purple-500/50 group-hover/insta:bg-purple-500/10 group-hover/insta:shadow-[0_0_15px_rgba(138,108,255,0.4)] shrink-0">
+                    <div className="liquid-glass-button grid h-14 w-14 shrink-0 place-items-center rounded-full border border-black bg-black text-white transition-colors duration-300 group-hover/insta:border-purple-500 group-hover/insta:bg-purple-500 group-hover/insta:text-white">
                       <FontAwesomeIcon icon={faInstagram} fixedWidth className="text-xl" />
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-base md:text-lg font-medium">@dhreian</span>
-                      <span className="text-xs text-zinc-400 font-semibold uppercase tracking-wider group-hover/insta:text-purple-300 transition-colors duration-300">
+                      <span className="text-body font-medium">@dhreian</span>
+                      <span className="text-meta font-medium uppercase tracking-wider text-black transition-colors duration-300 group-hover/insta:text-purple-500">
                         {t('contact.instaOfficial')}
                       </span>
                     </div>
@@ -146,30 +146,21 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-white/5 flex items-center gap-2.5">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-purple-500"></span>
-              </span>
-              <span className="text-xs text-zinc-500 uppercase tracking-wider font-semibold">
-                {t('contact.available')}
-              </span>
-            </div>
           </div>
 
-          <div className="w-px bg-gradient-to-b from-transparent via-purple-500/15 to-transparent hidden md:block self-stretch"></div>
+          <div className="hidden w-px self-stretch bg-black md:block"></div>
 
           <div className="relative flex flex-col justify-center min-h-[350px]">
             {status === 'success' ? (
               <div className="flex flex-col items-center justify-center text-center py-8 px-4 h-full animate-contact-success-in">
-                <div className="w-20 h-20 rounded-full bg-purple-500/10 border border-purple-500/20 grid place-items-center mb-6 shadow-[0_0_30px_rgba(138,108,255,0.25)] animate-contact-success-pop">
-                  <FontAwesomeIcon icon={faCircleCheck} fixedWidth className="text-purple-400 text-4xl" />
+                <div className="mb-6 grid h-20 w-20 place-items-center rounded-full border border-purple-500 bg-purple-500 animate-contact-success-pop">
+                  <FontAwesomeIcon icon={faCircleCheck} fixedWidth className="text-4xl text-white" />
                 </div>
-                <h3 className="font-display lowercase text-3xl text-white mb-3">
+                <h3 className="font-display lowercase text-card text-black mb-3">
                   {t('contact.sentTitle')}
                 </h3>
-                <p className="text-white text-sm max-w-sm mb-8 leading-relaxed">
-                  {t('contact.sentBody1')}<span className="text-purple-300 font-semibold">{formData.name}</span>{t('contact.sentBody2')}<span className="text-purple-300 font-semibold lowercase">{selectedSubject}</span>{t('contact.sentBody3')}
+                <p className="text-black text-body max-w-sm mb-8">
+                  {t('contact.sentBody1')}<span className="text-purple-800 font-semibold">{formData.name}</span>{t('contact.sentBody2')}<span className="text-purple-800 font-semibold lowercase">{selectedSubject}</span>{t('contact.sentBody3')}
                 </p>
                 <NeonButton
                   as="button"
@@ -179,7 +170,7 @@ export default function Contact() {
                     setStatus('idle');
                     formStartedAtRef.current = Date.now();
                   }}
-                  variant="outline"
+                  variant="glass"
                   size="sm"
                   icon={faPaperPlane}
                 >
@@ -227,7 +218,7 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-3">
-                  <label className="font-body text-xs text-purple-300/80 uppercase tracking-[0.2em] font-semibold block">
+                  <label className="font-body text-label text-purple-700 uppercase tracking-[0.2em] font-medium block">
                     {t('contact.subject')}
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -239,16 +230,16 @@ export default function Contact() {
                           type="button"
                           onClick={() => setSelectedSubjectIndex(idx)}
                           disabled={status === 'sending'}
-                          className={`px-4 py-3 rounded-2xl border text-xs font-semibold uppercase tracking-wider transition-all duration-300 text-left flex items-center gap-2.5 group/chip cursor-pointer ${
+                          className={`liquid-glass-button px-4 py-3 rounded-2xl border text-label font-semibold uppercase tracking-wider transition-all duration-300 text-left flex items-center gap-2.5 group/chip cursor-pointer ${
                             isSelected
-                              ? 'bg-purple-950/20 border-purple-500/80 text-purple-300 shadow-[0_0_15px_rgba(138,108,255,0.15)]'
-                              : 'bg-zinc-900/40 border-white/5 text-zinc-500 hover:border-white/15 hover:text-zinc-300'
+                              ? 'border-purple-500 bg-purple-500 text-white hover:border-black hover:bg-black hover:text-white active:border-black active:bg-black active:text-white'
+                              : 'border-black bg-white text-black hover:border-black hover:bg-black hover:text-white active:border-black active:bg-black active:text-white'
                           }`}
                         >
                           <span className="truncate">{s}</span>
                           <FontAwesomeIcon
                             icon={isSelected ? faCheck : faTag}
-                            className={`text-xs shrink-0 ${isSelected ? 'text-purple-400' : 'text-zinc-600 group-hover/chip:text-zinc-400'}`}
+                            className={`text-xs shrink-0 transition-colors duration-300 ${isSelected ? 'text-white group-hover/chip:text-white' : 'text-black group-hover/chip:text-white'}`}
                           />
                         </button>
                       );
@@ -272,8 +263,9 @@ export default function Contact() {
                   as="button"
                   type="submit"
                   variant="primary"
+                  surface="light"
                   size="md"
-                  className="w-full mt-2 min-h-[58px] overflow-hidden disabled:cursor-wait disabled:opacity-95"
+                  className="mt-2 w-full overflow-hidden disabled:cursor-wait disabled:opacity-95"
                   disabled={status === 'sending'}
                 >
                   <span className="relative grid min-w-[12.5rem] place-items-center">
@@ -313,7 +305,7 @@ export default function Contact() {
 function InputField({ label, icon, isTextarea = false, children }) {
   return (
     <div className="space-y-2 group/field relative">
-      <label className="font-body text-xs text-purple-300/80 uppercase tracking-[0.2em] font-semibold block">
+      <label className="font-body text-label text-purple-700 uppercase tracking-[0.2em] font-medium block">
         {label}
       </label>
       <div className="relative">

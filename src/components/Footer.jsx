@@ -19,13 +19,11 @@ const SOCIAL_ICONS = {
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-purple-500/10 py-12 text-center bg-black overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
-
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-purple-600/10 blur-[80px] pointer-events-none"></div>
+    <footer className="relative overflow-hidden border-t border-purple-500 bg-black py-12 text-center">
+      <div className="absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-purple-500"></div>
 
       <div className="relative z-10">
-        <p className="font-display lowercase text-4xl text-white mb-6 neon-text-purple">
+        <p className="mb-6 font-display text-section lowercase text-white">
           dhreian
         </p>
 
@@ -40,7 +38,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className={`w-10 h-10 rounded-full border border-white/10 text-zinc-400 transition-all duration-300 grid place-items-center ${hoverClass || 'hover:text-purple-300 hover:border-purple-400/50 hover:bg-purple-500/10 hover:neon-glow-purple'}`}
+                className={`liquid-glass-button grid h-10 w-10 place-items-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-400 transition-colors duration-300 ${hoverClass || 'hover:border-purple-500 hover:text-purple-500'}`}
               >
                 <FontAwesomeIcon icon={icon} fixedWidth />
               </a>
@@ -50,12 +48,12 @@ export default function Footer() {
 
         <a
           href="mailto:contact@dhreian.com"
-          className="font-body text-zinc-400 hover:text-purple-300 transition-colors duration-300 text-sm tracking-wide"
+          className="font-body text-zinc-400 hover:text-purple-300 transition-colors duration-300 text-body-compact tracking-wide"
         >
           contact@dhreian.com
         </a>
 
-        <p className="text-zinc-600 text-sm mt-6">
+        <p className="text-zinc-600 text-meta mt-6">
           &copy; {new Date().getFullYear()} dhreian.
         </p>
       </div>

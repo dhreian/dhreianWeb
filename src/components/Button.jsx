@@ -3,36 +3,44 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const VARIANTS = {
   primary:
-    "bg-purple-600 text-white hover:bg-purple-500 hover:neon-glow-purple",
+    "primary-action-button",
   outline:
-    "bg-transparent border border-purple-500/50 text-white hover:border-purple-400 hover:bg-purple-900/20 shadow-[0_0_8px_rgba(0,0,0,0.25)] hover:neon-glow-purple",
+    "secondary-action-button",
+  glass:
+    "border border-zinc-300 bg-white text-zinc-950 hover:border-black hover:bg-black hover:text-white",
   ghost:
-    "bg-transparent text-purple-300 hover:text-white hover:bg-white/5",
+    "border border-zinc-800 bg-black text-white hover:border-purple-500 hover:text-purple-500",
   light:
-    "bg-white text-black hover:bg-purple-400 hover:text-white shadow-[0_0_8px_rgba(0,0,0,0.25)] hover:neon-glow-purple-strong",
+    "border border-zinc-300 bg-white text-black hover:border-black hover:bg-black hover:text-white",
 };
 
 const SIZES = {
-  sm: "px-5 py-2.5 text-base",
-  md: "px-7 py-3.5 text-xl",
-  lg: "px-9 py-4 text-2xl",
+  sm: "px-5 py-2.5 text-button-sm",
+  md: "px-7 py-3.5 text-button",
+  lg: "px-9 py-4 text-button-lg",
 };
 
 export default function NeonButton({
   as: Component = 'a',
   variant = 'primary',
   size = 'md',
+  surface = 'dark',
   icon,
   children,
   className = '',
   ...rest
 }) {
   const base =
-    "inline-flex items-center justify-center gap-3 rounded-2xl font-display lowercase tracking-wide transition-all duration-300 group cursor-pointer select-none";
+    "liquid-glass-button inline-flex items-center justify-center gap-3 rounded-2xl font-display lowercase tracking-wide transition-colors duration-300 group cursor-pointer select-none";
+  const usesStandardActionSize = variant === 'primary' || variant === 'outline';
+  const resolvedSize = usesStandardActionSize ? '' : (SIZES[size] || SIZES.md);
+  const surfaceClass = variant === 'primary' && surface === 'light'
+    ? 'primary-action-button--on-light'
+    : '';
 
   return (
     <Component
-      className={`${base} ${SIZES[size]} ${VARIANTS[variant] || VARIANTS.primary} ${className}`}
+      className={`${base} ${resolvedSize} ${VARIANTS[variant] || VARIANTS.primary} ${surfaceClass} ${className}`}
       {...rest}
     >
       <span>{children}</span>

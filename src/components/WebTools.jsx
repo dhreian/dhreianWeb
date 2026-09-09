@@ -32,7 +32,7 @@ export default function WebTools() {
         {WEB_TOOLS.map((tool) => (
           <Card key={tool.key} accent="purple" className="w-full max-w-sm">
             <div className="flex h-full flex-col">
-              <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-gradient-to-br from-zinc-900 to-black">
+              <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-zinc-950">
                 {tool.image ? (
                   <img
                     src={tool.image}
@@ -41,7 +41,7 @@ export default function WebTools() {
                     height="1080"
                     loading="lazy"
                     decoding="async"
-                    className={`h-full w-full origin-center scale-100 transform-gpu object-contain transition-transform duration-700 ease-in-out will-change-transform group-hover:scale-105 ${
+                    className={`h-full w-full object-contain ${
                       tool.type === 'desktopApp' ? 'p-6' : ''
                     }`}
                   />
@@ -50,12 +50,12 @@ export default function WebTools() {
                     <FontAwesomeIcon icon={faGlobe} className="text-5xl text-zinc-700" />
                   </div>
                 )}
-                <div className="pointer-events-none absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
+                <div className="pointer-events-none absolute bottom-0 left-0 h-px w-full bg-purple-500" />
               </div>
 
               <div className="flex flex-grow flex-col p-7">
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-                  <span className="rounded-2xl border border-purple-400/30 bg-purple-500/15 px-2.5 py-1 font-body text-xs font-bold uppercase tracking-wider text-purple-200">
+                  <span className="rounded-2xl border border-purple-500 bg-purple-500 px-2.5 py-1 font-body text-label font-semibold uppercase tracking-wider text-white">
                     {t(`webtools.${tool.type}`)}
                   </span>
                   {tool.formats && (
@@ -63,7 +63,7 @@ export default function WebTools() {
                       {tool.formats.map((format) => (
                         <span
                           key={format}
-                          className="rounded-2xl border border-white/10 bg-white/5 px-2 py-1 font-body text-xs font-bold uppercase tracking-wider text-zinc-400"
+                          className="rounded-2xl border border-black bg-black px-2 py-1 font-body text-label font-semibold uppercase tracking-wider text-white"
                         >
                           {format}
                         </span>
@@ -72,31 +72,35 @@ export default function WebTools() {
                   )}
                 </div>
 
-                <h3 className="mb-1 font-display text-3xl text-white transition-colors duration-300 group-hover:text-purple-200">
+                <h3 className="mb-1 font-display text-card text-black transition-colors duration-300 group-hover:text-purple-800">
                   {tool.name}
                 </h3>
-                <p className="mb-4 font-body text-xs font-semibold uppercase tracking-[0.25em] text-purple-300/80">
+                <p className="mb-4 font-body text-label font-medium uppercase tracking-[0.25em] text-purple-700">
                   {t('webtools.developedBy')}
                 </p>
-                <p className="mb-7 text-sm leading-relaxed text-white">
+                <p className="mb-7 text-body text-black">
                   {t(`webtools.items.${tool.key}.description`)}
                 </p>
 
                 <div className="mt-auto w-full">
                   {tool.downloadByEmail ? (
                     <div className="flex w-full items-center gap-3">
-                      <div className="flex h-12 min-w-24 shrink-0 items-center justify-center rounded-2xl border border-white/5 bg-zinc-800/50 px-3 text-center font-body text-sm font-bold uppercase text-purple-200">
+                      <div className="secondary-action-label flex h-[3.25rem] min-w-24 shrink-0 items-center justify-center px-3 text-center lowercase">
                         {t('webtools.free')}
                       </div>
-                      <button
+                      <NeonButton
+                        as="button"
                         type="button"
                         onClick={() => setSelectedTool(tool)}
-                        className="flex h-12 flex-1 cursor-pointer select-none items-center justify-center gap-2 rounded-2xl border border-purple-600 bg-purple-600 font-display text-xl lowercase tracking-wide text-white transition-all duration-300 hover:border-purple-500 hover:bg-purple-500 hover:neon-glow-purple"
+                        variant="primary"
+                        surface="light"
+                        size="md"
+                        icon={faDownload}
+                        className="flex-1"
                         aria-label={`${t('webtools.download')} ${tool.name}`}
                       >
-                        <span>{t('webtools.download')}</span>
-                        <FontAwesomeIcon icon={faDownload} className="h-4 w-4" />
-                      </button>
+                        {t('webtools.download')}
+                      </NeonButton>
                     </div>
                   ) : (
                     <NeonButton
@@ -105,9 +109,10 @@ export default function WebTools() {
                       rel="noopener noreferrer"
                       aria-label={`${t('webtools.cta')} ${tool.name}`}
                       variant="primary"
+                      surface="light"
                       size="md"
                       icon={faArrowUpRightFromSquare}
-                      className="h-12 w-full px-4 py-0 text-lg"
+                      className="w-full"
                     >
                       {t('webtools.cta')}
                     </NeonButton>

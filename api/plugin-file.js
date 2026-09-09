@@ -1,52 +1,11 @@
 import fs from 'node:fs';
-import path from 'node:path';
 import { Readable } from 'node:stream';
 import { verifyPluginDownloadToken } from '../lib/plugin-download-token.js';
-
-const DOWNLOADABLE_FILES = {
-  dhreverb: {
-    environmentVariable: 'DHREVERB_DOWNLOAD_URL',
-    fileName: 'dhreVerb-1.0.0-windows-x64-installer.exe',
-    folder: 'plugins',
-  },
-  dhrelink: {
-    environmentVariable: 'DHRELINK_DOWNLOAD_URL',
-    fileName: 'dhreLink-1.0.0-x64-Setup.exe',
-    folder: 'tools',
-  },
-};
-
-function findLocalFilePath(file) {
-  const candidates = [
-    path.join(process.cwd(), 'public', 'plugins', file.fileName),
-    path.join(process.cwd(), 'public', 'tools', file.fileName),
-    path.join(process.cwd(), 'public', 'downloads', file.fileName),
-    path.join(process.cwd(), 'public', file.fileName),
-    path.join(process.cwd(), 'private-assets', 'plugins', file.fileName),
-    path.join(process.cwd(), 'private-assets', 'tools', file.fileName),
-    path.join(process.cwd(), 'downloads', file.fileName),
-    path.join(process.cwd(), file.fileName),
-  ];
-
-  for (const candidate of candidates) {
-    if (fs.existsSync(candidate)) {
-      return candidate;
-    }
-  }
-
-  return null;
-}
-
-function getPrivateSourceUrl(file) {
-  const value = String(process.env[file.environmentVariable] || '').trim();
-
-  try {
-    const url = new URL(value);
-    return url.protocol === 'https:' ? url.toString() : null;
-  } catch {
-    return null;
-  }
-}
+import {
+  getConfiguredSourceUrl,
+  getDownloadableProduct,
+  getLocalInstallerPath,
+} from '../lib/downloadable-products.js';
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'private, no-store, max-age=0');
@@ -59,13 +18,13 @@ export default async function handler(req, res) {
 
   const token = Array.isArray(req.query?.token) ? req.query.token[0] : req.query?.token;
   const payload = verifyPluginDownloadToken(token);
-  const file = payload ? DOWNLOADABLE_FILES[payload.pluginKey] : null;
+  const file = payload ? getDownloadableProduct(payload.pluginKey) : null;
 
   if (!file) {
     return res.status(403).json({ error: 'Download link is invalid or has expired.' });
   }
 
-  const localFilePath = findLocalFilePath(file);
+  const localFilePath = getLocalInstallerPath(file);
 
   if (localFilePath) {
     try {
@@ -92,12 +51,11 @@ export default async function handler(req, res) {
     }
   }
 
-  let sourceUrl = getPrivateSourceUrl(file);
+  let sourceUrl = getConfiguredSourceUrl(file);
 
   if (!sourceUrl) {
     const siteUrl = String(process.env.SITE_URL || 'https://dhreian.com').replace(/\/$/, '');
-    const folder = file.folder || 'tools';
-    sourceUrl = `${siteUrl}/${folder}/${file.fileName}`;
+    sourceUrl = `${siteUrl}/${file.publicPath}`;
   }
 
   try {

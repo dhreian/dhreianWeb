@@ -8,7 +8,7 @@ export default function FeatureList({ items, dense = false }) {
     return (
       <ul className="space-y-2">
         {items.map((item) => (
-          <li key={item} className="flex items-center gap-2.5 text-sm text-zinc-300">
+          <li key={item} className="flex items-center gap-2.5 text-body-compact text-black">
             <span className={`w-1.5 h-1.5 rounded-full ${dotColor} shrink-0`}></span>
             {item}
           </li>
@@ -26,7 +26,7 @@ export default function FeatureList({ items, dense = false }) {
             icon={faCircleCheck}
             className={`${checkColor} text-base shrink-0`}
           />
-          <span className="text-sm text-zinc-300">{item}</span>
+          <span className="text-body-compact text-black">{item}</span>
         </li>
       ))}
     </ul>

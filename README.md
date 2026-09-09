@@ -12,7 +12,7 @@ construida con React y Vite, mientras que las rutas públicas se prerenderizan d
 compilación para ofrecer contenido indexable desde la primera respuesta.
 
 El sitio también incluye funciones serverless para recibir solicitudes de contacto y distribuir
-instaladores privados mediante enlaces temporales. Los registros y límites de uso se almacenan en
+instaladores mediante enlaces temporales. Los registros y límites de uso se almacenan en
 PostgreSQL, y los correos transaccionales se envían con Resend.
 
 ## Contenido y funciones
@@ -50,8 +50,11 @@ Las responsabilidades principales se distribuyen así:
 - `src/i18n/` contiene los textos en español e inglés y administra la preferencia del usuario.
 - `src/seo/metadata.js` define metadatos, rutas canónicas y datos estructurados.
 - `api/` contiene las funciones serverless de contacto y descarga de plugins.
-- `lib/` concentra el acceso a PostgreSQL, la protección de formularios y la firma de enlaces.
+- `lib/` concentra el catálogo descargable, el acceso a PostgreSQL, la protección de formularios
+  y la firma de enlaces.
 - `database/` conserva el esquema SQL de las tablas utilizadas por el servidor.
+- `public/downloads/` organiza los instaladores por producto; las demás carpetas públicas conservan
+  imágenes, audio, fuentes y metadatos estáticos.
 
 ### Flujos del servidor
 
@@ -59,10 +62,10 @@ El formulario de contacto y la solicitud de plugins validan el origen, el tipo d
 campo honeypot y un tiempo mínimo de llenado. Después aplican límites por dirección IP y correo,
 guardan la solicitud en PostgreSQL y envían el mensaje mediante Resend.
 
-Los instaladores de dhreVerb y dhreLink no se publican en el repositorio ni se exponen directamente
-al cliente. El servidor genera un enlace firmado con una vigencia de 24 horas y, cuando se utiliza,
-transmite el archivo correspondiente desde la URL HTTPS privada configurada por el propietario del
-despliegue.
+Los instaladores de dhreVerb y dhreLink se organizan por producto en `public/downloads/`. La interfaz
+mantiene el flujo gestionado por correo: el servidor genera un enlace firmado con una vigencia de
+24 horas y, cuando se utiliza, entrega el archivo local o lo transmite desde la URL HTTPS configurada
+por el propietario del despliegue.
 
 ## Rutas y SEO
 

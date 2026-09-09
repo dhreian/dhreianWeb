@@ -9,6 +9,7 @@ import {
   faMusic,
 } from '@fortawesome/free-solid-svg-icons';
 import Card from './Card';
+import NeonButton from './Button';
 
 const formatTime = (seconds) => {
   if (!Number.isFinite(seconds) || seconds <= 0) return '0:00';
@@ -84,10 +85,10 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
             height="600"
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 block w-full h-full object-cover transition-transform duration-700"
+            className="absolute inset-0 block w-full h-full object-cover"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-zinc-800 to-zinc-900 grid place-items-center">
+          <div className="grid h-full w-full place-items-center bg-zinc-900">
             <FontAwesomeIcon icon={faMusic} className="text-zinc-700 text-5xl" />
           </div>
         )}
@@ -102,16 +103,16 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
               className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300/70"
             >
               <span
-                className={`w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-purple-950 grid place-items-center transition-all duration-300 active:scale-95 ${
+                className={`liquid-glass-button primary-action-button primary-action-button--icon grid place-items-center transition-opacity duration-300 ${
                   isActive
-                    ? 'scale-100 opacity-100 shadow-[0_0_30px_rgba(138,108,255,0.9)]'
-                    : 'scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 touch:scale-100 touch:opacity-100 shadow-[0_0_20px_rgba(138,108,255,0.7)]'
+                    ? 'opacity-100'
+                    : 'opacity-0 group-hover:opacity-100 touch:opacity-100'
                 }`}
               >
                 <FontAwesomeIcon
                   icon={playIcon}
                   fixedWidth
-                  className={`text-white text-2xl ${
+                  className={`text-current text-2xl ${
                     loading && isActive ? 'animate-spin' : isActive || error ? '' : 'ml-1'
                   }`}
                 />
@@ -121,23 +122,23 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
         )}
 
         {(hasTags || hasAudio) && (
-          <div className="absolute inset-x-0 bottom-0 z-20 p-4 pt-16 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none">
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-black/80 p-4 pt-16">
             {hasTags && (
-              <div className="flex flex-wrap items-center gap-1.5 text-xs font-body">
+              <div className="flex flex-wrap items-center gap-1.5 text-meta font-body">
                 {beat.musicalKey && (
-                  <span className="px-2 py-1 rounded-2xl bg-purple-950/80 border border-purple-400/40 text-purple-200 font-bold tracking-wider uppercase shadow-[0_0_4px_rgba(0,0,0,0.3)]">
+                  <span className="rounded-2xl border border-purple-500 bg-purple-500 px-2 py-1 font-bold uppercase tracking-wider text-white">
                     {beat.musicalKey.toUpperCase()}
                   </span>
                 )}
                 {beat.bpm && (
-                  <span className="px-2 py-1 rounded-2xl bg-purple-500/40 border border-purple-300/40 text-purple-100 font-bold tracking-wider shadow-[0_0_4px_rgba(0,0,0,0.3)]">
+                  <span className="rounded-2xl border border-purple-500 bg-purple-500 px-2 py-1 font-bold tracking-wider text-white">
                     {beat.bpm} BPM
                   </span>
                 )}
                 {beat.genres?.map((genre) => (
                   <span
                     key={genre}
-                    className="px-2 py-1 rounded-2xl bg-black/60 border border-white/20 text-white font-bold tracking-wider uppercase shadow-[0_0_4px_rgba(0,0,0,0.3)]"
+                    className="rounded-2xl border border-zinc-700 bg-black px-2 py-1 font-bold uppercase tracking-wider text-white"
                   >
                     {genre.toUpperCase()}
                   </span>
@@ -147,7 +148,7 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
 
             {hasAudio && (
               <div
-                className={`${hasTags ? 'mt-3' : ''} grid grid-cols-[2.25rem_1fr_2.25rem] items-center gap-2 font-body text-xs font-semibold tabular-nums text-white/85 pointer-events-auto`}
+                className={`${hasTags ? 'mt-3' : ''} grid grid-cols-[2.25rem_1fr_2.25rem] items-center gap-2 font-body text-meta font-semibold tabular-nums text-white/85 pointer-events-auto`}
                 onClick={stopControlEvent}
                 onPointerDown={stopControlEvent}
               >
@@ -172,23 +173,26 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
       </div>
 
       <div className="p-4 flex flex-col flex-1 justify-between gap-3">
-        <h3 className="font-display lowercase text-2xl text-white group-hover:text-purple-200 transition-colors truncate pb-1">
+        <h3 className="font-display lowercase text-card-compact text-zinc-950 group-hover:text-purple-800 transition-colors truncate pb-1">
           {beat.title}
         </h3>
 
         <div className="flex items-center gap-3 w-full">
-          <div className="w-24 shrink-0 h-12 flex items-center justify-center px-2 rounded-2xl bg-zinc-800/50 border border-white/5 text-purple-200 font-body font-bold text-sm text-center truncate">
+          <div className="secondary-action-label flex h-[3.25rem] w-24 shrink-0 items-center justify-center truncate px-3 text-center lowercase">
             {beat.price || '$29.99'}
           </div>
-          <a
+          <NeonButton
             href={beat.beatstarsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 h-12 flex items-center justify-center gap-2 rounded-2xl border border-purple-600 bg-purple-600 text-white font-display lowercase text-xl tracking-wide transition-all duration-300 hover:bg-purple-500 hover:border-purple-500 hover:neon-glow-purple"
+            variant="primary"
+            surface="light"
+            size="md"
+            icon={faArrowUpRightFromSquare}
+            className="flex-1"
           >
-            <span>comprar</span>
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-sm" />
-          </a>
+            comprar
+          </NeonButton>
         </div>
       </div>
 

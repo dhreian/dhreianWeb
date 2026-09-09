@@ -1,8 +1,8 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { Section, SectionHeading } from './Section';
 import NeonCard from './Card';
-import IconBadge from './IconBadge';
 import FeatureList from './FeatureList';
 import { SERVICES } from '../data/site';
 import { useLang } from '../i18n/LanguageContext';
@@ -23,28 +23,28 @@ export default function Services() {
       <div className="grid md:grid-cols-2 gap-8">
         {SERVICES.map((service) => (
           <NeonCard key={service.key} accent="subtle" className="p-8 md:p-10">
-            <div className="flex gap-6 flex-col sm:flex-row h-full">
-              <IconBadge icon={service.icon} variant="purple" size="lg" />
+            <div className="flex h-full flex-col">
+              <div className="service-gothic-icon" aria-hidden="true">
+                <FontAwesomeIcon icon={service.icon} fixedWidth />
+              </div>
 
-              <div className="flex flex-col flex-1">
-                <h3 className="font-display lowercase text-3xl text-white mb-3 group-hover:text-purple-200 transition-colors duration-300">
-                  {t(`services.items.${service.key}.title`)}
-                </h3>
-                <p className="text-white text-sm mb-6 leading-relaxed">
-                  {t(`services.items.${service.key}.description`)}
-                </p>
-                <FeatureList items={t(`services.items.${service.key}.features`)} accent="purple" dense />
+              <h3 className="font-display lowercase text-card text-black mb-3 group-hover:text-purple-800 transition-colors duration-300">
+                {t(`services.items.${service.key}.title`)}
+              </h3>
+              <p className="text-black text-body mb-6">
+                {t(`services.items.${service.key}.description`)}
+              </p>
+              <FeatureList items={t(`services.items.${service.key}.features`)} accent="purple" dense />
 
-                <div className="mt-auto pt-6">
-                  <div className="h-px w-full bg-gradient-to-r from-purple-500/40 via-purple-500/10 to-transparent mb-4"></div>
-                  <div className="flex items-baseline justify-between gap-4 flex-wrap">
-                    <span className="font-body text-[10px] uppercase tracking-[0.25em] text-zinc-500 font-semibold">
-                      {t('services.priceLabel')}
-                    </span>
-                    <span className="font-body font-bold text-lg text-purple-200 tracking-wide whitespace-nowrap group-hover:neon-text-purple transition-all duration-300">
-                      {service.price}
-                    </span>
-                  </div>
+              <div className="mt-auto pt-6">
+                <div className="mb-4 h-px w-full bg-purple-500"></div>
+                <div className="flex items-baseline justify-between gap-4 flex-wrap">
+                  <span className="font-body text-label uppercase tracking-[0.25em] text-black font-medium">
+                    {t('services.priceLabel')}
+                  </span>
+                  <span className="font-body font-semibold text-price text-purple-800 tracking-wide whitespace-nowrap transition-colors duration-300 group-hover:text-purple-950">
+                    {service.price}
+                  </span>
                 </div>
               </div>
             </div>

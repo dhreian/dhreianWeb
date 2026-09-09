@@ -13,7 +13,7 @@ import NeonButton from './Button';
 import { useLang } from '../i18n/LanguageContext';
 
 const inputBase =
-  'w-full rounded-2xl border border-white/5 bg-zinc-900/60 py-3.5 pl-12 pr-4 text-sm md:text-base text-white placeholder:text-zinc-600 transition-all duration-300 focus:border-purple-400/50 focus:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-purple-500/30 disabled:cursor-wait disabled:opacity-70';
+  'w-full rounded-2xl border border-zinc-700 bg-zinc-900 py-3.5 pl-12 pr-4 text-body-compact text-white placeholder:text-zinc-600 transition-colors duration-300 focus:border-purple-500 focus:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:cursor-wait disabled:opacity-70';
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -122,7 +122,7 @@ export default function PluginDownloadModal({ plugin, onClose }) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] grid place-items-center overflow-y-auto bg-black/85 px-4 py-8 font-body"
+      className="fixed inset-0 z-[100] grid place-items-center overflow-y-auto bg-black px-4 py-8 font-body"
       role="presentation"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget && !isSending) onClose();
@@ -136,41 +136,41 @@ export default function PluginDownloadModal({ plugin, onClose }) {
         className="w-full max-w-lg animate-contact-success-in"
       >
         <Card accent="purple" interactive={false}>
-          <div className="bg-zinc-950/95 p-8 md:p-12">
+          <div className="bg-white p-8 md:p-12">
             {status === 'success' ? (
               <div className="flex flex-col items-center py-3 text-center" aria-live="polite">
-                <div className="mb-6 grid h-20 w-20 place-items-center rounded-full border border-purple-500/20 bg-purple-500/10 shadow-[0_0_30px_rgba(138,108,255,0.25)] animate-contact-success-pop">
-                  <FontAwesomeIcon icon={faCircleCheck} fixedWidth className="text-4xl text-purple-300" />
+                <div className="mb-6 grid h-20 w-20 place-items-center rounded-full border border-purple-500 bg-purple-500 animate-contact-success-pop">
+                  <FontAwesomeIcon icon={faCircleCheck} fixedWidth className="text-4xl text-white" />
                 </div>
-                <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-purple-300/80">
+                <p className="mb-3 text-label font-medium uppercase tracking-[0.25em] text-purple-700">
                   {plugin.name}
                 </p>
                 <h3
                   ref={successHeadingRef}
                   id="plugin-download-title"
                   tabIndex="-1"
-                  className="mb-3 font-display text-3xl lowercase text-white outline-none"
+                  className="mb-3 font-display text-card lowercase text-zinc-950 outline-none"
                 >
                   {t('plugins.downloadModal.successTitle')}
                 </h3>
-                <p className="mb-8 max-w-sm text-sm leading-relaxed text-white">
+                <p className="mb-8 max-w-sm text-body text-zinc-700">
                   {t('plugins.downloadModal.successBody1')}
-                  <span className="font-semibold text-purple-200">{formData.email}</span>
+                  <span className="font-semibold text-purple-800">{formData.email}</span>
                   {t('plugins.downloadModal.successBody2')}
                 </p>
-                <NeonButton as="button" type="button" variant="outline" size="sm" onClick={onClose}>
+                <NeonButton as="button" type="button" variant="glass" size="sm" onClick={onClose}>
                   {t('plugins.downloadModal.close')}
                 </NeonButton>
               </div>
             ) : (
               <>
                 <div className="mb-8 text-center">
-                  <h3 id="plugin-download-title" className="font-display text-3xl lowercase text-white neon-text-purple sm:text-4xl">
+                  <h3 id="plugin-download-title" className="font-display text-card lowercase text-zinc-950">
                     {t('plugins.downloadModal.title')}
                   </h3>
-                  <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-white">
+                  <p className="mx-auto mt-4 max-w-md text-body text-zinc-700">
                     {t('plugins.downloadModal.description1')}
-                    <span className="font-semibold text-purple-200">{plugin.name}</span>
+                    <span className="font-semibold text-purple-800">{plugin.name}</span>
                     {t('plugins.downloadModal.description2')}
                   </p>
                 </div>
@@ -226,14 +226,14 @@ export default function PluginDownloadModal({ plugin, onClose }) {
 
                   {errorMessage && (
                     <p
-                      className="rounded-2xl border border-red-500/25 bg-red-500/10 px-4 py-3 text-sm leading-relaxed text-red-200"
+                      className="rounded-2xl border border-red-700 bg-red-100 px-4 py-3 text-body-compact text-red-800"
                       role="alert"
                     >
                       {errorMessage}
                     </p>
                   )}
 
-                  <p className="text-center text-[11px] leading-relaxed text-zinc-600">
+                  <p className="text-center text-meta text-zinc-600">
                     {t('plugins.downloadModal.privacy')}
                   </p>
 
@@ -242,8 +242,9 @@ export default function PluginDownloadModal({ plugin, onClose }) {
                       as="button"
                       type="submit"
                       variant="primary"
+                      surface="light"
                       size="md"
-                      className="w-full min-h-[58px] overflow-hidden disabled:cursor-wait disabled:opacity-95"
+                      className="w-full overflow-hidden disabled:cursor-wait disabled:opacity-95"
                       disabled={isSending}
                     >
                       <span className="relative grid place-items-center">
@@ -285,7 +286,7 @@ export default function PluginDownloadModal({ plugin, onClose }) {
 function ModalInput({ label, icon, children }) {
   return (
     <label className="group block space-y-2">
-      <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-purple-300/80">
+      <span className="block text-label font-medium uppercase tracking-[0.2em] text-purple-700">
         {label}
       </span>
       <span className="relative block">

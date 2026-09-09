@@ -18,6 +18,7 @@ export const ROUTE_ALIASES = {
 };
 
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
+const LOGO_IMAGE = `${SITE_URL}/icons/seo-organization-logo-512.png`;
 const ARTIST_ID = `${SITE_URL}/#artist`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 
@@ -341,7 +342,7 @@ function createArtistNode(lang) {
     url: `${SITE_URL}/`,
     mainEntityOfPage: { '@id': `${SITE_URL}/#webpage` },
     image: DEFAULT_IMAGE,
-    logo: `${SITE_URL}/email/dhreian-logo.png`,
+    logo: LOGO_IMAGE,
     email: 'contact@dhreian.com',
     jobTitle: isEnglish
       ? ['Artist', 'Music producer', 'Mixing and mastering engineer', 'Developer']

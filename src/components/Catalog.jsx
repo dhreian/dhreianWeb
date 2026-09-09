@@ -49,17 +49,16 @@ export default function Catalog() {
               key={g}
               type="button"
               onClick={() => handleGenreChange(g)}
-              className={`font-display lowercase px-4 py-2 rounded-2xl text-base sm:text-lg tracking-wide transition-all duration-300 inline-flex items-center gap-2.5 border focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/50 ${
+              aria-pressed={active}
+              className={`catalog-filter-button liquid-glass-button group inline-flex items-center gap-3 rounded-2xl font-display text-button lowercase tracking-wide transition-colors duration-300 ${
                 active
-                  ? 'bg-purple-600 text-white border-purple-600 shadow-[0_0_20px_rgba(138,108,255,0.6)]'
-                  : 'bg-zinc-900/80 text-zinc-400 border-purple-500/20 hover:border-purple-500/60 hover:text-purple-200 hover:bg-purple-500/10 hover:shadow-[0_0_15px_rgba(138,108,255,0.3)]'
+                  ? 'primary-action-button'
+                  : 'secondary-action-button'
               }`}
             >
               <span>{g}</span>
               <span
-                className={`text-xs tabular-nums font-body font-semibold px-2 py-0.5 rounded-2xl ${
-                  active ? 'bg-white/20 text-white' : 'bg-zinc-800 text-zinc-500'
-                }`}
+                className="catalog-filter-count rounded-2xl border px-2 py-0.5 font-body text-meta font-semibold tabular-nums transition-colors duration-300"
               >
                 {counts[g] ?? 0}
               </span>
@@ -86,11 +85,11 @@ export default function Catalog() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-20 px-4 rounded-2xl border border-purple-500/20 bg-zinc-900/40">
-          <p className="font-display lowercase text-3xl text-zinc-300 mb-3 neon-text-purple">
+        <div className="liquid-glass-card rounded-2xl border border-purple-500 px-4 py-20 text-center">
+          <p className="font-display lowercase text-card text-zinc-950 mb-3">
             sin beats en este género
           </p>
-          <p className="text-base text-zinc-400">
+          <p className="text-body text-zinc-700">
             Prueba con otro filtro o revisa el catálogo completo en BeatStars.
           </p>
         </div>

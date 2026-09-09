@@ -1,0 +1,143 @@
+{
+  "palette": {
+    "lightMode": "#000000",
+    "darkMode": "#ffffff"
+  },
+  "files": [
+    {
+      "file": "favicon-16x16.png",
+      "width": 16,
+      "height": 16,
+      "mode": "RGBA",
+      "bytes": 446,
+      "sha256": "6ff5570c863a6f6e29775393851128be9409194e1a686f4fca8d2a5a98b2c764",
+      "purpose": "white monochrome browser tab favicon"
+    },
+    {
+      "file": "favicon-32x32.png",
+      "width": 32,
+      "height": 32,
+      "mode": "RGBA",
+      "bytes": 966,
+      "sha256": "915fb6867e30e93d61b226d68c24bff9a1d66a74b1434b2266ce88f8017c196e",
+      "purpose": "white monochrome browser tab favicon"
+    },
+    {
+      "file": "favicon-48x48.png",
+      "width": 48,
+      "height": 48,
+      "mode": "RGBA",
+      "bytes": 1543,
+      "sha256": "b4f5d69522986309c4f11d53378424547f896b284d636fff6684c3a8d257af8b",
+      "purpose": "white monochrome Google Search and browser favicon"
+    },
+    {
+      "file": "favicon-96x96.png",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA",
+      "bytes": 3683,
+      "sha256": "3eb78c6990638a49118e0577a77981a1d8a5319c4c57268b321a014f649a102d",
+      "purpose": "white monochrome Google Search and browser favicon"
+    },
+    {
+      "file": "favicon.svg",
+      "width": 512,
+      "height": 512,
+      "mode": "SVG",
+      "bytes": 21283,
+      "sha256": "1bb6bbb67c00a339b01fba88e91bc405d6f98c09364a35a188d12412449ff1b9",
+      "purpose": "adaptive browser favicon: black in light mode, white in dark mode"
+    },
+    {
+      "file": "favicon.ico",
+      "width": 256,
+      "height": 256,
+      "mode": "RGBA",
+      "bytes": 22799,
+      "sha256": "76255cafa05e58ed874ecd76a1d9972aba2b21aea66b7ef88bb51dfb88476dae",
+      "purpose": "white monochrome multi-resolution legacy browser favicon"
+    },
+    {
+      "file": "apple-touch-icon.png",
+      "width": 180,
+      "height": 180,
+      "mode": "RGBA",
+      "bytes": 11049,
+      "sha256": "428b6896dcf9150e8484afafde02694e122822c38a7b90e90e606e4d7f2d2708",
+      "purpose": "white monochrome Apple home-screen web clip on dark background"
+    },
+    {
+      "file": "web-app-icon-192.png",
+      "width": 192,
+      "height": 192,
+      "mode": "RGBA",
+      "bytes": 8118,
+      "sha256": "af9742eb2688eb74c2d5a6fdac0707682d9f87eee84b792ef4152e1f349cdd79",
+      "purpose": "white monochrome web app icon with transparent background"
+    },
+    {
+      "file": "web-app-maskable-192.png",
+      "width": 192,
+      "height": 192,
+      "mode": "RGBA",
+      "bytes": 11736,
+      "sha256": "47ad9029452c3c12ee38ad112baa882dccd5fdf1aaefc2c38e0bf4e14f07e3e6",
+      "purpose": "white monochrome full-bleed PWA icon on dark background"
+    },
+    {
+      "file": "web-app-maskable-safe-192.png",
+      "width": 192,
+      "height": 192,
+      "mode": "RGBA",
+      "bytes": 8721,
+      "sha256": "e1277a32058c8b0863239ca3807e9eb7b5a623d0dc8a46a3648bf1dab49697f5",
+      "purpose": "white monochrome maskable PWA icon with protective padding"
+    },
+    {
+      "file": "web-app-icon-512.png",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 24166,
+      "sha256": "7ea30d211f1b20da470111ce5f46a0a2b400d63d5d9a9cb9ddfd3914fb52c9d4",
+      "purpose": "white monochrome web app icon with transparent background"
+    },
+    {
+      "file": "web-app-maskable-512.png",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 33990,
+      "sha256": "ff11f4c53414d4cd69f6275bfeba68655c532e39eb2d6ad187c8e04f48f54190",
+      "purpose": "white monochrome full-bleed PWA icon on dark background"
+    },
+    {
+      "file": "web-app-maskable-safe-512.png",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 27494,
+      "sha256": "c259fe658c30349f3b0ebd33a122c57fd816821d66694654de6c22fc4d158003",
+      "purpose": "white monochrome maskable PWA icon with protective padding"
+    },
+    {
+      "file": "web-app-monochrome-512.png",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 24166,
+      "sha256": "7ea30d211f1b20da470111ce5f46a0a2b400d63d5d9a9cb9ddfd3914fb52c9d4",
+      "purpose": "white alpha silhouette for manifest purpose monochrome"
+    },
+    {
+      "file": "seo-organization-logo-512.png",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 24166,
+      "sha256": "7ea30d211f1b20da470111ce5f46a0a2b400d63d5d9a9cb9ddfd3914fb52c9d4",
+      "purpose": "white monochrome Organization structured-data logo"
+    }
+  ]
+}

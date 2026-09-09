@@ -14,7 +14,7 @@ export default function Discography() {
   return (
     <Section
       id="portfolio"
-      className="bg-zinc-950/40"
+      className="bg-zinc-950"
       divider={true}
       glow={true}
     >
@@ -32,9 +32,9 @@ export default function Discography() {
             return (
               <article
                 key={idx}
-                className="group flex flex-row items-center text-left gap-3 sm:gap-6 p-3 sm:p-4 rounded-2xl bg-zinc-900/40 border border-white/5 hover:bg-zinc-800/60 hover:border-purple-500/30 transition-all duration-300"
+                className="liquid-glass-card group flex flex-row items-center gap-3 rounded-2xl border border-purple-500 p-3 text-left transition-colors duration-300 hover:border-purple-500 sm:gap-6 sm:p-4"
               >
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden shrink-0 shadow-lg">
+                <div className="h-28 w-28 shrink-0 overflow-hidden rounded-2xl sm:h-32 sm:w-32">
                   <img
                     src={track.cover}
                     width="600"
@@ -42,22 +42,22 @@ export default function Discography() {
                     alt={`Carátula de ${track.title}`}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover"
                   />
                 </div>
 
                 <div className="flex-grow min-w-0 flex flex-col items-start gap-1.5 sm:gap-2.5">
-                  <p className="font-body text-xs sm:text-sm font-bold text-zinc-400 uppercase tracking-widest w-full truncate">
-                    <span className="text-purple-300">{track.mainArtist}</span>
+                  <p className="font-body text-label font-medium text-zinc-600 uppercase tracking-widest w-full truncate">
+                    <span className="text-purple-800">{track.mainArtist}</span>
                     {track.featArtist && (
                       <>
-                        <span className="text-zinc-500 mx-1.5 lowercase font-semibold">ft.</span>
-                        <span className="text-zinc-300">{track.featArtist}</span>
+                        <span className="text-zinc-500 mx-1.5 lowercase font-normal">ft.</span>
+                        <span className="text-zinc-700">{track.featArtist}</span>
                       </>
                     )}
                   </p>
 
-                  <h4 className="font-display lowercase text-2xl sm:text-3xl text-white leading-snug sm:leading-normal pb-0.5 w-full truncate group-hover:text-purple-300 transition-colors">
+                  <h4 className="font-display lowercase text-card-compact text-zinc-950 pb-0.5 w-full truncate group-hover:text-purple-800 transition-colors">
                     {track.title}
                   </h4>
 
@@ -65,7 +65,7 @@ export default function Discography() {
                     {filteredTags.map((tag) => (
                       <span
                         key={tag}
-                        className={`inline-flex items-center gap-1.5 text-xs sm:text-sm px-3 py-1 rounded-2xl border font-bold uppercase tracking-wider shadow-sm transition-all duration-300 ${TRACK_TAG_STYLES[tag]}`}
+                        className={`inline-flex items-center gap-1.5 rounded-2xl border px-3 py-1 text-label font-semibold uppercase tracking-wider transition-colors duration-300 ${TRACK_TAG_STYLES[tag]}`}
                       >
                         <FontAwesomeIcon icon={TRACK_TAG_ICONS[tag]} />
                         {tag}
@@ -81,7 +81,7 @@ export default function Discography() {
                       href={track.links[p.key]}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-8 h-8 sm:w-12 sm:h-12 rounded-full border border-white/10 text-zinc-400 grid place-items-center transition-all duration-300 ${p.hoverClass || 'hover:text-purple-300 hover:border-purple-400/50 hover:bg-purple-500/10 hover:shadow-[0_0_15px_rgba(138,108,255,0.4)]'}`}
+                      className={`liquid-glass-button grid h-8 w-8 place-items-center rounded-full border border-black bg-white text-black transition-colors duration-300 sm:h-12 sm:w-12 ${p.hoverClass || 'hover:border-purple-500 hover:text-purple-500'}`}
                       title={`Escuchar en ${p.title}`}
                     >
                       <FontAwesomeIcon icon={p.icon} className="text-sm sm:text-lg" fixedWidth />

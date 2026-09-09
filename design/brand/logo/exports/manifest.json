@@ -1,0 +1,68 @@
+{
+  "brandColor": "#681cff",
+  "files": [
+    {
+      "file": "dhreian-logo-transparent-4096.png",
+      "width": 4096,
+      "height": 4096,
+      "mode": "RGBA",
+      "bytes": 4059714,
+      "sha256": "156b46c9d8d9eb81f34f49b575203ad1a0658f3dde09c6032279ca6a30df1950",
+      "usage": "master, large-format artwork and archival reuse"
+    },
+    {
+      "file": "dhreian-logo-transparent-2048.png",
+      "width": 2048,
+      "height": 2048,
+      "mode": "RGBA",
+      "bytes": 1453231,
+      "sha256": "3bc8f5e809c6cbcc2952fa2ab38593f5bfb62d4735c719b7f0fa94661017d241",
+      "usage": "high-density presentations, covers and large digital layouts"
+    },
+    {
+      "file": "dhreian-logo-transparent-1024.png",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 462111,
+      "sha256": "5d0243681eeeabf145df80c8a659f1a57252f664db2c316351d1b9dfffd9a82a",
+      "usage": "websites, social profiles and general digital use"
+    },
+    {
+      "file": "dhreian-logo-transparent-512.png",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 142117,
+      "sha256": "0462d256631097f9d25d3c647de645a360270b5c5685937da41e0626d81454f9",
+      "usage": "application icons, avatars and UI at high density"
+    },
+    {
+      "file": "dhreian-logo-transparent-256.png",
+      "width": 256,
+      "height": 256,
+      "mode": "RGBA",
+      "bytes": 44709,
+      "sha256": "fcf4448bf53aa68cafa013c8142de6c0cff187c9a42e17758265993df15d2ff4",
+      "usage": "compact interface elements and profile thumbnails"
+    },
+    {
+      "file": "dhreian-logo-transparent-128.png",
+      "width": 128,
+      "height": 128,
+      "mode": "RGBA",
+      "bytes": 15262,
+      "sha256": "a66235a0510f9f9cdcec9f83ccfc09448b736fb90e8321fa82fdc40478fa2b97",
+      "usage": "small navigation, launcher and favicon source"
+    },
+    {
+      "file": "dhreian-logo-transparent-under-1mb.png",
+      "width": 1536,
+      "height": 1536,
+      "mode": "RGBA",
+      "bytes": 905388,
+      "sha256": "5c62605b8ea6b5ad403291e0c0d3c712b5dff342fe2708a36a69127070da5e23",
+      "usage": "portable transparent PNG below 1 MB"
+    }
+  ]
+}

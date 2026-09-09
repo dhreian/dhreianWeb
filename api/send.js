@@ -22,16 +22,16 @@ function normalizeEmailHeader(str = '') {
 }
 
 const C = {
-  purple: '#8a6cff',
-  purpleLight: '#beadff',
-  purpleMid: '#9e82ff',
-  purpleDeep: '#6e47f5',
+  purple: '#681cff',
+  purpleLight: '#681cff',
+  purpleMid: '#681cff',
+  purpleDeep: '#681cff',
   blue: '#3881b5',
   bg: '#000000',
   card: '#0a0a0c',
   panel: '#0d0d10',
-  border: '#211a3f',
-  borderSubtle: '#1a1a20',
+  border: '#27272a',
+  borderSubtle: '#18181b',
   white: '#ffffff',
   zinc200: '#e4e4e7',
   zinc300: '#d4d4d8',
@@ -40,8 +40,8 @@ const C = {
   zinc600: '#52525b',
 };
 
-const FONT_LOGO = "'Quintessential', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif";
-const FONT_BODY = "system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
+const FONT_LOGO = "'Cormorant Infant', Georgia, serif";
+const FONT_BODY = "'Cormorant Infant', Georgia, serif";
 
 const SITE_URL = 'https://dhreian.com';
 const LOGO_URL = `${SITE_URL}/email/dhreian-logo.png`;
@@ -166,7 +166,7 @@ function getEmailHtml(c, { name, email, subject, subjectLower, message }) {
     <tr>
       <td class="email-bg" align="center" bgcolor="${C.bg}" style="padding:40px 16px;background:${C.bg};background-color:${C.bg}!important;">
         <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
-        <table role="presentation" class="container email-card" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.card}" style="width:600px;max-width:600px;background:${C.card};background-color:${C.card}!important;border-radius:24px;border:1px solid ${C.borderSubtle};overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6),0 0 50px -10px rgba(138,108,255,0.40);">
+        <table role="presentation" class="container email-card" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.card}" style="width:600px;max-width:600px;background:${C.card};background-color:${C.card}!important;border-radius:24px;border:1px solid ${C.borderSubtle};overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6),0 0 50px -10px rgba(113,113,122,0.32);">
 
           <tr>
             <td height="4" bgcolor="${C.purpleDeep}" style="height:4px;line-height:4px;font-size:0;background-color:${C.purpleDeep};background-image:linear-gradient(90deg,${C.purple} 0%,${C.blue} 100%);">&nbsp;</td>
@@ -177,7 +177,7 @@ function getEmailHtml(c, { name, email, subject, subjectLower, message }) {
               <img class="logo" src="${LOGO_URL}" width="210" height="66" alt="dhreian" style="display:block;width:210px;max-width:210px;height:auto;margin:0 auto;border:0;outline:none;text-decoration:none;color:${C.white};font-family:${FONT_LOGO};font-size:46px;line-height:1;" />
               <div style="color:${C.purpleMid};font-size:11px;text-transform:uppercase;letter-spacing:4px;margin-top:14px;font-weight:700;font-family:${FONT_BODY};">${c.eyebrow}</div>
               <table role="presentation" width="140" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:18px auto 0;">
-                <tr><td height="2" bgcolor="${C.purple}" style="height:2px;line-height:2px;font-size:0;border-radius:2px;background-color:${C.purple};background-image:linear-gradient(90deg,rgba(138,108,255,0) 0%,${C.purple} 50%,rgba(138,108,255,0) 100%);">&nbsp;</td></tr>
+                <tr><td height="2" bgcolor="${C.purple}" style="height:2px;line-height:2px;font-size:0;border-radius:2px;background-color:${C.purple};background-image:linear-gradient(90deg,rgba(255,255,255,0) 0%,${C.purple} 50%,rgba(255,255,255,0) 100%);">&nbsp;</td></tr>
               </table>
             </td>
           </tr>
@@ -225,7 +225,7 @@ function getEmailHtml(c, { name, email, subject, subjectLower, message }) {
               </v:roundrect>
               <![endif]-->
               <!--[if !mso]><!-->
-              <a href="${SITE_URL}" target="_blank" style="display:inline-block;background-color:${C.purpleDeep};background-image:linear-gradient(180deg,${C.purple} 0%,${C.purpleDeep} 100%);color:#ffffff;font-family:${FONT_BODY};font-size:16px;font-weight:700;line-height:20px;text-decoration:none;padding:15px 42px;border-radius:16px;letter-spacing:0.5px;box-shadow:0 0 25px rgba(138,108,255,0.45);">${c.ctaLabel}</a>
+              <a href="${SITE_URL}" target="_blank" style="display:inline-block;background-color:${C.purpleDeep};background-image:linear-gradient(180deg,${C.purple} 0%,${C.purpleDeep} 100%);color:#ffffff;font-family:${FONT_BODY};font-size:16px;font-weight:700;line-height:20px;text-decoration:none;padding:15px 42px;border-radius:16px;letter-spacing:0.5px;box-shadow:0 0 25px rgba(255,255,255,0.24);">${c.ctaLabel}</a>
               <!--<![endif]-->
             </td>
           </tr>
@@ -244,7 +244,7 @@ function getEmailHtml(c, { name, email, subject, subjectLower, message }) {
               </table>
               <p style="color:${C.zinc600};font-size:11px;margin:24px 0 0;font-weight:300;letter-spacing:0.4px;font-family:${FONT_BODY};line-height:1.6;">${c.footerAuto}</p>
               <p style="font-size:14px;margin:14px 0 0;font-family:${FONT_BODY};">
-                <a href="${SITE_URL}" target="_blank" style="color:${C.purpleLight};font-weight:600;letter-spacing:1px;text-shadow:0 0 10px rgba(138,108,255,0.2);">dhreian.com</a>
+                <a href="${SITE_URL}" target="_blank" style="color:${C.purpleLight};font-weight:600;letter-spacing:1px;text-shadow:0 0 10px rgba(255,255,255,0.18);">dhreian.com</a>
               </p>
             </td>
           </tr>

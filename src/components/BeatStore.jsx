@@ -40,25 +40,25 @@ export default function BeatStore() {
                 className="p-5"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="font-display text-purple-400/60 text-2xl">
+                  <span className="font-display text-card-compact text-purple-500">
                     {String(idx + 1).padStart(2, '0')}
                   </span>
-                  <span className="h-px flex-1 bg-gradient-to-r from-purple-500/40 to-transparent"></span>
+                  <span className="h-px flex-1 bg-purple-500"></span>
                   <FontAwesomeIcon
                     icon={STEP_ICONS[idx]}
-                    className="text-purple-400"
+                    className="text-purple-700"
                   />
                 </div>
-                <h3 className="font-body font-bold lowercase text-xl text-white mb-1">
+                <h3 className="font-body font-medium lowercase text-card-compact text-purple-950 mb-1">
                   {step.title}
                 </h3>
-                <p className="text-sm text-white leading-relaxed">{step.description}</p>
+                <p className="text-body-compact text-black">{step.description}</p>
               </Card>
             ))}
           </div>
 
           {hasEmbed ? (
-            <div className="relative w-full aspect-video md:aspect-[16/10] bg-zinc-900/80 rounded-2xl border border-purple-500/20 shadow-[0_0_50px_rgba(0,0,0,0.3)] overflow-hidden">
+            <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-purple-500 bg-zinc-900 md:aspect-[16/10]">
               <iframe
                 src={BEATSTARS_EMBED_URL}
                 title="dhreian — BeatStars catalog"
@@ -66,8 +66,8 @@ export default function BeatStore() {
                 allow="autoplay; clipboard-write; encrypted-media"
                 loading="lazy"
               />
-              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent pointer-events-none"></div>
-              <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent pointer-events-none"></div>
+              <div className="pointer-events-none absolute left-0 top-0 h-px w-full bg-purple-500"></div>
+              <div className="pointer-events-none absolute bottom-0 left-0 h-px w-full bg-purple-500"></div>
             </div>
           ) : (
             <Catalog />

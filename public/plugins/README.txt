@@ -29,15 +29,16 @@ Tips:
 INSTALADORES DESCARGABLES
 ==========================
 
-Los binarios de instalación oficiales pueden almacenarse en `public/plugins/` y
-`public/tools/` para ser servidos por la web, o configurarse mediante URL privada
-en variables de entorno del servidor.
+Los binarios de instalación oficiales se almacenan por producto bajo
+`public/downloads/`, o se configuran mediante una URL HTTPS en las variables de
+entorno del servidor.
 
 Para una descarga gratuita gestionada por correo:
 
 1. En `src/data/site.js`, usa `url: null` y `downloadByEmail: true`.
-2. El instalador se ubica en `public/plugins/` (ej: `dhreVerb-1.0.0-windows-x64-installer.exe`)
-   o se configura su URL en la variable de entorno correspondiente.
+2. El instalador se ubica en `public/downloads/<key>/` y se registra en
+   `lib/downloadable-products.js`, o se configura su URL en la variable de
+   entorno correspondiente.
 3. El botón abre el modal; el endpoint valida la key, registra la solicitud
    en Neon y envía mediante Resend un enlace firmado válido por 24 horas.
 4. Al abrir el enlace, el endpoint `/api/plugin-file` entrega el archivo binario.
