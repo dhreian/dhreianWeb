@@ -73,6 +73,12 @@ function PlayingCardIndex({ face, position = 'top' }) {
 
 export default function Hero() {
   const { t } = useLang();
+  const latestTrack = TRACKS[0];
+  const orderedTracks = [
+    ...TRACKS.slice(1, 3),
+    latestTrack,
+    ...TRACKS.slice(3),
+  ];
   const releasesCarouselRef = useRef(null);
 
   const updateDeckPosition = useCallback(() => {
@@ -86,13 +92,8 @@ export default function Hero() {
       const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
       const relativePosition = (slideCenter - carouselCenter) / slide.offsetWidth;
       const clampedPosition = Math.max(-2.5, Math.min(2.5, relativePosition));
-      const distance = Math.abs(clampedPosition);
 
       slide.style.setProperty('--deck-tilt', `${clampedPosition * -2.15}deg`);
-      slide.style.setProperty('--deck-lift', `${distance * 0.45}rem`);
-      slide.style.setProperty('--deck-scale', `${Math.max(0.95, 1 - distance * 0.018)}`);
-      slide.style.setProperty('--deck-opacity', `${Math.max(0.78, 1 - distance * 0.055)}`);
-      slide.style.zIndex = `${10 - Math.round(distance * 2)}`;
     });
   }, []);
 
@@ -108,6 +109,13 @@ export default function Hero() {
         updateDeckPosition();
       });
     };
+
+    const latestSlide = carousel.querySelector('[data-release-latest]');
+    if (latestSlide) {
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      const centeredScroll = latestSlide.offsetLeft - (carousel.clientWidth - latestSlide.offsetWidth) / 2;
+      carousel.scrollLeft = Math.max(0, Math.min(maxScroll, centeredScroll));
+    }
 
     scheduleDeckUpdate();
     carousel.addEventListener('scroll', scheduleDeckUpdate, { passive: true });
@@ -126,7 +134,7 @@ export default function Hero() {
     if (!carousel || !firstSlide) return;
 
     const gap = Number.parseFloat(window.getComputedStyle(carousel).columnGap) || 0;
-    const step = firstSlide.getBoundingClientRect().width + gap;
+    const step = firstSlide.offsetWidth + gap;
     const maxScroll = carousel.scrollWidth - carousel.clientWidth;
     const atStart = carousel.scrollLeft <= 4;
     const atEnd = carousel.scrollLeft >= maxScroll - 4;
@@ -189,20 +197,28 @@ export default function Hero() {
               aria-roledescription="carousel"
               aria-label={t('hero.otherReleases')}
             >
-              {TRACKS.map((track, idx) => (
+              {orderedTracks.map((track, idx) => {
+                const isLatest = track === latestTrack;
+                const artistLabel = [
+                  track.mainArtist.replace(/\s*&\s*/g, ', '),
+                  track.featArtist,
+                ].filter(Boolean).join(', ');
+
+                return (
                 <div
                   key={track.title}
                   data-release-slide
+                  data-release-latest={isLatest ? true : undefined}
                   className="release-card-slot snap-start min-w-0"
                   role="group"
                   aria-roledescription="slide"
                   aria-label={`${track.title}, ${idx + 1} ${t('hero.of')} ${TRACKS.length}`}
                 >
-                  <Card accent={idx === 0 ? 'purple' : 'subtle'} className="release-playing-card release-playing-card--compact">
+                  <Card accent={isLatest ? 'purple' : 'subtle'} className="release-playing-card release-playing-card--compact">
                     <PlayingCardIndex face={PLAYING_CARD_FACES[idx % PLAYING_CARD_FACES.length]} />
                     <PlayingCardIndex face={PLAYING_CARD_FACES[idx % PLAYING_CARD_FACES.length]} position="bottom" />
 
-                    {idx === 0 && (
+                    {isLatest && (
                       <div className="latest-release-ribbon" aria-label={t('hero.latest')}>
                         <span aria-hidden="true">{t('hero.latest')}</span>
                       </div>
@@ -216,24 +232,19 @@ export default function Hero() {
                           alt={`${t('hero.coverOf')} ${track.title}`}
                           width="600"
                           height="600"
-                          loading={idx === 0 ? 'eager' : 'lazy'}
-                          fetchPriority={idx === 0 ? 'high' : 'auto'}
+                          loading={isLatest ? 'eager' : 'lazy'}
+                          fetchPriority={isLatest ? 'high' : 'auto'}
                           decoding="async"
                           className="w-full h-full object-cover"
                         />
                       </div>
 
                       <div className="release-playing-card__copy shrink-0 min-w-0 text-center">
-                        <p className="font-body text-[clamp(1rem,1.1vw,1.125rem)] leading-[1.1] font-medium text-black normal-case tracking-[0.04em] text-center">
-                          {track.mainArtist}
+                        <p className="release-playing-card__artist font-body text-[clamp(1rem,1.1vw,1.125rem)] leading-[1.1] font-medium text-black normal-case tracking-[0.04em] text-center">
+                          {artistLabel}
                         </p>
-                        {track.featArtist && (
-                          <p className="font-body text-[clamp(1rem,1.1vw,1.125rem)] leading-[1.1] font-medium text-black normal-case tracking-[0.04em] text-center">
-                            ft. {track.featArtist}
-                          </p>
-                        )}
                         <h3
-                          className={`mt-0.5 w-full break-words text-center font-display lowercase text-[clamp(1.25rem,1.6vw,1.5rem)] leading-[1.05] tracking-tight ${track.title === 'amanecer contigo' ? 'release-playing-card__title--single-line' : ''}`}
+                          className="release-playing-card__title mt-0.5 w-full break-words text-center font-display lowercase text-[clamp(1.25rem,1.6vw,1.5rem)] leading-[1.05] tracking-tight"
                         >
                           <span className="text-purple-800">
                             {track.title.toLocaleLowerCase('es')}
@@ -260,7 +271,8 @@ export default function Hero() {
                     </div>
                   </Card>
                 </div>
-              ))}
+                );
+              })}
             </div>
 
             {TRACKS.length > 1 && (

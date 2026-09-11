@@ -23,29 +23,24 @@ function normalizeEmailHeader(str = '') {
 
 const C = {
   purple: '#681cff',
-  purpleLight: '#4b0aab',
-  purpleMid: '#9f69ff',
-  purpleDeep: '#260452',
-  bg: '#000000',
-  card: '#e9e6ec',
-  panel: '#d5d0d8',
-  border: '#756d7c',
-  borderSubtle: '#958d9c',
+  purpleDark: '#4b0aab',
+  purpleDeep: '#32106f',
+  bg: '#f7f5fb',
+  card: '#ffffff',
+  panel: '#f1edff',
+  border: '#dfd5f5',
+  borderSubtle: '#ebe6f4',
   white: '#ffffff',
-  ink: '#0d0b10',
-  inkSoft: '#302b35',
-  zinc200: '#18151c',
-  zinc300: '#2f2a34',
-  zinc400: '#45404a',
-  zinc500: '#5f5866',
-  zinc600: '#756d7c',
+  ink: '#17121f',
+  inkSoft: '#554c63',
+  muted: '#7b7287',
 };
 
 const FONT_LOGO = "'Cormorant Infant', Georgia, serif";
 const FONT_BODY = "'Cormorant Infant', Georgia, serif";
 
 const SITE_URL = 'https://dhreian.com';
-const LOGO_URL = `${SITE_URL}/email/dhreian-logo.png`;
+const LOGO_URL = `${SITE_URL}/email/dhreian-mark-purple.svg`;
 const CONTACT_EMAIL = 'contact@dhreian.com';
 const FROM_EMAIL = `dhreian contact <${CONTACT_EMAIL}>`;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -70,7 +65,7 @@ const COPY = {
     eyebrow: 'Artista & Productor Musical',
     greeting: (name) => `Hola, ${name}:`,
     intro: (subjectLower) =>
-      `Gracias por ponerte en contacto. He recibido correctamente tu mensaje sobre <strong style="color:${C.purpleLight};font-weight:600;">${subjectLower}</strong>.`,
+      `Gracias por ponerte en contacto. He recibido correctamente tu mensaje sobre <strong style="color:${C.purpleDark};font-weight:600;">${subjectLower}</strong>.`,
     body2:
       'Ya estoy revisando tu propuesta. Te escribiré a la brevedad con detalles personalizados y los siguientes pasos para tu proyecto.',
     summaryTitle: 'Resumen de tu solicitud',
@@ -94,7 +89,7 @@ const COPY = {
     eyebrow: 'Artist & Music Producer',
     greeting: (name) => `Hi, ${name}:`,
     intro: (subjectLower) =>
-      `Thanks for reaching out. I've received your message about <strong style="color:${C.purpleLight};font-weight:600;">${subjectLower}</strong>.`,
+      `Thanks for reaching out. I've received your message about <strong style="color:${C.purpleDark};font-weight:600;">${subjectLower}</strong>.`,
     body2:
       "I'm already reviewing your request. I'll get back to you shortly with tailored details and the next steps for your project.",
     summaryTitle: 'Your request summary',
@@ -112,9 +107,9 @@ const COPY = {
 function getEmailHtml(c, { name, email, subject, subjectLower, message }) {
   const lang = c === COPY.en ? 'en' : 'es';
 
-  const pStyle = `margin:0;color:${C.inkSoft};line-height:1.75;font-size:16px;font-weight:400;font-family:${FONT_BODY};`;
-  const rowLabel = `color:${C.zinc500};font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;font-family:${FONT_BODY};padding:0 0 3px;`;
-  const rowValue = `color:${C.zinc200};font-size:14px;font-family:${FONT_BODY};padding:0 0 16px;`;
+  const pStyle = `margin:0;color:${C.inkSoft};line-height:1.65;font-size:17px;font-weight:400;font-family:${FONT_BODY};`;
+  const rowLabel = `color:${C.muted};font-size:11px;text-transform:uppercase;letter-spacing:1.4px;font-weight:700;font-family:${FONT_BODY};padding:0 0 3px;`;
+  const rowValue = `color:${C.ink};font-size:15px;line-height:1.45;font-family:${FONT_BODY};padding:0 0 16px;word-break:break-word;`;
 
   const summaryRow = (label, valueHtml) => `
     <tr><td style="${rowLabel}">${label}</td></tr>
@@ -122,8 +117,8 @@ function getEmailHtml(c, { name, email, subject, subjectLower, message }) {
 
   const socialHtml = SOCIAL.map(
     (s) =>
-      `<a href="${s.url}" target="_blank" style="color:${C.purpleDeep};font-family:${FONT_BODY};font-size:12px;font-weight:700;letter-spacing:0.7px;text-decoration:none;">${s.label}</a>`
-  ).join(`<span style="color:${C.purple};padding:0 9px;">&#10022;</span>`);
+      `<a href="${s.url}" target="_blank" style="color:${C.purpleDark};font-family:${FONT_BODY};font-size:14px;font-weight:700;letter-spacing:0.3px;text-decoration:none;">${s.label}</a>`
+  ).join(`<span style="color:${C.purple};padding:0 8px;">&bull;</span>`);
 
   return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="${lang}" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -131,30 +126,27 @@ function getEmailHtml(c, { name, email, subject, subjectLower, message }) {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="color-scheme" content="light dark" />
-  <meta name="supported-color-schemes" content="light dark" />
+  <meta name="color-scheme" content="light" />
+  <meta name="supported-color-schemes" content="light" />
   <!--[if mso]>
   <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
   <![endif]-->
   <style>
-    :root{color-scheme:light dark;supported-color-schemes:light dark;}
+    @font-face{font-family:'Cormorant Infant';font-style:normal;font-weight:300 700;src:url('${SITE_URL}/fonts/cormorant-infant-v22-latin.woff2') format('woff2');}
+    :root{color-scheme:light;supported-color-schemes:light;}
     body,table,td,a{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
     table,td{mso-table-lspace:0pt;mso-table-rspace:0pt;}
     img{-ms-interpolation-mode:bicubic;border:0;height:auto;line-height:100%;outline:none;text-decoration:none;}
     html,body{margin:0!important;padding:0!important;width:100%!important;background-color:${C.bg}!important;}
     a{text-decoration:none;}
     .email-bg{background:${C.bg}!important;background-color:${C.bg}!important;}
-    .email-card{background-color:${C.card}!important;background-image:linear-gradient(138deg,#ffffff 0%,#c9c5cf 24%,#faf9fc 42%,#afa9b6 64%,#ece9ef 82%,#c5bfcb 100%)!important;}
+    .email-card{background:${C.card}!important;background-color:${C.card}!important;}
     .email-panel{background:${C.panel}!important;background-color:${C.panel}!important;}
     .email-quote{background:${C.bg}!important;background-color:${C.bg}!important;}
-    [data-ogsc] .email-bg,[data-ogsb] .email-bg{background:${C.bg}!important;background-color:${C.bg}!important;}
-    [data-ogsc] .email-card,[data-ogsb] .email-card{background:${C.card}!important;background-color:${C.card}!important;}
-    [data-ogsc] .email-panel,[data-ogsb] .email-panel{background:${C.panel}!important;background-color:${C.panel}!important;}
-    [data-ogsc] .email-quote,[data-ogsb] .email-quote{background:${C.bg}!important;background-color:${C.bg}!important;}
     @media only screen and (max-width:620px){
       .container{width:100%!important;}
       .px{padding-left:24px!important;padding-right:24px!important;}
-      .logo{width:190px!important;height:auto!important;}
+      .logo{width:76px!important;max-width:76px!important;height:76px!important;}
     }
   </style>
 </head>
@@ -165,47 +157,45 @@ function getEmailHtml(c, { name, email, subject, subjectLower, message }) {
 
   <table role="presentation" class="email-bg" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.bg}" style="background:${C.bg};background-color:${C.bg}!important;">
     <tr>
-      <td class="email-bg" align="center" bgcolor="${C.bg}" style="padding:40px 16px;background:${C.bg};background-color:${C.bg}!important;">
+      <td class="email-bg" align="center" bgcolor="${C.bg}" style="padding:32px 16px;background:${C.bg};background-color:${C.bg}!important;">
         <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
-        <table role="presentation" class="container email-card" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.card}" style="width:600px;max-width:600px;background:${C.card};background-color:${C.card}!important;background-image:linear-gradient(138deg,#ffffff 0%,#c9c5cf 24%,#faf9fc 42%,#afa9b6 64%,#ece9ef 82%,#c5bfcb 100%);border-radius:24px;border:1px solid ${C.borderSubtle};overflow:hidden;box-shadow:inset 0 2px 0 #ffffff,inset 0 -3px 0 rgba(43,34,51,.3),0 24px 70px rgba(0,0,0,.72);">
+        <table role="presentation" class="container email-card" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.card}" style="width:600px;max-width:600px;background:${C.card};background-color:${C.card}!important;border-radius:18px;border:1px solid ${C.borderSubtle};overflow:hidden;">
 
           <tr>
-            <td height="6" bgcolor="${C.purpleDeep}" style="height:6px;line-height:6px;font-size:0;background-color:${C.purpleDeep};background-image:linear-gradient(90deg,#f2ebff 0%,${C.purple} 24%,${C.purpleDeep} 50%,#a66fff 76%,#f2ebff 100%);">&nbsp;</td>
+            <td height="8" bgcolor="${C.purple}" style="height:8px;line-height:8px;font-size:0;background-color:${C.purple};">&nbsp;</td>
           </tr>
 
           <tr>
-            <td class="px email-card" align="center" bgcolor="${C.card}" style="padding:44px 40px 30px;background:${C.card};background-color:${C.card}!important;border-bottom:1px solid ${C.borderSubtle};">
-              <img class="logo" src="${LOGO_URL}" width="210" height="66" alt="dhreian" style="display:block;width:210px;max-width:210px;height:auto;margin:0 auto;border:0;outline:none;text-decoration:none;color:${C.white};font-family:${FONT_LOGO};font-size:46px;line-height:1;" />
-              <div style="color:${C.purpleDeep};font-size:11px;text-transform:uppercase;letter-spacing:4px;margin-top:14px;font-weight:700;font-family:${FONT_BODY};">${c.eyebrow}</div>
-              <table role="presentation" width="140" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:18px auto 0;">
-                <tr><td height="3" bgcolor="${C.purple}" style="height:3px;line-height:3px;font-size:0;border-radius:2px;background-color:${C.purple};background-image:linear-gradient(90deg,transparent 0%,#ffffff 12%,#756d7c 32%,${C.purple} 50%,#756d7c 68%,#ffffff 88%,transparent 100%);box-shadow:inset 0 1px 0 #ffffff,inset 0 -1px 0 #260452;">&nbsp;</td></tr>
-              </table>
+            <td class="px email-card" align="center" bgcolor="${C.card}" style="padding:34px 40px 28px;background:${C.card};background-color:${C.card}!important;border-bottom:1px solid ${C.borderSubtle};">
+              <img class="logo" src="${LOGO_URL}" width="76" height="76" alt="dhreian" style="display:block;width:76px;max-width:76px;height:76px;margin:0 auto;border:0;outline:none;text-decoration:none;color:${C.purple};font-family:${FONT_LOGO};font-size:24px;line-height:1;" />
+              <div style="color:${C.purpleDeep};font-size:28px;line-height:1;margin-top:14px;font-weight:600;font-family:${FONT_LOGO};">dhreian</div>
+              <div style="color:${C.muted};font-size:11px;text-transform:uppercase;letter-spacing:2.4px;margin-top:11px;font-weight:700;font-family:${FONT_BODY};">${c.eyebrow}</div>
             </td>
           </tr>
 
           <tr>
-            <td class="px email-card" bgcolor="${C.card}" style="padding:36px 40px 4px;background:${C.card};background-color:${C.card}!important;">
-              <h1 style="font-family:${FONT_BODY};font-size:24px;margin:0 0 14px;color:${C.ink};font-weight:650;letter-spacing:-0.3px;">${c.greeting(name)}</h1>
-              <p style="${pStyle}margin:0 0 16px;">${c.intro(subjectLower)}</p>
+            <td class="px email-card" bgcolor="${C.card}" style="padding:34px 40px 4px;background:${C.card};background-color:${C.card}!important;">
+              <h1 style="font-family:${FONT_BODY};font-size:27px;line-height:1.15;margin:0 0 15px;color:${C.ink};font-weight:600;">${c.greeting(name)}</h1>
+              <p style="${pStyle}margin:0 0 15px;">${c.intro(subjectLower)}</p>
               <p style="${pStyle}">${c.body2}</p>
             </td>
           </tr>
 
           <tr>
-            <td class="px email-card" bgcolor="${C.card}" style="padding:30px 40px 0;background:${C.card};background-color:${C.card}!important;">
-              <table role="presentation" class="email-panel" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.panel}" style="background:${C.panel};background-color:${C.panel}!important;border-radius:18px;border:1px solid ${C.border};">
+            <td class="px email-card" bgcolor="${C.card}" style="padding:28px 40px 0;background:${C.card};background-color:${C.card}!important;">
+              <table role="presentation" class="email-panel" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.panel}" style="background:${C.panel};background-color:${C.panel}!important;border-radius:12px;border:1px solid ${C.border};">
                 <tr>
-                  <td style="padding:26px 26px 12px;">
-                    <div style="font-family:${FONT_BODY};font-size:14px;margin:0 0 18px;color:${C.ink};letter-spacing:.5px;font-weight:700;"><span style="color:${C.purple};padding-right:8px;">&#10022;</span>${c.summaryTitle}<span style="color:${C.purple};padding-left:8px;">&#10022;</span></div>
+                  <td style="padding:22px 24px 10px;">
+                    <div style="font-family:${FONT_BODY};font-size:17px;line-height:1.2;margin:0 0 18px;color:${C.ink};font-weight:700;">${c.summaryTitle}</div>
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                       ${summaryRow(c.labelName, name)}
-                      ${summaryRow(c.labelEmail, `<a href="mailto:${email}" style="color:${C.purpleLight};text-decoration:none;">${email}</a>`)}
+                      ${summaryRow(c.labelEmail, `<a href="mailto:${email}" style="color:${C.purpleDark};text-decoration:none;">${email}</a>`)}
                       ${summaryRow(c.labelSubject, subject)}
                       <tr><td style="${rowLabel}padding-top:4px;">${c.labelMessage}</td></tr>
                       <tr>
                         <td style="padding:6px 0 4px;">
-                          <table role="presentation" class="email-quote" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.bg}" style="background:${C.bg};background-color:${C.bg}!important;border-radius:12px;border-left:4px solid ${C.purple};box-shadow:inset 0 3px 6px rgba(0,0,0,.7),inset 0 -1px 0 rgba(255,255,255,.18);">
-                            <tr><td style="padding:15px 18px;color:#f4f1f7;font-size:14px;line-height:1.7;font-family:${FONT_BODY};white-space:pre-wrap;">${message}</td></tr>
+                          <table role="presentation" class="email-quote" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.bg}" style="background:${C.bg};background-color:${C.bg}!important;border-radius:8px;border-left:3px solid ${C.purple};">
+                            <tr><td style="padding:13px 16px;color:${C.inkSoft};font-size:15px;line-height:1.55;font-family:${FONT_BODY};white-space:pre-wrap;">${message}</td></tr>
                           </table>
                         </td>
                       </tr>
@@ -217,35 +207,35 @@ function getEmailHtml(c, { name, email, subject, subjectLower, message }) {
           </tr>
 
           <tr>
-            <td class="px email-card" align="center" bgcolor="${C.card}" style="padding:34px 40px 6px;background:${C.card};background-color:${C.card}!important;">
-              <p style="${pStyle}text-align:center;margin:0 0 20px;">${c.ctaLead}</p>
+            <td class="px email-card" align="center" bgcolor="${C.card}" style="padding:32px 40px 6px;background:${C.card};background-color:${C.card}!important;">
+              <p style="${pStyle}text-align:center;margin:0 0 19px;">${c.ctaLead}</p>
               <!--[if mso]>
-              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${SITE_URL}" style="height:50px;v-text-anchor:middle;width:236px;" arcsize="32%" strokecolor="${C.purpleDeep}" fillcolor="${C.purpleDeep}">
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${SITE_URL}" style="height:48px;v-text-anchor:middle;width:236px;" arcsize="14%" strokecolor="${C.purple}" fillcolor="${C.purple}">
                 <w:anchorlock/>
                 <center style="color:#ffffff;font-family:${FONT_BODY};font-size:16px;font-weight:700;letter-spacing:0.5px;">${c.ctaLabel}</center>
               </v:roundrect>
               <![endif]-->
               <!--[if !mso]><!-->
-              <a href="${SITE_URL}" target="_blank" style="display:inline-block;background-color:${C.purple};background-image:linear-gradient(122deg,#c9acff 0%,${C.purple} 18%,${C.purpleDeep} 42%,#a36fff 58%,#4b0aab 78%,#260452 100%);color:#ffffff;font-family:${FONT_BODY};font-size:17px;font-weight:700;line-height:20px;text-decoration:none;padding:15px 42px;border-radius:16px;letter-spacing:0.5px;border-top:1px solid #e6d8ff;border-bottom:2px solid #1d033e;box-shadow:0 8px 20px rgba(31,0,70,.3);">${c.ctaLabel}</a>
+              <a href="${SITE_URL}" target="_blank" style="display:inline-block;background-color:${C.purple};color:#ffffff;font-family:${FONT_BODY};font-size:17px;font-weight:700;line-height:20px;text-decoration:none;padding:14px 40px;border-radius:7px;letter-spacing:0.3px;">${c.ctaLabel}</a>
               <!--<![endif]-->
             </td>
           </tr>
 
           <tr>
-            <td class="px email-card" align="center" bgcolor="${C.card}" style="padding:30px 40px 4px;background:${C.card};background-color:${C.card}!important;">
-              <div style="color:${C.zinc500};font-size:10px;text-transform:uppercase;letter-spacing:3px;font-weight:700;font-family:${FONT_BODY};margin-bottom:14px;">${c.followLabel}</div>
+            <td class="px email-card" align="center" bgcolor="${C.card}" style="padding:29px 40px 4px;background:${C.card};background-color:${C.card}!important;">
+              <div style="color:${C.muted};font-size:11px;text-transform:uppercase;letter-spacing:2.2px;font-weight:700;font-family:${FONT_BODY};margin-bottom:13px;">${c.followLabel}</div>
               <div style="line-height:1.4;">${socialHtml}</div>
             </td>
           </tr>
 
           <tr>
-            <td class="px email-card" align="center" bgcolor="${C.card}" style="padding:26px 40px 40px;background:${C.card};background-color:${C.card}!important;">
+            <td class="px email-card" align="center" bgcolor="${C.card}" style="padding:24px 40px 34px;background:${C.card};background-color:${C.card}!important;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr><td height="3" bgcolor="${C.borderSubtle}" style="height:3px;line-height:3px;font-size:0;background-color:${C.borderSubtle};background-image:linear-gradient(90deg,transparent,#ffffff 20%,#655e6c 42%,${C.purple} 50%,#655e6c 58%,#ffffff 80%,transparent);">&nbsp;</td></tr>
+                <tr><td height="1" bgcolor="${C.borderSubtle}" style="height:1px;line-height:1px;font-size:0;background-color:${C.borderSubtle};">&nbsp;</td></tr>
               </table>
-              <p style="color:${C.zinc600};font-size:11px;margin:24px 0 0;font-weight:300;letter-spacing:0.4px;font-family:${FONT_BODY};line-height:1.6;">${c.footerAuto}</p>
+              <p style="color:${C.muted};font-size:12px;margin:20px 0 0;font-weight:400;letter-spacing:0.2px;font-family:${FONT_BODY};line-height:1.5;">${c.footerAuto}</p>
               <p style="font-size:14px;margin:14px 0 0;font-family:${FONT_BODY};">
-                <a href="${SITE_URL}" target="_blank" style="color:${C.purpleDeep};font-weight:700;letter-spacing:1px;">dhreian.com</a>
+                <a href="${SITE_URL}" target="_blank" style="color:${C.purpleDark};font-weight:700;letter-spacing:0.6px;">dhreian.com</a>
               </p>
             </td>
           </tr>

@@ -876,7 +876,72 @@ body {
 }
 
 .release-carousel-shell {
+  --release-edge-space: clamp(0.65rem, 1.4vw, 1.1rem);
+  position: relative;
+  width: 100%;
   container-type: inline-size;
+}
+
+.release-carousel {
+  align-items: stretch;
+  padding: 1rem var(--release-edge-space) 1.55rem;
+  scroll-behavior: smooth;
+  scroll-padding-inline: var(--release-edge-space);
+}
+
+.release-carousel-control {
+  position: absolute;
+  z-index: 30;
+  top: 50%;
+  box-sizing: border-box;
+  transform: translateY(-50%);
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    filter 180ms ease;
+}
+
+.release-carousel-control--previous {
+  left: clamp(0.35rem, 1vw, 0.75rem);
+}
+
+.release-carousel-control--next {
+  right: clamp(0.35rem, 1vw, 0.75rem);
+}
+
+.release-carousel-shell .release-carousel-control:hover,
+.release-carousel-shell .release-carousel-control:focus-visible,
+.release-carousel-shell .release-carousel-control:active {
+  transform: translateY(-50%);
+}
+
+.release-carousel-shell .release-carousel-control:hover {
+  border-color: #e8ddff;
+  box-shadow: var(--bevel-control), 0 0 1.2rem rgba(104, 28, 255, 0.32);
+  filter: brightness(1.12);
+}
+
+.release-carousel-shell::before,
+.release-carousel-shell::after {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  bottom: 0;
+  width: clamp(1.4rem, 3.5vw, 4rem);
+  content: "";
+  pointer-events: none;
+}
+
+.release-carousel-shell::before {
+  left: 0;
+  background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.72) 34%, transparent 100%);
+}
+
+.release-carousel-shell::after {
+  right: 0;
+  background: linear-gradient(270deg, #000000 0%, rgba(0, 0, 0, 0.72) 34%, transparent 100%);
 }
 
 .latest-release-ribbon {
@@ -911,16 +976,6 @@ body {
   text-shadow: none;
   text-transform: uppercase;
   white-space: nowrap;
-}
-
-.release-card-slot {
-  flex: 0 0 calc((100cqw - 0.75rem) / 2);
-}
-
-@media (min-width: 64rem) {
-  .release-card-slot {
-    flex-basis: calc((100cqw - 2rem) / 3);
-  }
 }
 
 .beat-card-slot {
@@ -1578,6 +1633,20 @@ body {
   isolation: isolate;
 }
 
+.release-playing-card::after {
+  position: absolute;
+  z-index: 1;
+  right: 5%;
+  bottom: 0;
+  left: 5%;
+  height: 2.25rem;
+  border-radius: 0 0 1.15rem 1.15rem;
+  content: "";
+  background: radial-gradient(ellipse at 50% 100%, rgba(16, 9, 25, 0.34) 0%, transparent 72%);
+  filter: blur(0.45rem);
+  pointer-events: none;
+}
+
 .release-playing-card:hover {
   box-shadow:
     inset 0 0.16rem 0.1rem rgba(255, 255, 255, 0.98),
@@ -1637,48 +1706,100 @@ body {
 }
 
 .release-playing-card--compact .release-playing-card__content {
-  height: auto;
+  box-sizing: border-box;
+  height: 100%;
   width: 100%;
-  padding: var(--compact-card-edge-inset);
-  gap: var(--compact-card-edge-inset);
+  padding: var(--compact-card-padding-block) var(--compact-card-padding-inline);
+  gap: 0;
   justify-content: flex-start;
 }
 
 .release-playing-card--compact .release-playing-card__art {
+  flex: 0 0 auto;
   width: 100%;
+  aspect-ratio: 1 / 1;
   margin-inline: auto;
 }
 
 .release-playing-card--compact {
   --compact-card-edge-inset: max(1.125rem, calc(37.5% - 3.46875rem));
-  height: auto;
+  --compact-card-padding-block: var(--compact-card-edge-inset);
+  --compact-card-padding-inline: var(--compact-card-edge-inset);
+  width: 100%;
+  height: 100%;
+}
+
+.release-playing-card--compact .release-playing-card__copy {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
 }
 
 .release-playing-card--compact .release-playing-card__copy p {
-  font-size: clamp(1.25rem, 1.375vw, 1.40625rem);
+  font-size: clamp(1.1rem, 1.2vw, 1.2rem);
+  width: 100%;
+  min-height: 1.55rem;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+.release-playing-card--compact .release-playing-card__copy .release-playing-card__artist {
+  box-sizing: border-box;
+  width: calc(100% + var(--compact-card-padding-inline) + var(--compact-card-padding-inline));
+  max-width: none;
+  margin-inline: calc(0px - var(--compact-card-padding-inline));
+  justify-self: center;
+  overflow: hidden;
+  text-align: center;
 }
 
 .release-playing-card--compact .release-playing-card__copy h3 {
   font-size: clamp(1.5625rem, 2vw, 1.875rem);
-}
-
-.release-playing-card__title--single-line {
-  position: relative;
-  left: 50%;
-  width: max-content;
-  max-width: none;
-  transform: translateX(-50%);
-  overflow-wrap: normal;
+  box-sizing: border-box;
+  width: 100%;
+  height: 2.05rem;
+  min-width: 0;
+  margin: 0;
+  overflow: visible;
+  align-items: flex-start;
+  justify-content: center;
   white-space: nowrap;
 }
 
 .release-playing-card__platforms {
+  flex: 0 0 3.125rem;
+  width: 100%;
+  min-height: 3.125rem;
   align-items: center;
 }
 
 .release-playing-card--compact .platform-metallic-button {
+  box-sizing: border-box;
   width: 3.125rem;
   height: 3.125rem;
+  transform: none;
+  translate: none;
+  scale: 1;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    filter 180ms ease;
+}
+
+.release-playing-card--compact .platform-metallic-button:hover,
+.release-playing-card--compact .platform-metallic-button:focus-visible,
+.release-playing-card--compact .platform-metallic-button:active {
+  transform: none;
+  translate: none;
+  scale: 1;
 }
 
 .release-playing-card--compact .gothic-icon--release-platform {
@@ -1699,9 +1820,10 @@ body {
   display: grid;
   width: 1.5rem;
   min-height: 2.2rem;
+  grid-template-rows: 1.08rem 0.95rem;
   place-items: center;
   align-content: center;
-  gap: 0.05rem;
+  row-gap: 0.16rem;
   line-height: 1;
   filter: none;
 }
@@ -1723,10 +1845,16 @@ body {
 }
 
 .playing-card-index__rank {
+  display: flex;
+  width: 100%;
+  height: 1.08rem;
+  align-items: center;
+  justify-content: center;
   font-family: "Cormorant Infant", serif;
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.05em;
+  line-height: 1;
 }
 
 .playing-card-metal-defs {
@@ -1737,19 +1865,21 @@ body {
 }
 
 .playing-card-index__suit {
+  display: block;
   width: 0.95rem;
   height: 0.95rem;
   overflow: visible;
 }
 
 .latest-release-ribbon {
-  top: 0.7rem;
+  top: 0;
+  margin-top: calc(var(--compact-card-edge-inset) / 2);
   right: auto;
   left: 50%;
   width: auto;
   height: auto;
   overflow: visible;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .latest-release-ribbon span {
@@ -1766,11 +1896,16 @@ body {
 }
 
 .release-card-slot {
-  flex-basis: min(80cqw, 18rem);
+  --deck-tilt: 0deg;
+  flex: 0 0 calc(100cqw - (2 * var(--release-edge-space)));
   display: flex;
   min-height: 0;
-  align-self: center;
-  aspect-ratio: auto;
+  align-self: flex-start;
+  aspect-ratio: 0.65;
+  transform: rotateZ(var(--deck-tilt));
+  transform-origin: 50% 50%;
+  transition: transform 120ms linear;
+  will-change: transform;
 }
 
 @media (max-width: 39.999rem) {
@@ -1792,38 +1927,20 @@ body {
     height: 0.2rem;
   }
 
-  .release-playing-card--featured .release-playing-card__content {
-    flex-direction: column;
-    padding: 2.9rem 1.55rem 1.5rem;
-  }
-
-  .release-playing-card--featured .release-playing-card__art {
-    width: min(100%, 12.5rem);
-  }
-
-  .release-playing-card--featured .platform-metallic-button {
-    width: 3rem;
-    height: 3rem;
-  }
-
-  .release-playing-card--featured .gothic-icon--release-platform-featured {
-    font-size: 1.5rem;
+  .release-carousel-control {
+    top: 44%;
   }
 }
 
 @media (min-width: 40rem) {
   .release-card-slot {
-    flex-basis: calc((100cqw - 2rem) / 3);
+    flex-basis: calc((100cqw - (2 * var(--release-edge-space)) - 0.75rem) / 2);
   }
 }
 
 @media (min-width: 64rem) {
-  .hero-banner__releases {
-    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-  }
-
   .release-card-slot {
-    flex-basis: calc((100cqw - 1rem) / 2);
+    flex-basis: calc((100cqw - (2 * var(--release-edge-space)) - 3rem) / 4);
   }
 }
 
@@ -1848,6 +1965,15 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .release-carousel {
+    scroll-behavior: auto;
+  }
+
+  .release-card-slot {
+    transform: none;
+    transition: none;
+  }
+
   .release-playing-card {
     transition-duration: 1ms;
   }
