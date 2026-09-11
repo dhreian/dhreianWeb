@@ -199,7 +199,7 @@ export const translations = {
       subject: 'asunto',
       subjects: [
         'Cotizar Beat Custom',
-        'Servicio de Mezcla y/o Master',
+        'Mezcla',
         'Producción Full',
         'Plugins',
         'Colaboración',
@@ -418,7 +418,7 @@ export const translations = {
       subject: 'subject',
       subjects: [
         'Quote a Custom Beat',
-        'Mixing and/or Master Service',
+        'Mixing',
         'Full Production',
         'Plugins',
         'Collaboration',

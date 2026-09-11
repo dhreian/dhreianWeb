@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare, faDownload, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpFromBracket, faDownload, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { Section, SectionHeading } from './Section';
 import Card from './Card';
 import NeonButton from './Button';
 import PluginDownloadModal from './PluginDownloadModal';
 import { WEB_TOOLS } from '../data/site';
 import { useLang } from '../i18n/LanguageContext';
+import GothicIcon from './GothicIcon';
 
 export default function WebTools() {
   const { t } = useLang();
@@ -45,7 +45,7 @@ export default function WebTools() {
                   />
                 ) : (
                   <div className="grid h-full w-full place-items-center">
-                    <FontAwesomeIcon icon={faGlobe} className="text-5xl text-zinc-700" />
+                    <GothicIcon icon={faGlobe} size="empty" className="text-zinc-700" />
                   </div>
                 )}
               </div>
@@ -108,7 +108,7 @@ export default function WebTools() {
                       variant="primary"
                       surface="light"
                       size="md"
-                      icon={faArrowUpRightFromSquare}
+                      icon={faArrowUpFromBracket}
                       className="w-full"
                     >
                       {t('webtools.cta')}

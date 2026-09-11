@@ -1,14 +1,76 @@
-import React, { useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faMusic, faSliders } from '@fortawesome/free-solid-svg-icons';
+import React, { useId, useRef } from 'react';
+import {
+  faChevronLeft,
+  faChevronRight,
+  faMusic,
+  faSliders,
+} from '@fortawesome/free-solid-svg-icons';
+import { GiClubs, GiDiamonds, GiHearts, GiSpades } from 'react-icons/gi';
 import { TRACKS, PLATFORMS } from '../data/site';
 import Card from './Card';
 import NeonButton from './Button';
 import { useLang } from '../i18n/LanguageContext';
+import GothicIcon from './GothicIcon';
+import SectionDivider from './SectionDivider';
 
 // Keep the hero logo on the public asset path so the prerendered HTML and the
 // hydrated client use the same URL in production.
 const metallicLogo = '/icons/dhreian-logo-transparent-512.png';
+
+const PLAYING_CARD_FACES = [
+  { rank: 'A', SuitIcon: GiSpades, tone: 'ink' },
+  { rank: 'K', SuitIcon: GiHearts, tone: 'purple' },
+  { rank: 'Q', SuitIcon: GiDiamonds, tone: 'purple' },
+  { rank: 'J', SuitIcon: GiClubs, tone: 'ink' },
+  { rank: '10', SuitIcon: GiSpades, tone: 'ink' },
+];
+
+function PlayingCardIndex({ face, position = 'top' }) {
+  const { rank, SuitIcon, tone } = face;
+  const suitGradientId = `playing-card-suit-${tone}-${useId().replace(/:/g, '')}`;
+  const suitEdge = tone === 'purple' ? '#310568' : '#09080b';
+
+  return (
+    <span
+      className={`playing-card-index playing-card-index--${position} playing-card-index--${tone}`}
+      aria-hidden="true"
+    >
+      <svg className="playing-card-metal-defs" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id={suitGradientId} x1="0" y1="0" x2="1" y2="1">
+            {tone === 'purple' ? (
+              <>
+                <stop offset="0%" stopColor="#fffaff" />
+                <stop offset="18%" stopColor="#b98dff" />
+                <stop offset="43%" stopColor="#681cff" />
+                <stop offset="54%" stopColor="#2e055f" />
+                <stop offset="65%" stopColor="#a873ff" />
+                <stop offset="100%" stopColor="#360774" />
+              </>
+            ) : (
+              <>
+                <stop offset="0%" stopColor="#ffffff" />
+                <stop offset="20%" stopColor="#a19ba7" />
+                <stop offset="45%" stopColor="#29252e" />
+                <stop offset="56%" stopColor="#050406" />
+                <stop offset="68%" stopColor="#77717e" />
+                <stop offset="100%" stopColor="#171319" />
+              </>
+            )}
+          </linearGradient>
+        </defs>
+      </svg>
+      <span className="playing-card-index__rank">{rank}</span>
+      <SuitIcon
+        className="playing-card-index__suit"
+        fill={`url(#${suitGradientId})`}
+        stroke={suitEdge}
+        strokeWidth="5"
+        paintOrder="stroke fill"
+      />
+    </span>
+  );
+}
 
 export default function Hero() {
   const { t } = useLang();
@@ -43,38 +105,40 @@ export default function Hero() {
   return (
     <section
       id="portfolio"
-      className="hero-banner relative min-h-screen lg:h-screen flex flex-col pt-32 md:pt-36 pb-12 md:pb-16 px-4 md:px-8 overflow-hidden bg-black"
+      className="hero-banner relative min-h-screen flex flex-col px-4 md:px-8 overflow-visible bg-black"
     >
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex-grow flex flex-col">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex-grow flex flex-col justify-center">
 
-        <header className="hero-banner__header text-center mb-12 md:mb-16 flex-grow flex flex-col justify-end">
+        <header className="hero-banner__header text-center flex flex-col">
           <h1 className="sr-only">dhreian</h1>
-          <img
-            src={metallicLogo}
-            width="512"
-            height="512"
-            alt="Logo de dhreian"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            className="hero-banner__logo mx-auto mb-3 h-auto w-36 object-contain md:mb-4 md:w-44 lg:w-52"
-          />
-          <p className="hero-banner__tagline font-body uppercase tracking-[0.3em] text-subtitle text-white font-medium">
-            {t('hero.tagline')}
-          </p>
+          <div className="hero-banner__brand-mark">
+            <img
+              src={metallicLogo}
+              width="512"
+              height="512"
+              alt="Logo de dhreian"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="hero-banner__logo h-auto w-32 object-contain md:w-40 lg:w-44"
+            />
+          </div>
         </header>
 
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-5 items-stretch">
+        <div className="hero-banner__releases w-full grid grid-cols-1 gap-4 lg:gap-5 items-stretch">
 
           {featuredTrack && (
-            <Card accent="purple" className="w-full">
+            <Card accent="purple" className="release-playing-card release-playing-card--featured w-full">
+              <PlayingCardIndex face={PLAYING_CARD_FACES[0]} />
+              <PlayingCardIndex face={PLAYING_CARD_FACES[0]} position="bottom" />
+
               <div className="latest-release-ribbon" aria-label={t('hero.latest')}>
                 <span aria-hidden="true">{t('hero.latest')}</span>
               </div>
 
-              <div className="flex items-center h-full p-3 lg:p-4 gap-3 lg:gap-4">
+              <div className="release-playing-card__content flex items-center h-full gap-4 lg:gap-5">
 
-                <div className="release-cover-recessed relative aspect-square w-[45%] shrink-0 overflow-hidden rounded-2xl">
+                <div className="release-cover-recessed release-playing-card__art relative aspect-square w-[39%] shrink-0 overflow-hidden rounded-xl">
                   <img
                     src={featuredTrack.cover}
                     alt={`${t('hero.coverOf')} ${featuredTrack.title}`}
@@ -87,7 +151,7 @@ export default function Hero() {
                   />
                 </div>
 
-                <div className="flex-1 min-w-0 flex flex-col items-center justify-center text-center gap-3 lg:gap-4">
+                <div className="release-playing-card__details flex-1 min-w-0 flex flex-col items-center justify-center text-center gap-3 lg:gap-4">
                   <h2 className="font-display lowercase text-[clamp(2.5rem,3.5vw,3.25rem)] leading-none w-full break-words text-center tracking-tight">
                     <span className="text-purple-800">
                       {featuredTrack.title.toLocaleLowerCase('es')}
@@ -103,7 +167,7 @@ export default function Hero() {
                     )}
                   </p>
 
-                  <div className="flex gap-3 lg:gap-4 justify-center">
+                  <div className="release-playing-card__platforms flex gap-3 lg:gap-4 justify-center">
                     {PLATFORMS.map((p) => (
                       <a
                         key={p.key}
@@ -114,7 +178,7 @@ export default function Hero() {
                         data-platform={p.key}
                         className="platform-metallic-button liquid-glass-button grid h-14 w-14 place-items-center rounded-full border leading-none text-white transition-all duration-300 lg:h-16 lg:w-16"
                       >
-                        <FontAwesomeIcon icon={p.icon} fixedWidth className="block text-2xl lg:text-[1.75rem]" />
+                        <GothicIcon icon={p.icon} size="release-platform-featured" className="block" />
                       </a>
                     ))}
                   </div>
@@ -133,7 +197,7 @@ export default function Hero() {
                 className="metallic-dark-control liquid-glass-button grid h-8 w-8 shrink-0 place-items-center self-center rounded-full border text-zinc-200 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500 lg:h-10 lg:w-10"
                 aria-label={t('hero.previousRelease')}
               >
-                <FontAwesomeIcon icon={faChevronLeft} />
+                <GothicIcon icon={faChevronLeft} size="control" />
               </button>
             )}
 
@@ -153,10 +217,13 @@ export default function Hero() {
                   aria-roledescription="slide"
                   aria-label={`${track.title}, ${idx + 1} ${t('hero.of')} ${otherTracks.length}`}
                 >
-                  <Card accent="subtle" className="h-full">
-                    <div className="flex flex-col h-full p-2.5 lg:p-3 gap-2 justify-between">
+                  <Card accent="subtle" className="release-playing-card release-playing-card--compact">
+                    <PlayingCardIndex face={PLAYING_CARD_FACES[idx + 1]} />
+                    <PlayingCardIndex face={PLAYING_CARD_FACES[idx + 1]} position="bottom" />
 
-                      <div className="release-cover-recessed aspect-square shrink-0 overflow-hidden rounded-2xl">
+                    <div className="release-playing-card__content flex flex-col">
+
+                      <div className="release-cover-recessed release-playing-card__art aspect-square shrink-0 overflow-hidden rounded-xl">
                         <img
                           src={track.cover}
                           alt={`${t('hero.coverOf')} ${track.title}`}
@@ -168,7 +235,7 @@ export default function Hero() {
                         />
                       </div>
 
-                      <div className="shrink-0 min-w-0 text-center">
+                      <div className="release-playing-card__copy shrink-0 min-w-0 text-center">
                         <p className="font-body text-[clamp(1rem,1.1vw,1.125rem)] leading-[1.1] font-medium text-black normal-case tracking-[0.04em] text-center">
                           {track.mainArtist}
                         </p>
@@ -177,14 +244,16 @@ export default function Hero() {
                             ft. {track.featArtist}
                           </p>
                         )}
-                        <h3 className="mt-0.5 w-full break-words text-center font-display lowercase text-[clamp(1.25rem,1.6vw,1.5rem)] leading-[1.05] tracking-tight">
+                        <h3
+                          className={`mt-0.5 w-full break-words text-center font-display lowercase text-[clamp(1.25rem,1.6vw,1.5rem)] leading-[1.05] tracking-tight ${track.title === 'amanecer contigo' ? 'release-playing-card__title--single-line' : ''}`}
+                        >
                           <span className="text-purple-800">
                             {track.title.toLocaleLowerCase('es')}
                           </span>
                         </h3>
                       </div>
 
-                      <div className="shrink-0 flex gap-1.5 lg:gap-2 justify-center">
+                      <div className="release-playing-card__platforms shrink-0 flex gap-1.5 lg:gap-2 justify-center">
                         {PLATFORMS.map((p) => (
                           <a
                             key={p.key}
@@ -195,7 +264,7 @@ export default function Hero() {
                             data-platform={p.key}
                             className="platform-metallic-button liquid-glass-button grid h-9 w-9 shrink-0 place-items-center rounded-full border leading-none text-white transition-all duration-300 lg:h-10 lg:w-10"
                           >
-                            <FontAwesomeIcon icon={p.icon} fixedWidth className="block text-base lg:text-lg" />
+                            <GothicIcon icon={p.icon} size="release-platform" className="block" />
                           </a>
                         ))}
                       </div>
@@ -213,7 +282,7 @@ export default function Hero() {
                 className="metallic-dark-control liquid-glass-button grid h-8 w-8 shrink-0 place-items-center self-center rounded-full border text-zinc-200 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500 lg:h-10 lg:w-10"
                 aria-label={t('hero.nextRelease')}
               >
-                <FontAwesomeIcon icon={faChevronRight} />
+                <GothicIcon icon={faChevronRight} size="control" />
               </button>
             )}
           </div>
@@ -229,7 +298,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="metallic-divider-horizontal pointer-events-none absolute inset-x-0 bottom-0 w-full" />
+      <SectionDivider className="section-boundary-divider pointer-events-none absolute inset-x-0 bottom-0 z-20 w-full" />
     </section>
   );
 }

@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faPlay,
-  faPause,
-  faArrowUpRightFromSquare,
-  faSpinner,
-  faCircleExclamation,
+  faArrowUpFromBracket,
+  faGear,
   faMusic,
+  faPause,
+  faPlay,
+  faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import Card from './Card';
 import NeonButton from './Button';
+import GothicIcon from './GothicIcon';
 
 const formatTime = (seconds) => {
   if (!Number.isFinite(seconds) || seconds <= 0) return '0:00';
@@ -63,9 +63,9 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
   const progress = duration ? (currentTime / duration) * 100 : 0;
 
   const playIcon = error
-    ? faCircleExclamation
+    ? faTriangleExclamation
     : loading && isActive
-      ? faSpinner
+      ? faGear
       : isActive
         ? faPause
         : faPlay;
@@ -89,7 +89,7 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
           />
         ) : (
           <div className="grid h-full w-full place-items-center bg-zinc-900">
-            <FontAwesomeIcon icon={faMusic} className="text-zinc-700 text-5xl" />
+            <GothicIcon icon={faMusic} size="empty" className="text-zinc-700" />
           </div>
         )}
 
@@ -109,10 +109,10 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
                     : 'opacity-0 group-hover:opacity-100 touch:opacity-100'
                 }`}
               >
-                <FontAwesomeIcon
+                <GothicIcon
                   icon={playIcon}
-                  fixedWidth
-                  className={`text-current text-2xl ${
+                  size="platform-featured"
+                  className={`text-current ${
                     loading && isActive ? 'animate-spin' : isActive || error ? '' : 'ml-1'
                   }`}
                 />
@@ -188,7 +188,7 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
             variant="primary"
             surface="light"
             size="md"
-            icon={faArrowUpRightFromSquare}
+            icon={faArrowUpFromBracket}
             className="flex-1"
           >
             comprar

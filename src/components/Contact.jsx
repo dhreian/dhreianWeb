@@ -1,20 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faPaperPlane,
-  faEnvelope,
-  faUser,
-  faComment,
+  faArrowUpFromBracket,
   faCheck,
-  faCopy,
   faCircleCheck,
-  faCircleNotch,
+  faComment,
+  faEnvelope,
+  faGear,
+  faPaperPlane,
+  faSquareCheck,
   faTag,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { Section, SectionHeading } from './Section';
 import NeonButton from './Button';
 import Card from './Card';
+import GothicIcon from './GothicIcon';
 import { useLang } from '../i18n/LanguageContext';
 
 const inputBase =
@@ -97,6 +98,12 @@ export default function Contact() {
         subtitle={t('contact.subtitle')}
       />
       <Card accent="purple" interactive={true}>
+        <div className="contact-form-screws" aria-hidden="true">
+          <span className="contact-form-screw contact-form-screw--top-left" />
+          <span className="contact-form-screw contact-form-screw--top-right" />
+          <span className="contact-form-screw contact-form-screw--bottom-left" />
+          <span className="contact-form-screw contact-form-screw--bottom-right" />
+        </div>
         <div className="p-8 md:p-12 lg:p-14">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1.3fr] gap-8 md:gap-12 lg:gap-16 items-stretch">
 
@@ -112,13 +119,13 @@ export default function Contact() {
                     onClick={handleCopyEmail}
                     className="contact-channel-link contact-channel-link--email flex items-center gap-4 text-black transition-colors duration-300 hover:text-purple-500"
                   >
-                    <div data-social="email" className="contact-channel-button social-metallic-button metallic-dark-control liquid-glass-button grid h-14 w-14 shrink-0 place-items-center rounded-full border text-white transition-all duration-300">
-                      <FontAwesomeIcon icon={faEnvelope} fixedWidth className="text-xl" />
+                    <div data-social="email" className="contact-channel-button platform-metallic-button liquid-glass-button grid h-14 w-14 shrink-0 place-items-center rounded-full border leading-none text-white transition-all duration-300 lg:h-16 lg:w-16">
+                      <GothicIcon icon={faEnvelope} size="release-platform-featured" />
                     </div>
                     <div className="flex flex-col min-w-0">
                       <span className="text-body font-medium truncate">contact@dhreian.com</span>
                       <span className="text-meta flex items-center gap-1.5 font-medium uppercase tracking-wider text-black transition-colors duration-300 group-hover/contact:text-purple-500">
-                        <FontAwesomeIcon icon={copied ? faCheck : faCopy} className="text-[10px]" />
+                        <GothicIcon icon={copied ? faCheck : faArrowUpFromBracket} size="micro" />
                         {copied ? t('contact.copied') : t('contact.copy')}
                       </span>
                     </div>
@@ -132,8 +139,8 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="contact-channel-link contact-channel-link--instagram flex items-center gap-4 text-black transition-colors duration-300 hover:text-[#E1306C]"
                   >
-                    <div data-social="instagram" className="contact-channel-button social-metallic-button metallic-dark-control liquid-glass-button grid h-14 w-14 shrink-0 place-items-center rounded-full border text-white transition-all duration-300">
-                      <FontAwesomeIcon icon={faInstagram} fixedWidth className="text-xl" />
+                    <div data-social="instagram" className="contact-channel-button platform-metallic-button liquid-glass-button grid h-14 w-14 shrink-0 place-items-center rounded-full border leading-none text-white transition-all duration-300 lg:h-16 lg:w-16">
+                      <GothicIcon icon={faInstagram} size="release-platform-featured" />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-body font-medium">@dhreian</span>
@@ -154,7 +161,7 @@ export default function Contact() {
             {status === 'success' ? (
               <div className="flex flex-col items-center justify-center text-center py-8 px-4 h-full animate-contact-success-in">
                 <div className="metallic-purple-control mb-6 grid h-20 w-20 place-items-center rounded-full border animate-contact-success-pop">
-                  <FontAwesomeIcon icon={faCircleCheck} fixedWidth className="text-4xl text-white" />
+                  <GothicIcon icon={faCircleCheck} size="success" className="text-white" />
                 </div>
                 <h3 className="font-display lowercase text-card text-black mb-3">
                   {t('contact.sentTitle')}
@@ -230,16 +237,17 @@ export default function Contact() {
                           type="button"
                           onClick={() => setSelectedSubjectIndex(idx)}
                           disabled={status === 'sending'}
-                          className={`liquid-glass-button px-4 py-3 rounded-2xl border text-label font-semibold uppercase tracking-wider transition-all duration-300 text-left flex items-center gap-2.5 group/chip cursor-pointer ${
+                          className={`liquid-glass-button px-4 py-3 rounded-2xl border text-label font-semibold uppercase tracking-wider transition-all duration-300 text-left flex items-center justify-between gap-2.5 group/chip cursor-pointer ${
                             isSelected
                               ? 'metallic-purple-control'
                               : 'metallic-control text-black'
                           }`}
                         >
-                          <span className="truncate">{s}</span>
-                          <FontAwesomeIcon
-                            icon={isSelected ? faCheck : faTag}
-                            className={`text-xs shrink-0 transition-colors duration-300 ${isSelected ? 'text-white group-hover/chip:text-white' : 'text-black group-hover/chip:text-white'}`}
+                          <span className="min-w-0 truncate">{s}</span>
+                          <GothicIcon
+                            icon={isSelected ? faSquareCheck : faTag}
+                            size="chip"
+                            className={`shrink-0 transition-colors duration-300 ${isSelected ? 'text-white group-hover/chip:text-white' : 'text-black group-hover/chip:text-white'}`}
                           />
                         </button>
                       );
@@ -277,7 +285,7 @@ export default function Contact() {
                       }`}
                     >
                       <span>{t('contact.send')}</span>
-                      <FontAwesomeIcon icon={faPaperPlane} fixedWidth className="w-4 h-4" />
+                      <GothicIcon icon={faPaperPlane} size="button" />
                     </span>
                     <span
                       className={`col-start-1 row-start-1 inline-flex items-center justify-center gap-3 transition-all duration-300 ease-out ${
@@ -288,7 +296,7 @@ export default function Contact() {
                       aria-hidden={status !== 'sending'}
                     >
                       <span>{t('contact.sending')}</span>
-                      <FontAwesomeIcon icon={faCircleNotch} fixedWidth className="w-4 h-4 animate-spin" />
+                      <GothicIcon icon={faGear} size="button" className="animate-spin" />
                     </span>
                   </span>
                 </NeonButton>
@@ -309,10 +317,10 @@ function InputField({ label, icon, isTextarea = false, children }) {
         {label}
       </label>
       <div className="relative">
-        <span className={`absolute left-4 text-zinc-500 group-focus-within/field:text-purple-400 transition-colors duration-300 ${
+        <span className={`absolute left-4 text-zinc-500 transition-colors duration-300 group-hover/field:text-purple-400 group-focus-within/field:text-purple-400 ${
           isTextarea ? 'top-4' : 'top-1/2 -translate-y-1/2'
         }`}>
-          <FontAwesomeIcon icon={icon} />
+          <GothicIcon icon={icon} size="control" />
         </span>
         {children}
       </div>

@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare, faBell, faDownload, faWaveSquare } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpFromBracket, faBell, faDownload, faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 import { Section, SectionHeading } from './Section';
 import Card from './Card';
 import NeonButton from './Button';
 import PluginDownloadModal from './PluginDownloadModal';
 import { PLUGINS } from '../data/site';
 import { useLang } from '../i18n/LanguageContext';
+import GothicIcon from './GothicIcon';
 
 export default function Plugins() {
   const { t } = useLang();
@@ -45,7 +45,7 @@ export default function Plugins() {
                     />
                   ) : (
                     <div className="w-full h-full grid place-items-center">
-                      <FontAwesomeIcon icon={faWaveSquare} className="text-zinc-700 text-5xl" />
+                      <GothicIcon icon={faWaveSquare} size="empty" className="text-zinc-700" />
                     </div>
                   )}
                 </div>
@@ -89,7 +89,7 @@ export default function Plugins() {
                           className="metallic-control liquid-glass-button flex h-12 w-full items-center justify-center gap-2 rounded-2xl border font-display text-button-sm lowercase tracking-wide text-black transition-colors duration-300"
                         >
                           <span>{t('plugins.notify')}</span>
-                          <FontAwesomeIcon icon={faBell} className="w-4 h-4" />
+                          <GothicIcon icon={faBell} size="button" />
                         </a>
                       </div>
                     ) : (
@@ -120,7 +120,7 @@ export default function Plugins() {
                             variant="primary"
                             surface="light"
                             size="md"
-                            icon={plugin.free ? faDownload : faArrowUpRightFromSquare}
+                            icon={plugin.free ? faDownload : faArrowUpFromBracket}
                             className="flex-1"
                           >
                             {plugin.free ? t('plugins.download') : t('plugins.buy')}

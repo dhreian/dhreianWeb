@@ -1,7 +1,7 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Section, SectionHeading } from './Section';
 import { TRACKS, TRACK_TAG_ICONS, TRACK_TAG_STYLES, PLATFORMS } from '../data/site';
+import GothicIcon from './GothicIcon';
 
 export default function Discography() {
   const getFilteredTags = (tags) => {
@@ -67,7 +67,7 @@ export default function Discography() {
                         key={tag}
                         className={`inline-flex items-center gap-1.5 rounded-2xl border px-3 py-1 text-label font-semibold uppercase tracking-wider transition-colors duration-300 ${TRACK_TAG_STYLES[tag]}`}
                       >
-                        <FontAwesomeIcon icon={TRACK_TAG_ICONS[tag]} />
+                        <GothicIcon icon={TRACK_TAG_ICONS[tag]} size="tag" />
                         {tag}
                       </span>
                     ))}
@@ -85,7 +85,7 @@ export default function Discography() {
                       className="platform-metallic-button liquid-glass-button grid h-8 w-8 place-items-center rounded-full border text-white transition-all duration-300 sm:h-12 sm:w-12"
                       title={`Escuchar en ${p.title}`}
                     >
-                      <FontAwesomeIcon icon={p.icon} className="text-sm sm:text-lg" fixedWidth />
+                      <GothicIcon icon={p.icon} size="platform" />
                     </a>
                   ))}
                 </div>

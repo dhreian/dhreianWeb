@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import {
-  faInstagram,
-  faXTwitter,
-  faTiktok,
-  faSpotify,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
+  faGlobe,
+} from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faSpotify, faTiktok, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { NAV_LINKS, SOCIAL_LINKS } from '../data/site';
 import { useLang } from '../i18n/LanguageContext';
+import GothicIcon from './GothicIcon';
 
 const SOCIAL_ICONS = {
   instagram: faInstagram,
@@ -83,7 +79,7 @@ export default function Navbar() {
               aria-label={label}
               className={`shrink-0 text-black transition-colors duration-300 ${SOCIAL_HOVER[platform] || 'hover:text-purple-800'}`}
             >
-              <FontAwesomeIcon icon={icon} fixedWidth className="text-base" />
+              <GothicIcon icon={icon} size="navbar" />
             </a>
           );
         })}
@@ -98,7 +94,7 @@ export default function Navbar() {
         <span className="font-body text-meta font-semibold tracking-wider">
           {lang === 'es' ? 'EN' : 'ES'}
         </span>
-        <FontAwesomeIcon icon={faGlobe} className="text-xs" />
+        <GothicIcon icon={faGlobe} size="navbar" />
       </button>
     </nav>
   );

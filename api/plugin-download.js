@@ -20,20 +20,21 @@ const LOGO_URL = `${SITE_URL}/email/dhreian-logo.png`;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const C = {
-  accent: '#3881b5',
-  accentLight: '#96c2de',
-  accentMid: '#5fa1cc',
-  accentDeep: '#266699',
+  accent: '#681cff',
+  accentLight: '#4b0aab',
+  accentMid: '#681cff',
+  accentDeep: '#260452',
   bg: '#000000',
-  card: '#0a0a0c',
-  panel: '#0d0d10',
-  border: '#0e2a47',
-  borderSubtle: '#1a1a20',
+  card: '#e9e6ec',
+  panel: '#d5d0d8',
+  border: '#756d7c',
+  borderSubtle: '#958d9c',
   white: '#ffffff',
-  zinc200: '#e4e4e7',
-  zinc400: '#a1a1aa',
-  zinc500: '#71717a',
-  zinc600: '#52525b',
+  ink: '#0d0b10',
+  zinc200: '#18151c',
+  zinc400: '#302b35',
+  zinc500: '#5f5866',
+  zinc600: '#756d7c',
 };
 
 const FONT_LOGO = "'Cormorant Infant', Georgia, serif";
@@ -109,7 +110,7 @@ function escapeHtml(str = '') {
 }
 
 function getDownloadEmailHtml(c, { lang, name, email, pluginName, downloadUrl }) {
-  const pStyle = `margin:0;color:${C.zinc400};line-height:1.75;font-size:15px;font-weight:300;font-family:${FONT_BODY};`;
+  const pStyle = `margin:0;color:${C.zinc400};line-height:1.75;font-size:16px;font-weight:400;font-family:${FONT_BODY};`;
   const labelStyle = `color:${C.zinc500};font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;font-family:${FONT_BODY};padding:0 0 3px;`;
   const valueStyle = `color:${C.zinc200};font-size:14px;font-family:${FONT_BODY};padding:0 0 16px;`;
   const summaryRow = (label, value) => `
@@ -118,7 +119,7 @@ function getDownloadEmailHtml(c, { lang, name, email, pluginName, downloadUrl })
   const socialHtml = SOCIAL.map(
     (social) =>
       `<a href="${social.url}" target="_blank" style="color:${C.accentLight};font-family:${FONT_BODY};font-size:12px;font-weight:600;letter-spacing:0.5px;text-decoration:none;">${social.label}</a>`
-  ).join(`<span style="color:${C.zinc600};padding:0 9px;">&middot;</span>`);
+  ).join(`<span style="color:${C.accent};padding:0 9px;">&#10022;</span>`);
 
   return `<!doctype html>
 <html lang="${lang}">
@@ -133,7 +134,7 @@ function getDownloadEmailHtml(c, { lang, name, email, pluginName, downloadUrl })
     table,td{mso-table-lspace:0;mso-table-rspace:0;}
     html,body{margin:0!important;padding:0!important;width:100%!important;background-color:${C.bg}!important;}
     .email-bg{background:${C.bg}!important;background-color:${C.bg}!important;}
-    .email-card{background:${C.card}!important;background-color:${C.card}!important;}
+    .email-card{background-color:${C.card}!important;background-image:linear-gradient(138deg,#ffffff 0%,#c9c5cf 24%,#faf9fc 42%,#afa9b6 64%,#ece9ef 82%,#c5bfcb 100%)!important;}
     .email-panel{background:${C.panel}!important;background-color:${C.panel}!important;}
     @media only screen and (max-width:620px){.container{width:100%!important}.px{padding-left:24px!important;padding-right:24px!important}.logo{width:190px!important;height:auto!important}}
   </style>
@@ -142,22 +143,22 @@ function getDownloadEmailHtml(c, { lang, name, email, pluginName, downloadUrl })
   <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:${C.bg};opacity:0;">${c.preheader(pluginName)}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
   <table role="presentation" class="email-bg" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.bg}" style="background:${C.bg};background-color:${C.bg}!important;">
     <tr><td class="email-bg" align="center" bgcolor="${C.bg}" style="padding:40px 16px;background:${C.bg};background-color:${C.bg}!important;">
-      <table role="presentation" class="container email-card" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.card}" style="width:600px;max-width:600px;background:${C.card};background-color:${C.card}!important;border-radius:24px;border:1px solid ${C.borderSubtle};overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 50px -10px rgba(56,129,181,.4);">
-        <tr><td height="4" bgcolor="${C.accentDeep}" style="height:4px;line-height:4px;font-size:0;background-color:${C.accentDeep};background-image:linear-gradient(90deg,${C.accent} 0%,${C.accentDeep} 100%);">&nbsp;</td></tr>
+      <table role="presentation" class="container email-card" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.card}" style="width:600px;max-width:600px;background:${C.card};background-color:${C.card}!important;background-image:linear-gradient(138deg,#ffffff 0%,#c9c5cf 24%,#faf9fc 42%,#afa9b6 64%,#ece9ef 82%,#c5bfcb 100%);border-radius:24px;border:1px solid ${C.borderSubtle};overflow:hidden;box-shadow:inset 0 2px 0 #ffffff,inset 0 -3px 0 rgba(43,34,51,.3),0 24px 70px rgba(0,0,0,.72);">
+        <tr><td height="6" bgcolor="${C.accentDeep}" style="height:6px;line-height:6px;font-size:0;background-color:${C.accentDeep};background-image:linear-gradient(90deg,#f2ebff 0%,${C.accent} 24%,${C.accentDeep} 50%,#a66fff 76%,#f2ebff 100%);">&nbsp;</td></tr>
         <tr><td class="px email-card" align="center" bgcolor="${C.card}" style="padding:44px 40px 30px;background:${C.card};background-color:${C.card}!important;border-bottom:1px solid ${C.borderSubtle};">
           <img class="logo" src="${LOGO_URL}" width="210" height="66" alt="dhreian" style="display:block;width:210px;max-width:210px;height:auto;margin:0 auto;border:0;outline:none;text-decoration:none;color:${C.white};font-family:${FONT_LOGO};font-size:46px;line-height:1;" />
-          <div style="color:${C.accentMid};font-size:11px;text-transform:uppercase;letter-spacing:4px;margin-top:14px;font-weight:700;font-family:${FONT_BODY};">${c.eyebrow}</div>
-          <table role="presentation" width="140" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:18px auto 0;"><tr><td height="2" bgcolor="${C.accent}" style="height:2px;line-height:2px;font-size:0;background-color:${C.accent};background-image:linear-gradient(90deg,transparent,${C.accent},transparent);">&nbsp;</td></tr></table>
+          <div style="color:${C.accentDeep};font-size:11px;text-transform:uppercase;letter-spacing:4px;margin-top:14px;font-weight:700;font-family:${FONT_BODY};">${c.eyebrow}</div>
+          <table role="presentation" width="140" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:18px auto 0;"><tr><td height="3" bgcolor="${C.accent}" style="height:3px;line-height:3px;font-size:0;background-color:${C.accent};background-image:linear-gradient(90deg,transparent,#ffffff 12%,#756d7c 32%,${C.accent} 50%,#756d7c 68%,#ffffff 88%,transparent);box-shadow:inset 0 1px 0 #ffffff,inset 0 -1px 0 #260452;">&nbsp;</td></tr></table>
         </td></tr>
         <tr><td class="px email-card" bgcolor="${C.card}" style="padding:36px 40px 4px;background:${C.card};background-color:${C.card}!important;">
-          <h1 style="font-family:${FONT_BODY};font-size:19px;margin:0 0 14px;color:${C.white};font-weight:600;">${c.greeting(name)}</h1>
+          <h1 style="font-family:${FONT_BODY};font-size:24px;margin:0 0 14px;color:${C.ink};font-weight:650;">${c.greeting(name)}</h1>
           <p style="${pStyle}margin:0 0 16px;">${c.intro(pluginName)}</p>
           <p style="${pStyle}">${c.body}</p>
         </td></tr>
         <tr><td class="px email-card" bgcolor="${C.card}" style="padding:30px 40px 0;background:${C.card};background-color:${C.card}!important;">
           <table role="presentation" class="email-panel" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.panel}" style="background:${C.panel};background-color:${C.panel}!important;border-radius:18px;border:1px solid ${C.border};">
             <tr><td style="padding:26px 26px 12px;">
-              <div style="font-family:${FONT_BODY};font-size:12px;margin:0 0 18px;color:${C.accentLight};text-transform:uppercase;letter-spacing:2.5px;font-weight:700;">${c.summaryTitle}</div>
+              <div style="font-family:${FONT_BODY};font-size:14px;margin:0 0 18px;color:${C.ink};letter-spacing:.5px;font-weight:700;"><span style="color:${C.accent};padding-right:8px;">&#10022;</span>${c.summaryTitle}<span style="color:${C.accent};padding-left:8px;">&#10022;</span></div>
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 ${summaryRow(c.labelName, name)}
                 ${summaryRow(c.labelEmail, `<a href="mailto:${email}" style="color:${C.accentLight};text-decoration:none;">${email}</a>`)}
@@ -168,7 +169,7 @@ function getDownloadEmailHtml(c, { lang, name, email, pluginName, downloadUrl })
         </td></tr>
         <tr><td class="px email-card" align="center" bgcolor="${C.card}" style="padding:34px 40px 10px;background:${C.card};background-color:${C.card}!important;">
           <p style="${pStyle}text-align:center;margin:0 0 20px;">${c.ctaLead}</p>
-          <a href="${downloadUrl}" target="_blank" style="display:inline-block;background-color:${C.accentDeep};background-image:linear-gradient(180deg,${C.accent} 0%,${C.accentDeep} 100%);color:#fff;font-family:${FONT_BODY};font-size:16px;font-weight:700;line-height:20px;text-decoration:none;padding:15px 42px;border-radius:16px;letter-spacing:.5px;box-shadow:0 0 25px rgba(56,129,181,.45);">${c.ctaLabel}</a>
+          <a href="${downloadUrl}" target="_blank" style="display:inline-block;background-color:${C.accent};background-image:linear-gradient(122deg,#c9acff 0%,${C.accent} 18%,${C.accentDeep} 42%,#a36fff 58%,#4b0aab 78%,#260452 100%);color:#fff;font-family:${FONT_BODY};font-size:17px;font-weight:700;line-height:20px;text-decoration:none;padding:15px 42px;border-radius:16px;letter-spacing:.5px;border-top:1px solid #e6d8ff;border-bottom:2px solid #1d033e;box-shadow:0 8px 20px rgba(31,0,70,.3);">${c.ctaLabel}</a>
           <p style="color:${C.zinc500};font-size:11px;line-height:1.6;margin:24px 0 6px;font-family:${FONT_BODY};">${c.fallbackLead}</p>
           <a href="${downloadUrl}" style="color:${C.accentLight};font-size:11px;line-height:1.6;word-break:break-all;font-family:${FONT_BODY};">${downloadUrl}</a>
         </td></tr>
@@ -177,9 +178,9 @@ function getDownloadEmailHtml(c, { lang, name, email, pluginName, downloadUrl })
           <div style="line-height:1.4;">${socialHtml}</div>
         </td></tr>
         <tr><td class="px email-card" align="center" bgcolor="${C.card}" style="padding:26px 40px 40px;background:${C.card};background-color:${C.card}!important;">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1" bgcolor="${C.borderSubtle}" style="height:1px;line-height:1px;font-size:0;background-color:${C.borderSubtle};">&nbsp;</td></tr></table>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="3" bgcolor="${C.borderSubtle}" style="height:3px;line-height:3px;font-size:0;background-color:${C.borderSubtle};background-image:linear-gradient(90deg,transparent,#ffffff 20%,#655e6c 42%,${C.accent} 50%,#655e6c 58%,#ffffff 80%,transparent);">&nbsp;</td></tr></table>
           <p style="color:${C.zinc600};font-size:11px;margin:24px 0 0;font-weight:300;letter-spacing:.4px;font-family:${FONT_BODY};line-height:1.6;">${c.footerAuto}</p>
-          <p style="font-size:14px;margin:14px 0 0;font-family:${FONT_BODY};"><a href="${SITE_URL}" target="_blank" style="color:${C.accentLight};font-weight:600;letter-spacing:1px;text-decoration:none;">dhreian.com</a></p>
+          <p style="font-size:14px;margin:14px 0 0;font-family:${FONT_BODY};"><a href="${SITE_URL}" target="_blank" style="color:${C.accentDeep};font-weight:700;letter-spacing:1px;text-decoration:none;">dhreian.com</a></p>
         </td></tr>
       </table>
     </td></tr>

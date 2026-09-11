@@ -1,17 +1,11 @@
 import {
+  faHeadphones,
+  faMicrophone,
+  faMusic,
   faSliders,
   faWaveSquare,
-  faMusic,
-  faStar,
-  faDrum,
-  faHeadphones,
-  faMicrophoneLines,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-  faSpotify,
-  faApple,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
+import { faApple, faSpotify, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 export const NAV_LINKS = [
   { key: 'beats', href: '/beats', sectionId: 'beats' },
@@ -58,8 +52,8 @@ export const BEATS = [
 ];
 
 export const SERVICES = [
-  { key: 'beatcustom', icon: faDrum, price: '$150 – $500 USD' },
-  { key: 'fullprod', icon: faMicrophoneLines, price: '$200 – $1000 USD' },
+  { key: 'beatcustom', icon: faMusic, price: '$150 – $500 USD' },
+  { key: 'fullprod', icon: faMicrophone, price: '$200 – $1000 USD' },
   { key: 'mixing', icon: faSliders, price: '$50 – $150 USD' },
   { key: 'mastering', icon: faWaveSquare, price: '$30 – $100 USD' },
 ];
@@ -164,7 +158,7 @@ export const TRACKS = [
 
 export const TRACK_TAG_ICONS = {
   prod: faHeadphones,
-  beatmaker: faDrum,
+  beatmaker: faMusic,
   mezcla: faSliders,
   mastering: faWaveSquare,
 };
@@ -181,5 +175,3 @@ export const PLATFORMS = [
   { key: 'apple', icon: faApple, brandColor: '#FA243C', hoverClass: 'hover:text-[#FA243C] hover:border-[#FA243C]', title: 'Apple Music' },
   { key: 'youtube', icon: faYoutube, brandColor: '#FF0000', hoverClass: 'hover:text-[#FF0000] hover:border-[#FF0000]', title: 'YouTube' },
 ];
-
-export { faStar, faMusic };

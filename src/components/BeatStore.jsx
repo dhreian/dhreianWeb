@@ -1,21 +1,16 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faMagnifyingGlass,
-  faFileContract,
-  faBoltLightning,
-  faArrowUpRightFromSquare,
-} from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpFromBracket, faBookOpen, faDownload, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Section, SectionHeading } from './Section';
 import NeonButton from './Button';
 import Card from './Card';
 import Catalog from './Catalog';
 import { useLang } from '../i18n/LanguageContext';
+import GothicIcon from './GothicIcon';
 
 const BEATSTARS_EMBED_URL = null;
 const BEATSTARS_PRO_PAGE = 'https://www.beatstars.com/dhreian';
 
-const STEP_ICONS = [faMagnifyingGlass, faArrowUpRightFromSquare, faFileContract, faBoltLightning];
+const STEP_ICONS = [faMagnifyingGlass, faArrowUpFromBracket, faBookOpen, faDownload];
 
 export default function BeatStore() {
   const { t } = useLang();
@@ -44,8 +39,9 @@ export default function BeatStore() {
                     {String(idx + 1).padStart(2, '0')}
                   </span>
                   <span className="h-px flex-1 bg-purple-500"></span>
-                  <FontAwesomeIcon
+                  <GothicIcon
                     icon={STEP_ICONS[idx]}
+                    size="badge"
                     className="text-purple-700"
                   />
                 </div>
@@ -78,7 +74,7 @@ export default function BeatStore() {
               rel="noopener noreferrer"
               variant="primary"
               size="md"
-              icon={faArrowUpRightFromSquare}
+              icon={faArrowUpFromBracket}
             >
               {t('beatstore.cta')}
             </NeonButton>

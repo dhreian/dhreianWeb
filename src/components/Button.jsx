@@ -1,5 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import GothicIcon from './GothicIcon';
 
 const VARIANTS = {
   primary:
@@ -45,9 +45,9 @@ export default function NeonButton({
     >
       <span>{children}</span>
       {icon && (
-        <FontAwesomeIcon
+        <GothicIcon
           icon={icon}
-          className="w-4 h-4"
+          size="button"
         />
       )}
     </Component>

@@ -1,16 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCircleCheck,
-  faCircleNotch,
-  faDownload,
-  faEnvelope,
-  faUser,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck, faDownload, faEnvelope, faGear, faUser } from '@fortawesome/free-solid-svg-icons';
 import Card from './Card';
 import NeonButton from './Button';
 import { useLang } from '../i18n/LanguageContext';
+import GothicIcon from './GothicIcon';
+import OrnateTitle from './OrnateTitle';
 
 const inputBase =
   'metallic-field w-full rounded-2xl border py-3.5 pl-12 pr-4 text-body-compact text-white placeholder:text-zinc-500 transition-all duration-300 focus:outline-none disabled:cursor-wait disabled:opacity-70';
@@ -140,7 +135,7 @@ export default function PluginDownloadModal({ plugin, onClose }) {
             {status === 'success' ? (
               <div className="flex flex-col items-center py-3 text-center" aria-live="polite">
                 <div className="metallic-purple-control mb-6 grid h-20 w-20 place-items-center rounded-full border animate-contact-success-pop">
-                  <FontAwesomeIcon icon={faCircleCheck} fixedWidth className="text-4xl text-white" />
+                  <GothicIcon icon={faCircleCheck} size="success" className="text-white" />
                 </div>
                 <p className="mb-3 text-label font-medium uppercase tracking-[0.25em] text-purple-700">
                   {plugin.name}
@@ -149,11 +144,11 @@ export default function PluginDownloadModal({ plugin, onClose }) {
                   ref={successHeadingRef}
                   id="plugin-download-title"
                   tabIndex="-1"
-                  className="mb-3 font-display text-card lowercase text-zinc-950 outline-none"
+                  className="mb-3 font-display text-card lowercase tracking-tight text-zinc-950 outline-none"
                 >
-                  {t('plugins.downloadModal.successTitle')}
+                  <OrnateTitle>{t('plugins.downloadModal.successTitle')}</OrnateTitle>
                 </h3>
-                <p className="mb-8 max-w-sm text-body text-zinc-700">
+                <p className="mb-8 max-w-sm text-body text-black">
                   {t('plugins.downloadModal.successBody1')}
                   <span className="font-semibold text-purple-800">{formData.email}</span>
                   {t('plugins.downloadModal.successBody2')}
@@ -165,10 +160,13 @@ export default function PluginDownloadModal({ plugin, onClose }) {
             ) : (
               <>
                 <div className="mb-8 text-center">
-                  <h3 id="plugin-download-title" className="font-display text-card lowercase text-zinc-950">
-                    {t('plugins.downloadModal.title')}
+                  <h3
+                    id="plugin-download-title"
+                    className="font-display text-card lowercase tracking-tight text-zinc-950"
+                  >
+                    <OrnateTitle>{t('plugins.downloadModal.title')}</OrnateTitle>
                   </h3>
-                  <p className="mx-auto mt-4 max-w-md text-body text-zinc-700">
+                  <p className="mx-auto mt-4 max-w-md text-body text-black">
                     {t('plugins.downloadModal.description1')}
                     <span className="font-semibold text-purple-800">{plugin.name}</span>
                     {t('plugins.downloadModal.description2')}
@@ -233,7 +231,7 @@ export default function PluginDownloadModal({ plugin, onClose }) {
                     </p>
                   )}
 
-                  <p className="text-center text-meta text-zinc-600">
+                  <p className="text-center text-meta text-black">
                     {t('plugins.downloadModal.privacy')}
                   </p>
 
@@ -256,7 +254,7 @@ export default function PluginDownloadModal({ plugin, onClose }) {
                           }`}
                         >
                           <span>{t('plugins.downloadModal.submit')}</span>
-                          <FontAwesomeIcon icon={faDownload} fixedWidth className="w-4 h-4" />
+                          <GothicIcon icon={faDownload} size="button" />
                         </span>
                         <span
                           className={`col-start-1 row-start-1 inline-flex items-center justify-center gap-3 transition-all duration-300 ease-out ${
@@ -267,7 +265,7 @@ export default function PluginDownloadModal({ plugin, onClose }) {
                           aria-hidden={!isSending}
                         >
                           <span>{t('plugins.downloadModal.sending')}</span>
-                          <FontAwesomeIcon icon={faCircleNotch} fixedWidth className="w-4 h-4 animate-spin" />
+                          <GothicIcon icon={faGear} size="button" className="animate-spin" />
                         </span>
                       </span>
                     </NeonButton>
@@ -285,14 +283,15 @@ export default function PluginDownloadModal({ plugin, onClose }) {
 
 function ModalInput({ label, icon, children }) {
   return (
-    <label className="group block space-y-2">
-      <span className="block text-label font-medium uppercase tracking-[0.2em] text-purple-700">
+    <label className="group/field relative block space-y-2">
+      <span className="block text-label font-medium uppercase tracking-[0.2em] text-black">
         {label}
       </span>
       <span className="relative block">
-        <FontAwesomeIcon
+        <GothicIcon
           icon={icon}
-          className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2 text-zinc-500 transition-colors duration-300 group-focus-within:text-purple-400"
+          size="control"
+          className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2 text-zinc-500 transition-colors duration-300 group-hover/field:text-purple-400 group-focus-within/field:text-purple-400"
         />
         {children}
       </span>
