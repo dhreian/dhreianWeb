@@ -12,19 +12,18 @@ export default function OrnateTitle({ children, tone = 'purple', className = '' 
         <defs>
           <linearGradient id={metalGradientId} x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="13%" stopColor="#bcb6c2" />
-            <stop offset="31%" stopColor="#514a57" />
-            <stop offset="45%" stopColor="#f8f5fa" />
-            <stop offset="58%" stopColor="#77707e" />
-            <stop offset="72%" stopColor="#ded9e2" />
-            <stop offset="86%" stopColor="#3d3743" />
-            <stop offset="100%" stopColor="#f2eef5" />
+            <stop offset="20%" stopColor="#c9c5cf" />
+            <stop offset="38%" stopColor="#faf9fc" />
+            <stop offset="59%" stopColor="#afa9b6" />
+            <stop offset="76%" stopColor="#ece9ef" />
+            <stop offset="89%" stopColor="#c5bfcb" />
+            <stop offset="100%" stopColor="#ffffff" />
           </linearGradient>
           <linearGradient id={edgeGradientId} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="36%" stopColor="#6f6876" />
-            <stop offset="62%" stopColor="#2b0a42" />
-            <stop offset="100%" stopColor="#0d0612" />
+            <stop offset="38%" stopColor="#b696ff" />
+            <stop offset="64%" stopColor="#5b5263" />
+            <stop offset="100%" stopColor="#211a27" />
           </linearGradient>
         </defs>
       </svg>

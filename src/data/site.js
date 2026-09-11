@@ -7,6 +7,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faApple, faSpotify, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
+// Temporary feature flag: keep the beats content and implementation available
+// while removing the section from the public interface.
+export const SHOW_BEATS = false;
+
 export const NAV_LINKS = [
   { key: 'beats', href: '/beats', sectionId: 'beats' },
   { key: 'services', href: '/servicios', sectionId: 'servicios' },

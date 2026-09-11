@@ -3,7 +3,7 @@ import {
   faGlobe,
 } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faSpotify, faTiktok, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { NAV_LINKS, SOCIAL_LINKS } from '../data/site';
+import { NAV_LINKS, SHOW_BEATS, SOCIAL_LINKS } from '../data/site';
 import { useLang } from '../i18n/LanguageContext';
 import GothicIcon from './GothicIcon';
 
@@ -43,13 +43,13 @@ export default function Navbar() {
     >
       <a
         href="/"
-        className="metallic-purple-text font-display lowercase text-card-compact tracking-tight shrink-0"
+        className="navbar-brand-flat font-display lowercase text-card-compact tracking-tight shrink-0"
       >
         dhreian
       </a>
 
       <div className="hidden md:contents">
-        {NAV_LINKS.map(({ key, href }) => (
+        {NAV_LINKS.filter(({ key }) => SHOW_BEATS || key !== 'beats').map(({ key, href }) => (
           <a
             key={key}
             href={href}

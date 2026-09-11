@@ -7,7 +7,7 @@ import Plugins from './components/Plugins';
 import WebTools from './components/WebTools';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import { SECTION_ROUTES } from './data/site';
+import { SECTION_ROUTES, SHOW_BEATS } from './data/site';
 
 const normalizePath = (pathname) => {
   if (!pathname || pathname === '/') return '/';
@@ -234,7 +234,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <BeatStore />
+        {SHOW_BEATS && <BeatStore />}
         <Services />
         <Plugins />
         <WebTools />

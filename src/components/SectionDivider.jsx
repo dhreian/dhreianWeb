@@ -59,6 +59,7 @@ function DividerFiligree({ mirrored = false }) {
 function GothicStar() {
   const id = useId().replace(/:/g, '');
   const purpleGradientId = `divider-star-purple-${id}`;
+  const purpleEdgeGradientId = `divider-star-edge-${id}`;
   const silverGradientId = `divider-star-silver-${id}`;
 
   return (
@@ -70,27 +71,35 @@ function GothicStar() {
     >
       <defs>
         <linearGradient id={purpleGradientId} x1="12" y1="7" x2="58" y2="66" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#fffaff" />
-          <stop offset="12%" stopColor="#d5bcff" />
-          <stop offset="34%" stopColor="#7d38ee" />
-          <stop offset="50%" stopColor="#2b045b" />
-          <stop offset="57%" stopColor="#b786ff" />
-          <stop offset="76%" stopColor="#5d18bb" />
-          <stop offset="100%" stopColor="#21023f" />
+          <stop offset="0%" stopColor="#b995ff" />
+          <stop offset="16%" stopColor="#6f24f5" />
+          <stop offset="34%" stopColor="#350677" />
+          <stop offset="48%" stopColor="#a36fff" />
+          <stop offset="64%" stopColor="#4b0aab" />
+          <stop offset="80%" stopColor="#8a42ff" />
+          <stop offset="100%" stopColor="#260452" />
+        </linearGradient>
+        <linearGradient id={purpleEdgeGradientId} x1="36" y1="2" x2="36" y2="70" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="38%" stopColor="#b696ff" />
+          <stop offset="64%" stopColor="#5b168f" />
+          <stop offset="100%" stopColor="#21003f" />
         </linearGradient>
         <linearGradient id={silverGradientId} x1="8" y1="5" x2="61" y2="68" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="24%" stopColor="#77707e" />
-          <stop offset="46%" stopColor="#f5f2f7" />
-          <stop offset="70%" stopColor="#4c4553" />
-          <stop offset="100%" stopColor="#d9d3de" />
+          <stop offset="20%" stopColor="#c9c5cf" />
+          <stop offset="38%" stopColor="#faf9fc" />
+          <stop offset="59%" stopColor="#afa9b6" />
+          <stop offset="76%" stopColor="#ece9ef" />
+          <stop offset="89%" stopColor="#c5bfcb" />
+          <stop offset="100%" stopColor="#ffffff" />
         </linearGradient>
       </defs>
       <path
         className="section-divider-star-outer"
         d={GOTHIC_STAR_PATH}
         fill={`url(#${purpleGradientId})`}
-        stroke={`url(#${silverGradientId})`}
+        stroke={`url(#${purpleEdgeGradientId})`}
       />
       <path
         className="section-divider-star-inner"
@@ -102,6 +111,7 @@ function GothicStar() {
         className="section-divider-star-core"
         d="M36 24 L40.2 31.8 L48 36 L40.2 40.2 L36 48 L31.8 40.2 L24 36 L31.8 31.8 Z"
         fill={`url(#${purpleGradientId})`}
+        stroke={`url(#${purpleEdgeGradientId})`}
       />
       <circle cx="36" cy="36" r="2.35" fill="#f7f1ff" />
     </svg>
