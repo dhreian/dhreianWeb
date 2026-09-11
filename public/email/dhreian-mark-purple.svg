@@ -3,5 +3,5 @@
   <mask id="dhreian-mark" mask-type="alpha">
     <image width="512" height="512" href="https://dhreian.com/icons/web-app-monochrome-512.png" />
   </mask>
-  <rect width="512" height="512" fill="#681cff" mask="url(#dhreian-mark)" />
+  <rect width="512" height="512" fill="#7856ff" mask="url(#dhreian-mark)" />
 </svg>

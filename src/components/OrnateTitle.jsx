@@ -21,7 +21,7 @@ export default function OrnateTitle({ children, tone = 'purple', className = '' 
           </linearGradient>
           <linearGradient id={edgeGradientId} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="38%" stopColor="#b696ff" />
+            <stop offset="38%" stopColor="#7856ff" />
             <stop offset="64%" stopColor="#5b5263" />
             <stop offset="100%" stopColor="#211a27" />
           </linearGradient>

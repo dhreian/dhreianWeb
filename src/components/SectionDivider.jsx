@@ -71,19 +71,19 @@ function GothicStar() {
     >
       <defs>
         <linearGradient id={purpleGradientId} x1="12" y1="7" x2="58" y2="66" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#b995ff" />
-          <stop offset="16%" stopColor="#6f24f5" />
-          <stop offset="34%" stopColor="#350677" />
-          <stop offset="48%" stopColor="#a36fff" />
-          <stop offset="64%" stopColor="#4b0aab" />
-          <stop offset="80%" stopColor="#8a42ff" />
-          <stop offset="100%" stopColor="#260452" />
+          <stop offset="0%" stopColor="#7856ff" />
+          <stop offset="16%" stopColor="#7856ff" />
+          <stop offset="34%" stopColor="#7856ff" />
+          <stop offset="48%" stopColor="#7856ff" />
+          <stop offset="64%" stopColor="#7856ff" />
+          <stop offset="80%" stopColor="#7856ff" />
+          <stop offset="100%" stopColor="#7856ff" />
         </linearGradient>
         <linearGradient id={purpleEdgeGradientId} x1="36" y1="2" x2="36" y2="70" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="38%" stopColor="#b696ff" />
-          <stop offset="64%" stopColor="#5b168f" />
-          <stop offset="100%" stopColor="#21003f" />
+          <stop offset="38%" stopColor="#7856ff" />
+          <stop offset="64%" stopColor="#7856ff" />
+          <stop offset="100%" stopColor="#7856ff" />
         </linearGradient>
         <linearGradient id={silverGradientId} x1="8" y1="5" x2="61" y2="68" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="#ffffff" />
@@ -105,7 +105,7 @@ function GothicStar() {
         className="section-divider-star-inner"
         d={INNER_STAR_PATH}
         fill={`url(#${silverGradientId})`}
-        stroke="#2b075d"
+        stroke="#7856ff"
       />
       <path
         className="section-divider-star-core"
@@ -113,7 +113,7 @@ function GothicStar() {
         fill={`url(#${purpleGradientId})`}
         stroke={`url(#${purpleEdgeGradientId})`}
       />
-      <circle cx="36" cy="36" r="2.35" fill="#f7f1ff" />
+      <circle cx="36" cy="36" r="2.35" fill="#7856ff" />
     </svg>
   );
 }

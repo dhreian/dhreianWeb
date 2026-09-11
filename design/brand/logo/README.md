@@ -4,7 +4,7 @@ This folder contains the approved logo sources, reusable exports and build
 scripts. The web-icon derivatives are published through matching files under
 `public/`.
 
-The current metallic palette is anchored to the brand color `#681cff`; lighter
+The current metallic palette is anchored to the brand color `#7856ff`; lighter
 specular highlights and darker shadows are derived from that same hue.
 
 ## Structure

@@ -25,7 +25,7 @@ const PLAYING_CARD_FACES = [
 function PlayingCardIndex({ face, position = 'top' }) {
   const { rank, SuitIcon, tone } = face;
   const suitGradientId = `playing-card-suit-${tone}-${useId().replace(/:/g, '')}`;
-  const suitEdge = tone === 'purple' ? '#b696ff' : '#77717e';
+  const suitEdge = tone === 'purple' ? '#7856ff' : '#77717e';
 
   return (
     <span
@@ -37,13 +37,13 @@ function PlayingCardIndex({ face, position = 'top' }) {
           <linearGradient id={suitGradientId} x1="0" y1="0" x2="1" y2="1">
             {tone === 'purple' ? (
               <>
-                <stop offset="0%" stopColor="#b995ff" />
-                <stop offset="16%" stopColor="#6f24f5" />
-                <stop offset="34%" stopColor="#350677" />
-                <stop offset="48%" stopColor="#a36fff" />
-                <stop offset="64%" stopColor="#4b0aab" />
-                <stop offset="80%" stopColor="#8a42ff" />
-                <stop offset="100%" stopColor="#260452" />
+                <stop offset="0%" stopColor="#7856ff" />
+                <stop offset="16%" stopColor="#7856ff" />
+                <stop offset="34%" stopColor="#7856ff" />
+                <stop offset="48%" stopColor="#7856ff" />
+                <stop offset="64%" stopColor="#7856ff" />
+                <stop offset="80%" stopColor="#7856ff" />
+                <stop offset="100%" stopColor="#7856ff" />
               </>
             ) : (
               <>
