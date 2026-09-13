@@ -17,7 +17,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const SITE_URL = 'https://dhreian.com';
 const CONTACT_EMAIL = 'contact@dhreian.com';
 const FROM_EMAIL = `dhreian plugins <${CONTACT_EMAIL}>`;
-const LOGO_URL = `${SITE_URL}/email/dhreian-mark-purple.svg`;
+const LOGO_URL = `${SITE_URL}/icons/dhreian-logo-transparent-512.png`;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const C = {
@@ -53,8 +53,8 @@ const COPY = {
       `Tu enlace para descargar ${pluginName} v${version} ya está disponible.`,
     eyebrow: 'artista • productor • desarrollador',
     greeting: (name) => `Hola, ${name}:`,
-    intro: (pluginName, version) =>
-      `Gracias por descargar <strong style="color:${C.accent};font-weight:600;">${pluginName} v${version}</strong>.`,
+    intro: (pluginName) =>
+      `Gracias por descargar <strong style="color:${C.accent};font-weight:600;">${pluginName}</strong>.`,
     body:
       'Preparé el enlace de la versión más reciente para que puedas instalarla y usarla en tus sesiones.',
     summaryTitle: 'Resumen de tu descarga',
@@ -81,8 +81,8 @@ const COPY = {
       `Your link to download ${pluginName} v${version} is ready.`,
     eyebrow: 'artist • producer • developer',
     greeting: (name) => `Hi, ${name}:`,
-    intro: (pluginName, version) =>
-      `Thanks for downloading <strong style="color:${C.accent};font-weight:600;">${pluginName} v${version}</strong>.`,
+    intro: (pluginName) =>
+      `Thanks for downloading <strong style="color:${C.accent};font-weight:600;">${pluginName}</strong>.`,
     body: 'Your latest-version link is ready so you can install it and start using it in your sessions.',
     summaryTitle: 'Your download summary',
     labelName: 'Name',
@@ -115,7 +115,7 @@ function getDownloadEmailHtml(c, { lang, name, email, pluginName, version, downl
     <tr><td style="${valueStyle}">${value}</td></tr>`;
   const socialHtml = SOCIAL.map(
     (social) =>
-      `<a href="${social.url}" target="_blank" style="color:${C.accent};font-family:${FONT_BODY};font-size:12px;font-weight:600;letter-spacing:0.5px;text-decoration:none;">${social.label}</a>`
+      `<a href="${social.url}" target="_blank" style="color:${C.accent};font-family:${FONT_BODY};font-size:12px;font-weight:600;letter-spacing:0.5px;text-decoration:underline;">${social.label}</a>`
   ).join(`<span style="color:${C.muted};padding:0 9px;">&middot;</span>`);
 
   return `<!doctype html>
@@ -150,7 +150,7 @@ function getDownloadEmailHtml(c, { lang, name, email, pluginName, version, downl
         </td></tr>
         <tr><td class="px email-card" bgcolor="${C.bg}" style="padding:32px 40px 4px;background:${C.bg};background-color:${C.bg}!important;">
           <h1 style="font-family:${FONT_BODY};font-size:24px;margin:0 0 14px;color:${C.white};font-weight:600;">${c.greeting(name)}</h1>
-          <p style="${pStyle}margin:0 0 16px;">${c.intro(pluginName, version)}</p>
+          <p style="${pStyle}margin:0 0 16px;">${c.intro(pluginName)}</p>
           <p style="${pStyle}">${c.body}</p>
         </td></tr>
         <tr><td class="px email-card" align="center" bgcolor="${C.bg}" style="padding:22px 40px 8px;background:${C.bg};background-color:${C.bg}!important;">
@@ -178,7 +178,7 @@ function getDownloadEmailHtml(c, { lang, name, email, pluginName, version, downl
         </td></tr>
         <tr><td class="px email-card" align="center" bgcolor="${C.bg}" style="padding:26px 40px 32px;background:${C.bg};background-color:${C.bg}!important;border-top:1px solid ${C.border};">
           <p style="color:${C.muted};font-size:11px;margin:0;font-weight:400;letter-spacing:.2px;font-family:${FONT_BODY};line-height:1.6;">${c.footerAuto}</p>
-          <p style="font-size:14px;margin:14px 0 0;font-family:${FONT_BODY};"><a href="${SITE_URL}" target="_blank" style="color:${C.accent};font-weight:700;letter-spacing:.6px;text-decoration:none;">dhreian.com</a></p>
+          <p style="font-size:14px;margin:14px 0 0;font-family:${FONT_BODY};"><a href="${SITE_URL}" target="_blank" style="color:${C.accent};font-weight:700;letter-spacing:.6px;text-decoration:underline;">dhreian.com</a></p>
         </td></tr>
       </table>
     </td></tr>

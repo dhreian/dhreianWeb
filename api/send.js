@@ -40,7 +40,7 @@ const FONT_LOGO = "'Cormorant Infant', Georgia, serif";
 const FONT_BODY = "'Cormorant Infant', Georgia, serif";
 
 const SITE_URL = 'https://dhreian.com';
-const LOGO_URL = `${SITE_URL}/email/dhreian-mark-purple.svg`;
+const LOGO_URL = `${SITE_URL}/icons/dhreian-logo-transparent-512.png`;
 const CONTACT_EMAIL = 'contact@dhreian.com';
 const FROM_EMAIL = `dhreian contact <${CONTACT_EMAIL}>`;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -117,7 +117,7 @@ function getEmailHtml(c, { name, email, subject, subjectLower, message }) {
 
   const socialHtml = SOCIAL.map(
     (s) =>
-      `<a href="${s.url}" target="_blank" style="color:${C.purpleDark};font-family:${FONT_BODY};font-size:14px;font-weight:700;letter-spacing:0.3px;text-decoration:none;">${s.label}</a>`
+      `<a href="${s.url}" target="_blank" style="color:${C.purpleDark};font-family:${FONT_BODY};font-size:14px;font-weight:700;letter-spacing:0.3px;text-decoration:underline;">${s.label}</a>`
   ).join(`<span style="color:${C.purple};padding:0 8px;">&bull;</span>`);
 
   return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -235,7 +235,7 @@ function getEmailHtml(c, { name, email, subject, subjectLower, message }) {
               </table>
               <p style="color:${C.muted};font-size:12px;margin:20px 0 0;font-weight:400;letter-spacing:0.2px;font-family:${FONT_BODY};line-height:1.5;">${c.footerAuto}</p>
               <p style="font-size:14px;margin:14px 0 0;font-family:${FONT_BODY};">
-                <a href="${SITE_URL}" target="_blank" style="color:${C.purpleDark};font-weight:700;letter-spacing:0.6px;">dhreian.com</a>
+                <a href="${SITE_URL}" target="_blank" style="color:${C.purpleDark};font-weight:700;letter-spacing:0.6px;text-decoration:underline;">dhreian.com</a>
               </p>
             </td>
           </tr>
