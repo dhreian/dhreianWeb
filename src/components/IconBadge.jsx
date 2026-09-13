@@ -3,7 +3,7 @@ import GothicIcon from './GothicIcon';
 
 const VARIANTS = {
   purple: 'metallic-purple-badge border',
-  zinc: 'metallic-control text-zinc-700 border group-hover:border-purple-500 group-hover:text-purple-500',
+  zinc: 'metallic-control text-zinc-300 border group-hover:border-purple-500 group-hover:text-purple-300',
   glow: 'metallic-purple-badge border',
 };
 

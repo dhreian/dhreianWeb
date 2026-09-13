@@ -42,13 +42,13 @@ export default function BeatStore() {
                   <GothicIcon
                     icon={STEP_ICONS[idx]}
                     size="badge"
-                    className="text-purple-700"
+                    className="text-purple-400"
                   />
                 </div>
-                <h3 className="font-body font-medium lowercase text-card-compact text-purple-950 mb-1">
+                <h3 className="font-title lowercase text-card-compact text-white mb-1">
                   {step.title}
                 </h3>
-                <p className="text-body-compact text-black">{step.description}</p>
+                <p className="text-body-compact text-zinc-300">{step.description}</p>
               </Card>
             ))}
           </div>

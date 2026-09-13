@@ -17,7 +17,7 @@ const SOCIAL_ICONS = {
 
 const SOCIAL_HOVER = {
   instagram: 'hover:text-[#E1306C]',
-  x: 'hover:text-zinc-950',
+  x: 'hover:text-white',
   tiktok: 'hover:text-[#00F2FE]',
   spotify: 'hover:text-[#1DB954]',
   youtube: 'hover:text-[#FF0000]',
@@ -35,15 +35,15 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`liquid-glass-card fixed top-6 left-1/2 -translate-x-1/2 z-50 border rounded-2xl flex items-center [--nav-space:clamp(0.5rem,1.2vw,1rem)] gap-[var(--nav-space)] transition-all duration-500 w-fit max-w-[95vw] px-[var(--nav-space)] py-3 ${
+      className={`site-navbar liquid-glass-card fixed top-6 left-1/2 -translate-x-1/2 z-50 rounded-2xl flex items-center [--nav-space:clamp(0.5rem,1.2vw,1rem)] gap-[var(--nav-space)] transition-all duration-500 w-fit max-w-[95vw] px-[var(--nav-space)] py-3 ${
         scrolled
-          ? 'liquid-glass-nav--scrolled border-purple-500'
-          : 'border-zinc-300'
+          ? 'liquid-glass-nav--scrolled'
+          : ''
       }`}
     >
       <a
         href="/"
-        className="navbar-brand-flat font-display lowercase text-card-compact tracking-tight shrink-0"
+        className="navbar-brand-flat font-title lowercase text-card-compact tracking-tight shrink-0"
       >
         dhreian
       </a>
@@ -53,7 +53,7 @@ export default function Navbar() {
           <a
             key={key}
             href={href}
-            className="relative font-display text-nav lowercase tracking-wide text-black hover:text-purple-900 transition-colors duration-300 group whitespace-nowrap"
+            className="relative font-title text-card-compact lowercase tracking-wide text-white hover:text-purple-300 transition-colors duration-300 group whitespace-nowrap"
           >
             {t(`nav.${key}`)}
             <span className="absolute -bottom-1 left-0 h-px w-0 bg-purple-500 transition-all duration-300 group-hover:w-full"></span>
@@ -63,7 +63,7 @@ export default function Navbar() {
 
       <span
         aria-hidden="true"
-        className="hidden h-5 w-px shrink-0 bg-black md:block"
+        className="hidden h-5 w-px shrink-0 bg-zinc-700 md:block"
       />
 
       <div className="contents">
@@ -77,7 +77,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className={`shrink-0 text-black transition-colors duration-300 ${SOCIAL_HOVER[platform] || 'hover:text-purple-800'}`}
+              className={`shrink-0 text-zinc-200 transition-colors duration-300 ${SOCIAL_HOVER[platform] || 'hover:text-purple-300'}`}
             >
               <GothicIcon icon={icon} size="navbar" />
             </a>
@@ -89,7 +89,7 @@ export default function Navbar() {
         type="button"
         onClick={toggleLang}
         aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a español'}
-        className="metallic-purple-control liquid-glass-button flex shrink-0 cursor-pointer items-center gap-1.5 rounded-2xl border px-3 py-1.5 text-white transition-all duration-300"
+        className="language-toggle-button metallic-purple-control liquid-glass-button flex shrink-0 cursor-pointer items-center gap-1.5 rounded-2xl border px-3 py-1.5 text-white transition-all duration-300"
       >
         <span className="font-body text-meta font-semibold tracking-wider">
           {lang === 'es' ? 'EN' : 'ES'}

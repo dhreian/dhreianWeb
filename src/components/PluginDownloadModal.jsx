@@ -137,20 +137,20 @@ export default function PluginDownloadModal({ plugin, onClose }) {
                 <div className="metallic-purple-control mb-6 grid h-20 w-20 place-items-center rounded-full border animate-contact-success-pop">
                   <GothicIcon icon={faCircleCheck} size="success" className="text-white" />
                 </div>
-                <p className="mb-3 text-label font-medium uppercase tracking-[0.25em] text-purple-700">
+                <p className="mb-3 text-label font-medium uppercase tracking-[0.25em] text-purple-300">
                   {plugin.name}
                 </p>
                 <h3
                   ref={successHeadingRef}
                   id="plugin-download-title"
                   tabIndex="-1"
-                  className="mb-3 font-display text-card lowercase tracking-tight text-zinc-950 outline-none"
+                  className="plugin-download-heading mb-3 font-title lowercase tracking-tight outline-none"
                 >
                   <OrnateTitle>{t('plugins.downloadModal.successTitle')}</OrnateTitle>
                 </h3>
-                <p className="mb-8 max-w-sm text-body text-black">
+                <p className="mb-8 max-w-sm text-body text-zinc-300">
                   {t('plugins.downloadModal.successBody1')}
-                  <span className="font-semibold text-purple-800">{formData.email}</span>
+                  <span className="font-semibold text-purple-300">{formData.email}</span>
                   {t('plugins.downloadModal.successBody2')}
                 </p>
                 <NeonButton as="button" type="button" variant="glass" size="sm" onClick={onClose}>
@@ -162,13 +162,13 @@ export default function PluginDownloadModal({ plugin, onClose }) {
                 <div className="mb-8 text-center">
                   <h3
                     id="plugin-download-title"
-                    className="font-display text-card lowercase tracking-tight text-zinc-950"
+                    className="plugin-download-heading font-title lowercase tracking-tight"
                   >
                     <OrnateTitle>{t('plugins.downloadModal.title')}</OrnateTitle>
                   </h3>
-                  <p className="mx-auto mt-4 max-w-md text-body text-black">
+                  <p className="mx-auto mt-4 max-w-md text-body text-zinc-300">
                     {t('plugins.downloadModal.description1')}
-                    <span className="font-semibold text-purple-800">{plugin.name}</span>
+                    <span className="font-semibold text-purple-300">{plugin.name}</span>
                     {t('plugins.downloadModal.description2')}
                   </p>
                 </div>
@@ -231,7 +231,7 @@ export default function PluginDownloadModal({ plugin, onClose }) {
                     </p>
                   )}
 
-                  <p className="text-center text-meta text-black">
+                  <p className="text-center text-meta text-zinc-400">
                     {t('plugins.downloadModal.privacy')}
                   </p>
 
@@ -284,7 +284,7 @@ export default function PluginDownloadModal({ plugin, onClose }) {
 function ModalInput({ label, icon, children }) {
   return (
     <label className="group/field relative block space-y-2">
-      <span className="block text-label font-medium uppercase tracking-[0.2em] text-black">
+      <span className="block text-label font-medium uppercase tracking-[0.2em] text-zinc-200">
         {label}
       </span>
       <span className="relative block">

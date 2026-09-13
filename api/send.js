@@ -22,9 +22,9 @@ function normalizeEmailHeader(str = '') {
 }
 
 const C = {
-  purple: '#681cff',
-  purpleDark: '#4b0aab',
-  purpleDeep: '#32106f',
+  purple: '#874dfa',
+  purpleDark: '#874dfa',
+  purpleDeep: '#874dfa',
   bg: '#f7f5fb',
   card: '#ffffff',
   panel: '#f1edff',

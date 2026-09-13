@@ -74,6 +74,9 @@ export const PLUGINS = [
     url: null,
     downloadByEmail: true,
     comingSoon: false,
+    versions: [
+      { key: 'v1', version: '1.0' },
+    ],
   },
 ];
 
@@ -84,6 +87,9 @@ export const WEB_TOOLS = [
     image: '/tools/aurolab.png',
     type: 'webApp',
     url: 'https://aurolab.dhreian.com',
+    versions: [
+      { key: 'v1', version: '1.0' },
+    ],
   },
   {
     key: 'dhrelink',
@@ -94,6 +100,9 @@ export const WEB_TOOLS = [
     free: true,
     downloadByEmail: true,
     url: null,
+    versions: [
+      { key: 'v1', version: '1.0' },
+    ],
   },
 ];
 

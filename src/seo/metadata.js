@@ -25,7 +25,7 @@ const WEBSITE_ID = `${SITE_URL}/#website`;
 const PAGE_METADATA = {
   es: {
     '/': {
-      title: 'dhreian | Artista · Productor · Desarrollador',
+      title: 'dhreian | artista · productor · desarrollador',
       name: 'dhreian — artista, productor musical y desarrollador',
       description:
         'dhreian — artista y productor musical. Beats exclusivos, producción full, mezcla, masterización profesional y plugins de audio para artistas independientes.',
@@ -35,7 +35,7 @@ const PAGE_METADATA = {
       locale: 'es_CL',
     },
     '/beats': {
-      title: 'Beats de Trap Exclusivos en BeatStars | dhreian',
+      title: 'beats de trap exclusivos en beatstars | dhreian',
       name: 'Beats de trap exclusivos de dhreian',
       description:
         'Compra beats de trap exclusivos de dhreian en BeatStars. Escucha previews, elige tu licencia MP3, WAV o Trackouts y descarga al instante.',
@@ -45,7 +45,7 @@ const PAGE_METADATA = {
       locale: 'es_CL',
     },
     '/servicios': {
-      title: 'Producción Musical, Mezcla y Mastering | dhreian',
+      title: 'producción musical, mezcla y mastering | dhreian',
       name: 'Servicios de producción musical de dhreian',
       description:
         'Servicios de producción musical: beat custom, producción full, mezcla vocal e instrumental y masterización profesional para artistas.',
@@ -55,7 +55,7 @@ const PAGE_METADATA = {
       locale: 'es_CL',
     },
     '/plugins': {
-      title: 'Plugins de Audio VST3 Gratis para Windows | dhreian',
+      title: 'plugins de audio vst3 gratis para windows | dhreian',
       name: 'Plugins de audio desarrollados por dhreian',
       description:
         'Descarga dhreVerb, plugin de reverb VST3 gratis para Windows desarrollado por dhreian: ligero en CPU, directo y con carácter.',
@@ -65,7 +65,7 @@ const PAGE_METADATA = {
       locale: 'es_CL',
     },
     '/herramientas': {
-      title: 'Herramientas de Audio para Productores y Streaming | dhreian',
+      title: 'herramientas de audio para productores y streaming | dhreian',
       name: 'Herramientas de audio para productores de dhreian',
       description:
         'Usa auroLab para tareas de producción y descarga dhreLink gratis para enviar audio procesado desde tu DAW a OBS Studio en Windows.',
@@ -75,7 +75,7 @@ const PAGE_METADATA = {
       locale: 'es_CL',
     },
     '/contacto': {
-      title: 'Contacto | dhreian, Artista y Productor Musical',
+      title: 'contacto | dhreian, artista y productor musical',
       name: 'Contacto con dhreian',
       description:
         'Contacta a dhreian para cotizar beats custom, producción musical, mezcla, mastering, plugins o colaboraciones.',
@@ -87,7 +87,7 @@ const PAGE_METADATA = {
   },
   en: {
     '/': {
-      title: 'dhreian | Artist · Producer · Developer',
+      title: 'dhreian | artist · producer · developer',
       name: 'dhreian — artist, music producer and developer',
       description:
         'dhreian — artist and music producer. Exclusive beats, full production, professional mixing, mastering and audio plugins for independent artists.',
@@ -97,7 +97,7 @@ const PAGE_METADATA = {
       locale: 'en_US',
     },
     '/beats': {
-      title: 'Exclusive Trap Beats on BeatStars | dhreian',
+      title: 'exclusive trap beats on beatstars | dhreian',
       name: 'Exclusive trap beats by dhreian',
       description:
         'Buy exclusive trap beats by dhreian on BeatStars. Listen to previews, choose an MP3, WAV or Trackouts license and download instantly.',
@@ -107,7 +107,7 @@ const PAGE_METADATA = {
       locale: 'en_US',
     },
     '/servicios': {
-      title: 'Music Production, Mixing & Mastering | dhreian',
+      title: 'music production, mixing & mastering | dhreian',
       name: 'Music production services by dhreian',
       description:
         'Music production services for artists: custom beats, full production, vocal and instrumental mixing, and professional mastering.',
@@ -117,7 +117,7 @@ const PAGE_METADATA = {
       locale: 'en_US',
     },
     '/plugins': {
-      title: 'Free VST3 Audio Plugins for Windows | dhreian',
+      title: 'free vst3 audio plugins for windows | dhreian',
       name: 'Audio plugins developed by dhreian',
       description:
         'Download dhreVerb, a free VST3 reverb plugin for Windows by dhreian: light on CPU, straightforward and full of character.',
@@ -127,7 +127,7 @@ const PAGE_METADATA = {
       locale: 'en_US',
     },
     '/herramientas': {
-      title: 'Audio Tools for Music Production and Streaming | dhreian',
+      title: 'audio tools for music production and streaming | dhreian',
       name: 'Audio tools for music producers by dhreian',
       description:
         'Use auroLab for production tasks and download dhreLink free to send processed audio from your DAW to OBS Studio on Windows.',
@@ -137,7 +137,7 @@ const PAGE_METADATA = {
       locale: 'en_US',
     },
     '/contacto': {
-      title: 'Contact | dhreian, Artist & Music Producer',
+      title: 'contact | dhreian, artist & music producer',
       name: 'Contact dhreian',
       description:
         'Contact dhreian to request custom beats, music production, mixing, mastering, plugins or collaborations.',

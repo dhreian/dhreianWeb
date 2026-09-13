@@ -48,7 +48,7 @@ export function SectionHeading({
           <span className="section-eyebrow-spines section-eyebrow-spines--right" aria-hidden="true"></span>
         </div>
       )}
-      <h2 className="font-display lowercase text-section tracking-tight">
+      <h2 className="font-title lowercase text-section tracking-tight">
         {icon && (
           <GothicIcon
             icon={icon}

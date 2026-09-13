@@ -89,7 +89,7 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
           />
         ) : (
           <div className="grid h-full w-full place-items-center bg-zinc-900">
-            <GothicIcon icon={faMusic} size="empty" className="text-zinc-700" />
+            <GothicIcon icon={faMusic} size="empty" className="text-zinc-600" />
           </div>
         )}
 
@@ -173,7 +173,7 @@ export default function BeatCard({ beat, isActive, onPlay, onPause }) {
       </div>
 
       <div className="p-4 flex flex-col flex-1 justify-between gap-3">
-        <h3 className="font-display lowercase text-card-compact text-zinc-950 group-hover:text-purple-800 transition-colors truncate pb-1">
+        <h3 className="font-title lowercase text-card-compact text-white group-hover:text-purple-300 transition-colors truncate pb-1">
           {beat.title}
         </h3>
 

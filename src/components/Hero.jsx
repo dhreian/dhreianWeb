@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useId, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import {
   faChevronLeft,
   faChevronRight,
@@ -12,8 +12,6 @@ import SectionDivider from './SectionDivider';
 
 // Keep the hero logo on the public asset path so the prerendered HTML and the
 // hydrated client use the same URL in production.
-const metallicLogo = '/icons/dhreian-logo-transparent-512.png';
-
 const PLAYING_CARD_FACES = [
   { rank: 'A', SuitIcon: GiSpades, tone: 'ink' },
   { rank: 'K', SuitIcon: GiHearts, tone: 'purple' },
@@ -24,48 +22,17 @@ const PLAYING_CARD_FACES = [
 
 function PlayingCardIndex({ face, position = 'top' }) {
   const { rank, SuitIcon, tone } = face;
-  const suitGradientId = `playing-card-suit-${tone}-${useId().replace(/:/g, '')}`;
-  const suitEdge = tone === 'purple' ? '#7856ff' : '#77717e';
+  const suitColor = tone === 'purple' ? '#874dfa' : '#211a27';
 
   return (
     <span
       className={`playing-card-index playing-card-index--${position} playing-card-index--${tone}`}
       aria-hidden="true"
     >
-      <svg className="playing-card-metal-defs" aria-hidden="true" focusable="false">
-        <defs>
-          <linearGradient id={suitGradientId} x1="0" y1="0" x2="1" y2="1">
-            {tone === 'purple' ? (
-              <>
-                <stop offset="0%" stopColor="#7856ff" />
-                <stop offset="16%" stopColor="#7856ff" />
-                <stop offset="34%" stopColor="#7856ff" />
-                <stop offset="48%" stopColor="#7856ff" />
-                <stop offset="64%" stopColor="#7856ff" />
-                <stop offset="80%" stopColor="#7856ff" />
-                <stop offset="100%" stopColor="#7856ff" />
-              </>
-            ) : (
-              <>
-                <stop offset="0%" stopColor="#77717e" />
-                <stop offset="16%" stopColor="#29252f" />
-                <stop offset="34%" stopColor="#09080b" />
-                <stop offset="48%" stopColor="#68616f" />
-                <stop offset="64%" stopColor="#17141c" />
-                <stop offset="80%" stopColor="#403947" />
-                <stop offset="100%" stopColor="#050407" />
-              </>
-            )}
-          </linearGradient>
-        </defs>
-      </svg>
       <span className="playing-card-index__rank">{rank}</span>
       <SuitIcon
         className="playing-card-index__suit"
-        fill={`url(#${suitGradientId})`}
-        stroke={suitEdge}
-        strokeWidth="24"
-        paintOrder="stroke fill"
+        fill={suitColor}
       />
     </span>
   );
@@ -163,15 +130,10 @@ export default function Hero() {
         <header className="hero-banner__header text-center flex flex-col">
           <h1 className="sr-only">dhreian</h1>
           <div className="hero-banner__brand-mark">
-            <img
-              src={metallicLogo}
-              width="512"
-              height="512"
-              alt="Logo de dhreian"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              className="hero-banner__logo h-auto w-32 object-contain md:w-40 lg:w-44"
+            <span
+              role="img"
+              aria-label="Logo de dhreian"
+              className="hero-banner__logo block aspect-square w-32 md:w-40 lg:w-44"
             />
           </div>
         </header>
@@ -240,13 +202,13 @@ export default function Hero() {
                       </div>
 
                       <div className="release-playing-card__copy shrink-0 min-w-0 text-center">
-                        <p className="release-playing-card__artist font-body text-[clamp(1rem,1.1vw,1.125rem)] leading-[1.1] font-medium text-black normal-case tracking-[0.04em] text-center">
+                        <p className="release-playing-card__artist font-body text-[clamp(1rem,1.1vw,1.125rem)] leading-[1.1] font-medium text-zinc-200 normal-case tracking-[0.04em] text-center">
                           {artistLabel}
                         </p>
                         <h3
-                          className="release-playing-card__title mt-0.5 w-full break-words text-center font-display lowercase text-[clamp(1.25rem,1.6vw,1.5rem)] leading-[1.05] tracking-tight"
+                          className="release-playing-card__title mt-0.5 w-full break-words text-center font-title lowercase text-[clamp(1.25rem,1.6vw,1.5rem)] leading-[1.05] tracking-tight"
                         >
-                          <span className="text-purple-800">
+                          <span className="text-purple-300">
                             {track.title.toLocaleLowerCase('es')}
                           </span>
                         </h3>

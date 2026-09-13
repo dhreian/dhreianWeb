@@ -86,10 +86,10 @@ export default function Catalog() {
         </div>
       ) : (
         <div className="liquid-glass-card rounded-2xl border border-purple-500 px-4 py-20 text-center">
-          <p className="font-display lowercase text-card text-zinc-950 mb-3">
+          <p className="font-title lowercase text-card text-white mb-3">
             sin beats en este género
           </p>
-          <p className="text-body text-zinc-700">
+          <p className="text-body text-zinc-400">
             Prueba con otro filtro o revisa el catálogo completo en BeatStars.
           </p>
         </div>

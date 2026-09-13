@@ -97,19 +97,13 @@ export default function Contact() {
         title={t('contact.title')}
         subtitle={t('contact.subtitle')}
       />
-      <Card accent="purple" interactive={true}>
-        <div className="contact-form-screws" aria-hidden="true">
-          <span className="contact-form-screw contact-form-screw--top-left" />
-          <span className="contact-form-screw contact-form-screw--top-right" />
-          <span className="contact-form-screw contact-form-screw--bottom-left" />
-          <span className="contact-form-screw contact-form-screw--bottom-right" />
-        </div>
+      <Card accent="purple" interactive={true} className="contact-form-card">
         <div className="p-8 md:p-12 lg:p-14">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1.3fr] gap-8 md:gap-12 lg:gap-16 items-stretch">
 
           <div className="flex flex-col justify-between py-2">
             <div>
-              <h3 className="font-body text-label text-black uppercase tracking-[0.2em] font-medium mb-6">
+              <h3 className="font-body text-label text-zinc-200 uppercase tracking-[0.2em] font-medium mb-6">
                 {t('contact.channels')}
               </h3>
               <div className="space-y-6">
@@ -117,14 +111,14 @@ export default function Contact() {
                   <a
                     href="mailto:contact@dhreian.com"
                     onClick={handleCopyEmail}
-                    className="contact-channel-link contact-channel-link--email flex items-center gap-4 text-black transition-colors duration-300 hover:text-purple-500"
+                    className="contact-channel-link contact-channel-link--email flex items-center gap-4 text-zinc-200 transition-colors duration-300 hover:text-purple-300"
                   >
-                    <div data-social="email" className="contact-channel-button platform-metallic-button liquid-glass-button grid h-14 w-14 shrink-0 place-items-center rounded-full border leading-none text-white transition-all duration-300 lg:h-16 lg:w-16">
-                      <GothicIcon icon={faEnvelope} size="release-platform-featured" />
+                    <div data-social="email" className="contact-channel-button platform-metallic-button liquid-glass-button grid h-9 w-9 shrink-0 place-items-center rounded-full border leading-none text-white transition-all duration-300 lg:h-10 lg:w-10">
+                      <GothicIcon icon={faEnvelope} size="release-platform" />
                     </div>
                     <div className="flex flex-col min-w-0">
                       <span className="text-body font-medium truncate">contact@dhreian.com</span>
-                      <span className="text-meta flex items-center gap-1.5 font-medium uppercase tracking-wider text-black transition-colors duration-300 group-hover/contact:text-purple-500">
+                      <span className="text-meta flex items-center gap-1.5 font-medium uppercase tracking-wider text-zinc-400 transition-colors duration-300 group-hover/contact:text-purple-300">
                         <GothicIcon icon={copied ? faCheck : faArrowUpFromBracket} size="micro" />
                         {copied ? t('contact.copied') : t('contact.copy')}
                       </span>
@@ -137,14 +131,14 @@ export default function Contact() {
                     href="https://instagram.com/dhreian"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="contact-channel-link contact-channel-link--instagram flex items-center gap-4 text-black transition-colors duration-300 hover:text-[#E1306C]"
+                    className="contact-channel-link contact-channel-link--instagram flex items-center gap-4 text-zinc-200 transition-colors duration-300 hover:text-[#E1306C]"
                   >
-                    <div data-social="instagram" className="contact-channel-button platform-metallic-button liquid-glass-button grid h-14 w-14 shrink-0 place-items-center rounded-full border leading-none text-white transition-all duration-300 lg:h-16 lg:w-16">
-                      <GothicIcon icon={faInstagram} size="release-platform-featured" />
+                    <div data-social="instagram" className="contact-channel-button platform-metallic-button liquid-glass-button grid h-9 w-9 shrink-0 place-items-center rounded-full border leading-none text-white transition-all duration-300 lg:h-10 lg:w-10">
+                      <GothicIcon icon={faInstagram} size="release-platform" />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-body font-medium">@dhreian</span>
-                      <span className="text-meta font-medium uppercase tracking-wider text-black transition-colors duration-300 group-hover/insta:text-[#E1306C]">
+                      <span className="text-meta font-medium uppercase tracking-wider text-zinc-400 transition-colors duration-300 group-hover/insta:text-[#E1306C]">
                         {t('contact.instaOfficial')}
                       </span>
                     </div>
@@ -155,7 +149,7 @@ export default function Contact() {
 
           </div>
 
-          <div className="metallic-divider-vertical hidden self-stretch md:block"></div>
+          <div className="contact-form-divider metallic-divider-vertical hidden self-stretch md:block"></div>
 
           <div className="relative flex flex-col justify-center min-h-[350px]">
             {status === 'success' ? (
@@ -163,11 +157,11 @@ export default function Contact() {
                 <div className="metallic-purple-control mb-6 grid h-20 w-20 place-items-center rounded-full border animate-contact-success-pop">
                   <GothicIcon icon={faCircleCheck} size="success" className="text-white" />
                 </div>
-                <h3 className="font-display lowercase text-card text-black mb-3">
+                <h3 className="font-title lowercase text-card text-white mb-3">
                   {t('contact.sentTitle')}
                 </h3>
-                <p className="text-black text-body max-w-sm mb-8">
-                  {t('contact.sentBody1')}<span className="text-purple-800 font-semibold">{formData.name}</span>{t('contact.sentBody2')}<span className="text-purple-800 font-semibold lowercase">{selectedSubject}</span>{t('contact.sentBody3')}
+                <p className="text-zinc-300 text-body max-w-sm mb-8">
+                  {t('contact.sentBody1')}<span className="text-purple-300 font-semibold">{formData.name}</span>{t('contact.sentBody2')}<span className="text-purple-300 font-semibold lowercase">{selectedSubject}</span>{t('contact.sentBody3')}
                 </p>
                 <NeonButton
                   as="button"
@@ -225,7 +219,7 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-3">
-                  <label className="font-body text-label text-black uppercase tracking-[0.2em] font-medium block">
+                  <label className="font-body text-label text-zinc-200 uppercase tracking-[0.2em] font-medium block">
                     {t('contact.subject')}
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -240,14 +234,14 @@ export default function Contact() {
                           className={`liquid-glass-button px-4 py-3 rounded-2xl border text-label font-semibold uppercase tracking-wider transition-all duration-300 text-left flex items-center justify-between gap-2.5 group/chip cursor-pointer ${
                             isSelected
                               ? 'metallic-purple-control'
-                              : 'metallic-control text-black'
+                              : 'metallic-control text-white'
                           }`}
                         >
                           <span className="min-w-0 truncate">{s}</span>
                           <GothicIcon
                             icon={isSelected ? faSquareCheck : faTag}
                             size="chip"
-                            className={`shrink-0 transition-colors duration-300 ${isSelected ? 'text-white group-hover/chip:text-white' : 'text-black group-hover/chip:text-white'}`}
+                            className={`shrink-0 transition-colors duration-300 ${isSelected ? 'text-white group-hover/chip:text-white' : 'text-zinc-300 group-hover/chip:text-white'}`}
                           />
                         </button>
                       );
@@ -313,7 +307,7 @@ export default function Contact() {
 function InputField({ label, icon, isTextarea = false, children }) {
   return (
     <div className="space-y-2 group/field relative">
-      <label className="font-body text-label text-black uppercase tracking-[0.2em] font-medium block">
+      <label className="font-body text-label text-zinc-200 uppercase tracking-[0.2em] font-medium block">
         {label}
       </label>
       <div className="relative">

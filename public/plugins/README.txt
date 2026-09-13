@@ -36,9 +36,16 @@ entorno del servidor.
 Para una descarga gratuita gestionada por correo:
 
 1. En `src/data/site.js`, usa `url: null` y `downloadByEmail: true`.
-2. El instalador se ubica en `public/downloads/<key>/` y se registra en
-   `lib/downloadable-products.js`, o se configura su URL en la variable de
-   entorno correspondiente.
+2. El instalador se ubica en `public/downloads/<key>/` y se registra como una
+   entrada nueva en `versions` dentro de `lib/downloadable-products.js`.
+   Usa el nombre `<Producto>-<versión>-windows-x64-installer.exe`, por ejemplo:
+
+     dhreVerb-1.1-windows-x64-installer.exe
+
+   El endpoint elige automáticamente la versión numérica más alta para el
+   botón Descargar. También agrega esa versión a `src/data/site.js` y su
+   descripción/datos técnicos en `src/i18n/translations.js` para que aparezca
+   en el modal de información.
 3. El botón abre el modal; el endpoint valida la key, registra la solicitud
    en Neon y envía mediante Resend un enlace firmado válido por 24 horas.
 4. Al abrir el enlace, el endpoint `/api/plugin-file` entrega el archivo binario.

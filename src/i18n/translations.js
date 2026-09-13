@@ -1,7 +1,7 @@
 export const translations = {
   es: {
     meta: {
-      title: 'dhreian | Artista · Productor · Desarrollador',
+      title: 'dhreian | artista · productor · desarrollador',
       description:
         'dhreian — artista y productor musical. Beats exclusivos, producción full, mezcla, masterización profesional y plugins de audio para artistas independientes.',
       socialDescription:
@@ -182,6 +182,37 @@ export const translations = {
         },
       },
     },
+    versions: {
+      infoLabel: 'ver versiones de',
+      modalTitle: 'historial de versiones',
+      current: 'actual',
+      version: 'versión',
+      technical: 'datos técnicos',
+      close: 'cerrar',
+      items: {
+        dhreverb: {
+          v1: {
+            description:
+              'Primera versión pública de dhreVerb, pensada para crear espacios densos y modulados sin ensuciar la mezcla.',
+            technical: ['Formato VST3', 'Windows x64', 'Instalador .exe'],
+          },
+        },
+        aurolab: {
+          v1: {
+            description:
+              'Primera versión pública del laboratorio web para cálculos de tempo, práctica y análisis de audio.',
+            technical: ['Aplicación web', 'Navegador moderno', 'No requiere instalación'],
+          },
+        },
+        dhrelink: {
+          v1: {
+            description:
+              'Primera versión pública para enviar audio procesado del DAW a OBS Studio sin dispositivos virtuales.',
+            technical: ['VST3 + fuente OBS', 'Windows x64', 'Instalador .exe'],
+          },
+        },
+      },
+    },
     contact: {
       eyebrow: 'contacto',
       title: 'trabajemos juntos',
@@ -222,7 +253,7 @@ export const translations = {
 
   en: {
     meta: {
-      title: 'dhreian | Artist · Producer · Developer',
+      title: 'dhreian | artist · producer · developer',
       description:
         'dhreian — artist and music producer. Exclusive beats, full production, professional mixing, mastering and audio plugins for independent artists.',
       socialDescription:
@@ -398,6 +429,37 @@ export const translations = {
         dhrelink: {
           description:
             'Send processed audio from your DAW to OBS Studio on Windows through a VST3 and an OBS source, with no virtual audio devices or helper applications.',
+        },
+      },
+    },
+    versions: {
+      infoLabel: 'view versions for',
+      modalTitle: 'version history',
+      current: 'current',
+      version: 'version',
+      technical: 'technical details',
+      close: 'close',
+      items: {
+        dhreverb: {
+          v1: {
+            description:
+              'The first public version of dhreVerb, built for dense, modulated spaces that do not cloud the mix.',
+            technical: ['VST3 format', 'Windows x64', '.exe installer'],
+          },
+        },
+        aurolab: {
+          v1: {
+            description:
+              'The first public version of the web lab for tempo calculations, practice, and audio analysis.',
+            technical: ['Web application', 'Modern browser', 'No installation required'],
+          },
+        },
+        dhrelink: {
+          v1: {
+            description:
+              'The first public version for sending processed audio from a DAW to OBS Studio without virtual devices.',
+            technical: ['VST3 + OBS source', 'Windows x64', '.exe installer'],
+          },
         },
       },
     },

@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import { faArrowUpFromBracket, faDownload, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpFromBracket, faCircleInfo, faDownload, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { Section, SectionHeading } from './Section';
 import Card from './Card';
 import NeonButton from './Button';
 import PluginDownloadModal from './PluginDownloadModal';
+import VersionHistoryModal from './VersionHistoryModal';
 import { WEB_TOOLS } from '../data/site';
 import { useLang } from '../i18n/LanguageContext';
 import GothicIcon from './GothicIcon';
@@ -11,7 +12,9 @@ import GothicIcon from './GothicIcon';
 export default function WebTools() {
   const { t } = useLang();
   const [selectedTool, setSelectedTool] = useState(null);
+  const [selectedVersionProduct, setSelectedVersionProduct] = useState(null);
   const closeDownloadModal = useCallback(() => setSelectedTool(null), []);
+  const closeVersionHistory = useCallback(() => setSelectedVersionProduct(null), []);
 
   return (
     <Section
@@ -45,7 +48,7 @@ export default function WebTools() {
                   />
                 ) : (
                   <div className="grid h-full w-full place-items-center">
-                    <GothicIcon icon={faGlobe} size="empty" className="text-zinc-700" />
+                    <GothicIcon icon={faGlobe} size="empty" className="text-zinc-600" />
                   </div>
                 )}
               </div>
@@ -69,20 +72,20 @@ export default function WebTools() {
                   )}
                 </div>
 
-                <h3 className="mb-1 font-display text-card text-black transition-colors duration-300 group-hover:text-purple-800">
+                <h3 className="mb-1 font-title text-card text-white transition-colors duration-300 group-hover:text-purple-300">
                   {tool.name}
                 </h3>
-                <p className="mb-4 font-body text-label font-medium uppercase tracking-[0.25em] text-purple-700">
+                <p className="mb-4 font-body text-label font-medium uppercase tracking-[0.25em] text-purple-300">
                   {t('webtools.developedBy')}
                 </p>
-                <p className="mb-7 text-body text-black">
+                <p className="mb-7 text-body text-zinc-300">
                   {t(`webtools.items.${tool.key}.description`)}
                 </p>
 
                 <div className="mt-auto w-full">
                   {tool.downloadByEmail ? (
-                    <div className="flex w-full items-center gap-3">
-                      <div className="secondary-action-label flex h-[3.25rem] min-w-24 shrink-0 items-center justify-center px-3 text-center lowercase">
+                    <div className="flex w-full items-center gap-2">
+                      <div className="secondary-action-label flex h-[3.25rem] min-w-20 shrink-0 items-center justify-center px-3 text-center lowercase">
                         {t('webtools.free')}
                       </div>
                       <NeonButton
@@ -93,11 +96,22 @@ export default function WebTools() {
                         surface="light"
                         size="md"
                         icon={faDownload}
-                        className="flex-1"
+                        className="min-w-0 flex-1 !px-4"
                         aria-label={`${t('webtools.download')} ${tool.name}`}
                       >
                         {t('webtools.download')}
                       </NeonButton>
+                      {tool.key !== 'aurolab' && tool.versions?.length > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => setSelectedVersionProduct(tool)}
+                          className="liquid-glass-button primary-action-button primary-action-button--on-light primary-action-button--icon shrink-0 cursor-pointer rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+                          aria-label={`${t('versions.infoLabel')} ${tool.name}`}
+                          title={`${t('versions.infoLabel')} ${tool.name}`}
+                        >
+                          <GothicIcon icon={faCircleInfo} size="button" />
+                        </button>
+                      )}
                     </div>
                   ) : (
                     <NeonButton
@@ -123,6 +137,9 @@ export default function WebTools() {
 
       {selectedTool && (
         <PluginDownloadModal plugin={selectedTool} onClose={closeDownloadModal} />
+      )}
+      {selectedVersionProduct && (
+        <VersionHistoryModal product={selectedVersionProduct} onClose={closeVersionHistory} />
       )}
     </Section>
   );

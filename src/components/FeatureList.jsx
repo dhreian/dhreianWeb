@@ -7,7 +7,7 @@ export default function FeatureList({ items, dense = false }) {
     return (
       <ul className="space-y-2">
         {items.map((item) => (
-          <li key={item} className="flex items-center gap-2.5 text-body-compact text-black">
+          <li key={item} className="flex items-center gap-2.5 text-body-compact text-zinc-300">
             <span className="metallic-feature-marker" aria-hidden="true" />
             {item}
           </li>
@@ -21,7 +21,7 @@ export default function FeatureList({ items, dense = false }) {
       {items.map((item) => (
         <li key={item} className="flex items-center gap-3">
           <GothicIcon icon={faCircleCheck} size="control" className="shrink-0 text-purple-500" />
-          <span className="text-body-compact text-black">{item}</span>
+          <span className="text-body-compact text-zinc-300">{item}</span>
         </li>
       ))}
     </ul>

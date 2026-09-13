@@ -47,17 +47,17 @@ export default function Discography() {
                 </div>
 
                 <div className="flex-grow min-w-0 flex flex-col items-start gap-1.5 sm:gap-2.5">
-                  <p className="font-body text-label font-medium text-zinc-600 uppercase tracking-widest w-full truncate">
-                    <span className="text-purple-800">{track.mainArtist}</span>
+                  <p className="font-body text-label font-medium text-zinc-500 uppercase tracking-widest w-full truncate">
+                    <span className="text-purple-300">{track.mainArtist}</span>
                     {track.featArtist && (
                       <>
                         <span className="text-zinc-500 mx-1.5 lowercase font-normal">ft.</span>
-                        <span className="text-zinc-700">{track.featArtist}</span>
+                        <span className="text-zinc-300">{track.featArtist}</span>
                       </>
                     )}
                   </p>
 
-                  <h4 className="font-display lowercase text-card-compact text-zinc-950 pb-0.5 w-full truncate group-hover:text-purple-800 transition-colors">
+                  <h4 className="font-title lowercase text-card-compact text-white pb-0.5 w-full truncate group-hover:text-purple-300 transition-colors">
                     {track.title}
                   </h4>
 

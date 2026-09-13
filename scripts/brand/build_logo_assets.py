@@ -20,7 +20,7 @@ from PIL import Image, ImageColor, ImageDraw, ImageFilter
 EXPORT_SIZES = (4096, 2048, 1024, 512, 256, 128)
 UNDER_ONE_MB_CANDIDATES = (2048, 1792, 1536, 1280, 1024)
 UNDER_ONE_MB_LIMIT = 1_000_000
-DEFAULT_BRAND_COLOR = "#681cff"
+DEFAULT_BRAND_COLOR = "#874dfa"
 
 
 def smoothstep(values: np.ndarray, low: float, high: float) -> np.ndarray:

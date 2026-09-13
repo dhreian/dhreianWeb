@@ -1,4 +1,5 @@
 import React from 'react';
+import OrnateTitle from './OrnateTitle';
 import SectionDivider from './SectionDivider';
 
 export default function Footer() {
@@ -7,8 +8,8 @@ export default function Footer() {
       <SectionDivider className="section-boundary-divider section-boundary-divider--top absolute inset-x-0 top-0 z-20 w-full" />
 
       <div className="relative z-10">
-        <p className="mb-6 font-display text-section lowercase text-white">
-          dhreian
+        <p className="mb-6 font-title text-section lowercase">
+          <OrnateTitle>dhreian</OrnateTitle>
         </p>
 
         <a

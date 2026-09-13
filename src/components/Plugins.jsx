@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import { faArrowUpFromBracket, faBell, faDownload, faWaveSquare } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpFromBracket, faBell, faCircleInfo, faDownload, faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 import { Section, SectionHeading } from './Section';
 import Card from './Card';
 import NeonButton from './Button';
 import PluginDownloadModal from './PluginDownloadModal';
+import VersionHistoryModal from './VersionHistoryModal';
 import { PLUGINS } from '../data/site';
 import { useLang } from '../i18n/LanguageContext';
 import GothicIcon from './GothicIcon';
@@ -11,7 +12,9 @@ import GothicIcon from './GothicIcon';
 export default function Plugins() {
   const { t } = useLang();
   const [selectedPlugin, setSelectedPlugin] = useState(null);
+  const [selectedVersionProduct, setSelectedVersionProduct] = useState(null);
   const closeDownloadModal = useCallback(() => setSelectedPlugin(null), []);
+  const closeVersionHistory = useCallback(() => setSelectedVersionProduct(null), []);
 
   return (
     <Section id="plugins" divider={true} glow={true}>
@@ -45,7 +48,7 @@ export default function Plugins() {
                     />
                   ) : (
                     <div className="w-full h-full grid place-items-center">
-                      <GothicIcon icon={faWaveSquare} size="empty" className="text-zinc-700" />
+                      <GothicIcon icon={faWaveSquare} size="empty" className="text-zinc-600" />
                     </div>
                   )}
                 </div>
@@ -67,13 +70,13 @@ export default function Plugins() {
                     </div>
                   </div>
 
-                  <h3 className="font-display text-card text-black mb-1 group-hover:text-purple-800 transition-colors duration-300">
+                  <h3 className="mb-1 font-title text-card text-white transition-colors duration-300 group-hover:text-purple-300">
                     {plugin.name}
                   </h3>
-                  <p className="font-body text-label text-purple-700 uppercase tracking-[0.25em] font-medium mb-4">
+                  <p className="font-body text-label text-purple-300 uppercase tracking-[0.25em] font-medium mb-4">
                     {t('plugins.developedBy')}
                   </p>
-                  <p className="text-black text-body mb-7">
+                  <p className="text-zinc-300 text-body mb-7">
                     {t(`plugins.items.${plugin.key}.description`)}
                   </p>
 
@@ -86,16 +89,16 @@ export default function Plugins() {
                         </span>
                         <a
                           href="/contacto"
-                          className="metallic-control liquid-glass-button flex h-12 w-full items-center justify-center gap-2 rounded-2xl border font-display text-button-sm lowercase tracking-wide text-black transition-colors duration-300"
+                          className="metallic-control liquid-glass-button flex h-12 w-full items-center justify-center gap-2 rounded-2xl border font-display text-button-sm lowercase tracking-wide text-white transition-colors duration-300"
                         >
                           <span>{t('plugins.notify')}</span>
                           <GothicIcon icon={faBell} size="button" />
                         </a>
                       </div>
                     ) : (
-                      <div className="flex items-center gap-3 w-full">
+                      <div className="flex w-full items-center gap-2">
                         <div
-                          className="secondary-action-label flex h-[3.25rem] min-w-24 shrink-0 items-center justify-center truncate px-3 text-center lowercase"
+                          className="secondary-action-label flex h-[3.25rem] min-w-20 shrink-0 items-center justify-center truncate px-3 text-center lowercase"
                         >
                           {plugin.free ? t('plugins.free') : plugin.price}
                         </div>
@@ -108,7 +111,7 @@ export default function Plugins() {
                             surface="light"
                             size="md"
                             icon={faDownload}
-                            className="flex-1"
+                            className="min-w-0 flex-1 !px-4"
                           >
                             {t('plugins.download')}
                           </NeonButton>
@@ -121,10 +124,21 @@ export default function Plugins() {
                             surface="light"
                             size="md"
                             icon={plugin.free ? faDownload : faArrowUpFromBracket}
-                            className="flex-1"
+                            className="min-w-0 flex-1 !px-4"
                           >
                             {plugin.free ? t('plugins.download') : t('plugins.buy')}
                           </NeonButton>
+                        )}
+                        {plugin.versions?.length > 0 && (
+                          <button
+                            type="button"
+                            onClick={() => setSelectedVersionProduct(plugin)}
+                            className="liquid-glass-button primary-action-button primary-action-button--on-light primary-action-button--icon shrink-0 cursor-pointer rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+                            aria-label={`${t('versions.infoLabel')} ${plugin.name}`}
+                            title={`${t('versions.infoLabel')} ${plugin.name}`}
+                          >
+                            <GothicIcon icon={faCircleInfo} size="button" />
+                          </button>
                         )}
                       </div>
                     )}
@@ -138,6 +152,9 @@ export default function Plugins() {
 
       {selectedPlugin && (
         <PluginDownloadModal plugin={selectedPlugin} onClose={closeDownloadModal} />
+      )}
+      {selectedVersionProduct && (
+        <VersionHistoryModal product={selectedVersionProduct} onClose={closeVersionHistory} />
       )}
     </Section>
   );

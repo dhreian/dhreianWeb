@@ -1,13 +1,13 @@
 {
-  "brandColor": "#7856ff",
+  "brandColor": "#874dfa",
   "files": [
     {
       "file": "dhreian-logo-transparent-4096.png",
       "width": 4096,
       "height": 4096,
       "mode": "RGBA",
-      "bytes": 4059714,
-      "sha256": "156b46c9d8d9eb81f34f49b575203ad1a0658f3dde09c6032279ca6a30df1950",
+      "bytes": 4136345,
+      "sha256": "a0e1c4c0e49c0c7d69a635e24ef697eaeabde3f4be178f8ab4c786359eb7839f",
       "usage": "master, large-format artwork and archival reuse"
     },
     {
@@ -15,8 +15,8 @@
       "width": 2048,
       "height": 2048,
       "mode": "RGBA",
-      "bytes": 1453231,
-      "sha256": "3bc8f5e809c6cbcc2952fa2ab38593f5bfb62d4735c719b7f0fa94661017d241",
+      "bytes": 1484609,
+      "sha256": "80bfc67357236426644ca4240ea95ea9454ce7c7d0156413327223173b0912ef",
       "usage": "high-density presentations, covers and large digital layouts"
     },
     {
@@ -24,8 +24,8 @@
       "width": 1024,
       "height": 1024,
       "mode": "RGBA",
-      "bytes": 462111,
-      "sha256": "5d0243681eeeabf145df80c8a659f1a57252f664db2c316351d1b9dfffd9a82a",
+      "bytes": 469206,
+      "sha256": "be4a6e627635e7b0417316a07c20b51d52d6c76d6b8ee3bff2963adb8a23e507",
       "usage": "websites, social profiles and general digital use"
     },
     {
@@ -33,8 +33,8 @@
       "width": 512,
       "height": 512,
       "mode": "RGBA",
-      "bytes": 142117,
-      "sha256": "0462d256631097f9d25d3c647de645a360270b5c5685937da41e0626d81454f9",
+      "bytes": 144709,
+      "sha256": "9d8893ce719cac489d2128745e0e8c8558f22c7d558ed7722b126d4054bab1ff",
       "usage": "application icons, avatars and UI at high density"
     },
     {
@@ -42,8 +42,8 @@
       "width": 256,
       "height": 256,
       "mode": "RGBA",
-      "bytes": 44709,
-      "sha256": "fcf4448bf53aa68cafa013c8142de6c0cff187c9a42e17758265993df15d2ff4",
+      "bytes": 45697,
+      "sha256": "928df19166ee26092b9294d4ac2b993a23da80f12d4ec92f36a93da177809f1a",
       "usage": "compact interface elements and profile thumbnails"
     },
     {
@@ -51,8 +51,8 @@
       "width": 128,
       "height": 128,
       "mode": "RGBA",
-      "bytes": 15262,
-      "sha256": "a66235a0510f9f9cdcec9f83ccfc09448b736fb90e8321fa82fdc40478fa2b97",
+      "bytes": 15597,
+      "sha256": "b9fb2f3ef3db080d51d8c1c624e0f10c2b95d74b92516ae199e7f0121db8f9bd",
       "usage": "small navigation, launcher and favicon source"
     },
     {
@@ -60,8 +60,8 @@
       "width": 1536,
       "height": 1536,
       "mode": "RGBA",
-      "bytes": 905388,
-      "sha256": "5c62605b8ea6b5ad403291e0c0d3c712b5dff342fe2708a36a69127070da5e23",
+      "bytes": 921662,
+      "sha256": "11e7c865c143916622530556583d88f7014d87f6b738e26eaf81d6933fd1b248",
       "usage": "portable transparent PNG below 1 MB"
     }
   ]

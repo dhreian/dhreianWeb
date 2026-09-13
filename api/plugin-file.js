@@ -4,7 +4,9 @@ import { verifyPluginDownloadToken } from '../lib/plugin-download-token.js';
 import {
   getConfiguredSourceUrl,
   getDownloadableProduct,
+  getLatestProductVersion,
   getLocalInstallerPath,
+  getProductVersion,
 } from '../lib/downloadable-products.js';
 
 export default async function handler(req, res) {
@@ -18,13 +20,18 @@ export default async function handler(req, res) {
 
   const token = Array.isArray(req.query?.token) ? req.query.token[0] : req.query?.token;
   const payload = verifyPluginDownloadToken(token);
-  const file = payload ? getDownloadableProduct(payload.pluginKey) : null;
+  const product = payload ? getDownloadableProduct(payload.pluginKey) : null;
+  const productVersion = product
+    ? payload.version
+      ? getProductVersion(product, payload.version)
+      : getLatestProductVersion(product)
+    : null;
 
-  if (!file) {
+  if (!product || !productVersion) {
     return res.status(403).json({ error: 'Download link is invalid or has expired.' });
   }
 
-  const localFilePath = getLocalInstallerPath(file);
+  const localFilePath = getLocalInstallerPath(productVersion);
 
   if (localFilePath) {
     try {
@@ -32,7 +39,7 @@ export default async function handler(req, res) {
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/octet-stream');
       res.setHeader('Content-Length', stats.size);
-      res.setHeader('Content-Disposition', `attachment; filename="${file.fileName}"`);
+      res.setHeader('Content-Disposition', `attachment; filename="${productVersion.fileName}"`);
 
       return await new Promise((resolve, reject) => {
         const stream = fs.createReadStream(localFilePath);
@@ -51,11 +58,11 @@ export default async function handler(req, res) {
     }
   }
 
-  let sourceUrl = getConfiguredSourceUrl(file);
+  let sourceUrl = getConfiguredSourceUrl(product, productVersion);
 
   if (!sourceUrl) {
     const siteUrl = String(process.env.SITE_URL || 'https://dhreian.com').replace(/\/$/, '');
-    sourceUrl = `${siteUrl}/${file.publicPath}`;
+    sourceUrl = `${siteUrl}/${productVersion.publicPath}`;
   }
 
   try {
@@ -74,7 +81,7 @@ export default async function handler(req, res) {
 
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/octet-stream');
-    res.setHeader('Content-Disposition', `attachment; filename="${file.fileName}"`);
+    res.setHeader('Content-Disposition', `attachment; filename="${productVersion.fileName}"`);
 
     return await new Promise((resolve, reject) => {
       const stream = Readable.fromWeb(upstream.body);

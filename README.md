@@ -67,6 +67,12 @@ mantiene el flujo gestionado por correo: el servidor genera un enlace firmado co
 24 horas y, cuando se utiliza, entrega el archivo local o lo transmite desde la URL HTTPS configurada
 por el propietario del despliegue.
 
+Cada producto conserva su historial de instaladores en `lib/downloadable-products.js`. El endpoint
+selecciona automáticamente la versión numérica más alta al crear el enlace de descarga, y el token
+guarda esa versión para que el enlace siempre entregue el mismo instalador. Los archivos locales usan
+la convención `<Producto>-<versión>-windows-x64-installer.exe`; por ejemplo,
+`dhreVerb-1.0-windows-x64-installer.exe`.
+
 ## Rutas y SEO
 
 | Ruta | Vista |

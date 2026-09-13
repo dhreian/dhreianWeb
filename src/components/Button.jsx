@@ -7,11 +7,11 @@ const VARIANTS = {
   outline:
     "secondary-action-button",
   glass:
-    "metallic-control border text-zinc-950",
+    "metallic-control border text-white",
   ghost:
     "metallic-dark-control border text-white",
   light:
-    "metallic-control border text-black",
+    "metallic-control border text-white",
 };
 
 const SIZES = {
@@ -31,7 +31,7 @@ export default function NeonButton({
   ...rest
 }) {
   const base =
-    "liquid-glass-button inline-flex items-center justify-center gap-3 rounded-2xl font-display lowercase tracking-wide transition-colors duration-300 group cursor-pointer select-none";
+    "liquid-glass-button inline-flex items-center justify-center gap-3 rounded-2xl font-display uppercase tracking-wide transition-colors duration-300 group cursor-pointer select-none";
   const usesStandardActionSize = variant === 'primary' || variant === 'outline';
   const resolvedSize = usesStandardActionSize ? '' : (SIZES[size] || SIZES.md);
   const surfaceClass = variant === 'primary' && surface === 'light'
