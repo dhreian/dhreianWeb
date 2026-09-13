@@ -40,7 +40,7 @@ const FONT_LOGO = "'Cormorant Infant', Georgia, serif";
 const FONT_BODY = "'Cormorant Infant', Georgia, serif";
 
 const SITE_URL = 'https://dhreian.com';
-const LOGO_URL = `${SITE_URL}/icons/dhreian-logo-transparent-512.png`;
+const LOGO_URL = `${SITE_URL}/email/dhreian-mark-purple.png`;
 const CONTACT_EMAIL = 'contact@dhreian.com';
 const FROM_EMAIL = `dhreian contact <${CONTACT_EMAIL}>`;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

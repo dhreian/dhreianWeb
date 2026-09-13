@@ -17,7 +17,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const SITE_URL = 'https://dhreian.com';
 const CONTACT_EMAIL = 'contact@dhreian.com';
 const FROM_EMAIL = `dhreian plugins <${CONTACT_EMAIL}>`;
-const LOGO_URL = `${SITE_URL}/icons/dhreian-logo-transparent-512.png`;
+const LOGO_URL = `${SITE_URL}/email/dhreian-mark-purple.png`;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const C = {
