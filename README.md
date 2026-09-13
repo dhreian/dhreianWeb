@@ -58,20 +58,20 @@ Las responsabilidades principales se distribuyen así:
 
 ### Flujos del servidor
 
-El formulario de contacto y la solicitud de plugins validan el origen, el tipo de contenido, un
+El formulario de contacto y la solicitud de descargas validan el origen, el tipo de contenido, un
 campo honeypot y un tiempo mínimo de llenado. Después aplican límites por dirección IP y correo,
 guardan la solicitud en PostgreSQL y envían el mensaje mediante Resend.
 
-Los instaladores de dhreVerb y dhreLink se organizan por producto en `public/downloads/`. La interfaz
+Los instaladores de dhreVerb, dhreLink y dhreView se organizan por producto en `public/downloads/`. La interfaz
 mantiene el flujo gestionado por correo: el servidor genera un enlace firmado con una vigencia de
 24 horas y, cuando se utiliza, entrega el archivo local o lo transmite desde la URL HTTPS configurada
 por el propietario del despliegue.
 
 Cada producto conserva su historial de instaladores en `lib/downloadable-products.js`. El endpoint
 selecciona automáticamente la versión numérica más alta al crear el enlace de descarga, y el token
-guarda esa versión para que el enlace siempre entregue el mismo instalador. Los archivos locales usan
-la convención `<Producto>-<versión>-windows-x64-installer.exe`; por ejemplo,
-`dhreVerb-1.0-windows-x64-installer.exe`.
+guarda esa versión para que el enlace siempre entregue el mismo instalador. Los nombres públicos de
+los instaladores se registran junto con cada versión; por ejemplo,
+`dhreVerb-1.0-windows-x64-installer.exe` y `dhreLink-v1.0-x64-Setup.exe`.
 
 ## Rutas y SEO
 

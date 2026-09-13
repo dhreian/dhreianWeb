@@ -31,12 +31,15 @@
   </url>
   <url>
     <loc>https://dhreian.com/herramientas</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <image:image>
       <image:loc>https://dhreian.com/tools/aurolab.png</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://dhreian.com/tools/dhrelink.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://dhreian.com/tools/dhreview.png</image:loc>
     </image:image>
   </url>
   <url>

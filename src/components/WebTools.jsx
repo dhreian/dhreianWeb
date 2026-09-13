@@ -44,7 +44,7 @@ export default function WebTools() {
                     height="1080"
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-contain"
+                    className="h-full w-full object-contain transition-transform duration-500 ease-out motion-safe:group-hover:scale-110"
                   />
                 ) : (
                   <div className="grid h-full w-full place-items-center">

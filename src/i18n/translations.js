@@ -174,11 +174,15 @@ export const translations = {
       items: {
         aurolab: {
           description:
-            'Un laboratorio web para productores, creado para calcular tiempos de delay y reverb a partir del BPM, practicar con metrónomo y tap tempo, y analizar el BPM y la tonalidad de tus audios sin salir del navegador.',
+            'Calcula tiempos de delay y reverb desde el BPM, practica con metrónomo y tap tempo, y analiza el BPM y la tonalidad de tus audios en el navegador.',
         },
         dhrelink: {
           description:
             'Lleva el audio ya procesado de tu DAW a OBS Studio en Windows mediante un VST3 y una fuente de OBS, sin dispositivos de audio virtuales ni aplicaciones auxiliares.',
+        },
+        dhreview: {
+          description:
+            'Captura en OBS la ventana de cualquier DAW en Windows junto con sus plugins flotantes, sin mostrar el resto del escritorio y sin intervenir el audio.',
         },
       },
     },
@@ -186,7 +190,7 @@ export const translations = {
       infoLabel: 'ver versiones de',
       modalTitle: 'historial de versiones',
       current: 'actual',
-      version: 'versión',
+      version: 'VERSIÓN',
       technical: 'datos técnicos',
       close: 'cerrar',
       items: {
@@ -208,7 +212,14 @@ export const translations = {
           v1: {
             description:
               'Primera versión pública para enviar audio procesado del DAW a OBS Studio sin dispositivos virtuales.',
-            technical: ['VST3 + fuente OBS', 'Windows x64', 'Instalador .exe'],
+            technical: ['VST3 + Fuente OBS', 'Windows x64', 'Instalador .exe'],
+          },
+        },
+        dhreview: {
+          v1: {
+            description:
+              'Primera versión pública para transmitir cualquier DAW de Windows y sus plugins en OBS mediante una captura visual privada.',
+            technical: ['Cualquier DAW + Plugins', 'OBS Studio', 'Windows x64', 'Sin captura de audio'],
           },
         },
       },
@@ -424,11 +435,15 @@ export const translations = {
       items: {
         aurolab: {
           description:
-            'A web lab for producers, built to calculate delay and reverb timing from BPM, practice with a metronome and tap tempo, and analyze the BPM and key of your audio without leaving the browser.',
+            'Calculate delay and reverb timing from BPM, practice with a metronome and tap tempo, and analyze your audio\'s BPM and key in the browser.',
         },
         dhrelink: {
           description:
             'Send processed audio from your DAW to OBS Studio on Windows through a VST3 and an OBS source, with no virtual audio devices or helper applications.',
+        },
+        dhreview: {
+          description:
+            'Capture any Windows DAW and its floating plugin windows in OBS without showing the rest of your desktop or interfering with audio.',
         },
       },
     },
@@ -459,6 +474,13 @@ export const translations = {
             description:
               'The first public version for sending processed audio from a DAW to OBS Studio without virtual devices.',
             technical: ['VST3 + OBS source', 'Windows x64', '.exe installer'],
+          },
+        },
+        dhreview: {
+          v1: {
+            description:
+              'The first public version for streaming any Windows DAW and its plugins in OBS through a private visual capture.',
+            technical: ['Any DAW + plugins', 'OBS Studio', 'Windows x64', 'No audio capture'],
           },
         },
       },

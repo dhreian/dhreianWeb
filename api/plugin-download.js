@@ -17,7 +17,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const SITE_URL = 'https://dhreian.com';
 const CONTACT_EMAIL = 'contact@dhreian.com';
 const FROM_EMAIL = `dhreian plugins <${CONTACT_EMAIL}>`;
-const LOGO_URL = `${SITE_URL}/icons/dhreian-logo-transparent-512.png`;
+const LOGO_URL = `${SITE_URL}/email/dhreian-mark-purple.svg`;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const C = {
@@ -51,7 +51,7 @@ const COPY = {
       `Tu descarga de ${pluginName} v${version} está lista - dhreian`,
     preheader: (pluginName, version) =>
       `Tu enlace para descargar ${pluginName} v${version} ya está disponible.`,
-    eyebrow: 'Artista & Productor Musical',
+    eyebrow: 'artista • productor • desarrollador',
     greeting: (name) => `Hola, ${name}:`,
     intro: (pluginName, version) =>
       `Gracias por descargar <strong style="color:${C.accent};font-weight:600;">${pluginName} v${version}</strong>.`,
@@ -79,7 +79,7 @@ const COPY = {
       `Your ${pluginName} v${version} download is ready - dhreian`,
     preheader: (pluginName, version) =>
       `Your link to download ${pluginName} v${version} is ready.`,
-    eyebrow: 'Artist & Music Producer',
+    eyebrow: 'artist • producer • developer',
     greeting: (name) => `Hi, ${name}:`,
     intro: (pluginName, version) =>
       `Thanks for downloading <strong style="color:${C.accent};font-weight:600;">${pluginName} v${version}</strong>.`,
@@ -146,12 +146,18 @@ function getDownloadEmailHtml(c, { lang, name, email, pluginName, version, downl
         <tr><td class="px email-card" align="center" bgcolor="${C.bg}" style="padding:32px 40px 28px;background:${C.bg};background-color:${C.bg}!important;border-bottom:1px solid ${C.border};">
           <img src="${LOGO_URL}" width="76" height="76" alt="dhreian" style="display:block;width:76px;max-width:76px;height:76px;margin:0 auto;" />
           <div style="color:${C.white};font-size:22px;line-height:1;margin-top:12px;font-weight:600;font-family:${FONT_BODY};">dhreian</div>
-          <div style="color:${C.muted};font-size:11px;text-transform:uppercase;letter-spacing:2.4px;margin-top:10px;font-weight:700;font-family:${FONT_BODY};">${c.eyebrow}</div>
+          <div style="color:${C.muted};font-size:11px;letter-spacing:2.4px;margin-top:10px;font-weight:700;font-family:${FONT_BODY};">${c.eyebrow}</div>
         </td></tr>
         <tr><td class="px email-card" bgcolor="${C.bg}" style="padding:32px 40px 4px;background:${C.bg};background-color:${C.bg}!important;">
           <h1 style="font-family:${FONT_BODY};font-size:24px;margin:0 0 14px;color:${C.white};font-weight:600;">${c.greeting(name)}</h1>
           <p style="${pStyle}margin:0 0 16px;">${c.intro(pluginName, version)}</p>
           <p style="${pStyle}">${c.body}</p>
+        </td></tr>
+        <tr><td class="px email-card" align="center" bgcolor="${C.bg}" style="padding:22px 40px 8px;background:${C.bg};background-color:${C.bg}!important;">
+          <p style="${pStyle}text-align:center;margin:0 0 20px;">${c.ctaLead}</p>
+          <a href="${downloadUrl}" target="_blank" style="display:inline-block;background-color:${C.accent};color:${C.white};font-family:${FONT_BODY};font-size:16px;font-weight:700;line-height:20px;text-decoration:none;padding:14px 32px;border:1px solid ${C.accent};">${c.ctaLabel}</a>
+          <p style="color:${C.muted};font-size:11px;line-height:1.6;margin:24px 0 6px;font-family:${FONT_BODY};">${c.fallbackLead}</p>
+          <a href="${downloadUrl}" style="color:${C.accent};font-size:11px;line-height:1.6;word-break:break-all;font-family:${FONT_BODY};">${downloadUrl}</a>
         </td></tr>
         <tr><td class="px email-card" bgcolor="${C.bg}" style="padding:28px 40px 0;background:${C.bg};background-color:${C.bg}!important;">
           <table role="presentation" class="email-panel" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.panel}" style="background:${C.panel};background-color:${C.panel}!important;border:1px solid ${C.border};">
@@ -165,12 +171,6 @@ function getDownloadEmailHtml(c, { lang, name, email, pluginName, version, downl
               </table>
             </td></tr>
           </table>
-        </td></tr>
-        <tr><td class="px email-card" align="center" bgcolor="${C.bg}" style="padding:32px 40px 10px;background:${C.bg};background-color:${C.bg}!important;">
-          <p style="${pStyle}text-align:center;margin:0 0 20px;">${c.ctaLead}</p>
-          <a href="${downloadUrl}" target="_blank" style="display:inline-block;background-color:${C.accent};color:${C.white};font-family:${FONT_BODY};font-size:16px;font-weight:700;line-height:20px;text-decoration:none;padding:14px 32px;border:1px solid ${C.accent};">${c.ctaLabel}</a>
-          <p style="color:${C.muted};font-size:11px;line-height:1.6;margin:24px 0 6px;font-family:${FONT_BODY};">${c.fallbackLead}</p>
-          <a href="${downloadUrl}" style="color:${C.accent};font-size:11px;line-height:1.6;word-break:break-all;font-family:${FONT_BODY};">${downloadUrl}</a>
         </td></tr>
         <tr><td class="px email-card" align="center" bgcolor="${C.bg}" style="padding:26px 40px 4px;background:${C.bg};background-color:${C.bg}!important;">
           <div style="color:${C.muted};font-size:10px;text-transform:uppercase;letter-spacing:3px;font-weight:700;font-family:${FONT_BODY};margin-bottom:14px;">${c.followLabel}</div>

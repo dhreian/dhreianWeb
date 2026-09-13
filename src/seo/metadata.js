@@ -68,9 +68,9 @@ const PAGE_METADATA = {
       title: 'herramientas de audio para productores y streaming | dhreian',
       name: 'Herramientas de audio para productores de dhreian',
       description:
-        'Usa auroLab para tareas de producción y descarga dhreLink gratis para enviar audio procesado desde tu DAW a OBS Studio en Windows.',
+        'Usa auroLab para producción y descarga dhreLink y dhreView gratis para llevar el audio y video de cualquier DAW a OBS Studio en Windows.',
       socialDescription:
-        'auroLab reúne utilidades de producción y dhreLink conecta el audio de tu DAW con OBS Studio sin dispositivos virtuales.',
+        'dhreLink conecta el audio de tu DAW con OBS y dhreView captura cualquier DAW de Windows junto con sus plugins sin mostrar el escritorio.',
       imageAlt: 'dhreian — artista y productor musical',
       locale: 'es_CL',
     },
@@ -130,9 +130,9 @@ const PAGE_METADATA = {
       title: 'audio tools for music production and streaming | dhreian',
       name: 'Audio tools for music producers by dhreian',
       description:
-        'Use auroLab for production tasks and download dhreLink free to send processed audio from your DAW to OBS Studio on Windows.',
+        'Use auroLab for production and download dhreLink and dhreView free to bring audio and video from any Windows DAW into OBS Studio.',
       socialDescription:
-        'auroLab brings together production utilities, while dhreLink connects your DAW audio to OBS Studio without virtual devices.',
+        'dhreLink connects your DAW audio to OBS, while dhreView captures any Windows DAW and its plugins without showing your desktop.',
       imageAlt: 'dhreian — artist and music producer',
       locale: 'en_US',
     },
@@ -158,7 +158,7 @@ const SECTION_COPY = {
     plugins:
       'Plugins creados con el mismo criterio con el que produzco: sonido con carácter y un flujo de trabajo directo, para que los uses en tus propias sesiones.',
     tools:
-      'Recursos creados para resolver tareas técnicas de producción desde el navegador, con rapidez y sin interrumpir tu flujo creativo.',
+      'Recursos creados para resolver tareas técnicas de producción y streaming con rapidez, sin interrumpir tu flujo creativo.',
     contact:
       '¿Listo para llevar tu proyecto al siguiente nivel? Escríbeme detallando tu visión y te responderé lo más rápido posible con una propuesta personalizada.',
   },
@@ -170,7 +170,7 @@ const SECTION_COPY = {
     plugins:
       'Plugins built with the same approach I bring to production: sound with character and a straightforward workflow, ready to use in your own sessions.',
     tools:
-      'Resources built to handle technical production tasks right in your browser, quickly and without interrupting your creative flow.',
+      'Resources built to handle technical production and streaming tasks quickly, without interrupting your creative flow.',
     contact:
       "Ready to take your project to the next level? Write to me describing your vision and I'll get back to you as soon as possible with a tailored proposal.",
   },
@@ -181,14 +181,14 @@ const ROUTE_LABELS = {
     '/beats': 'Beats',
     '/servicios': 'Servicios de producción',
     '/plugins': 'Plugins de audio',
-    '/herramientas': 'Herramientas web',
+    '/herramientas': 'Herramientas para productores',
     '/contacto': 'Contacto',
   },
   en: {
     '/beats': 'Beats',
     '/servicios': 'Production services',
     '/plugins': 'Audio plugins',
-    '/herramientas': 'Web tools',
+    '/herramientas': 'Producer tools',
     '/contacto': 'Contact',
   },
 };
@@ -545,8 +545,8 @@ function createWebToolNodes(lang) {
     name: 'auroLab',
     description:
       lang === 'en'
-        ? 'A web lab for producers, built to calculate delay and reverb timing from BPM, practice with a metronome and tap tempo, and analyze the BPM and key of your audio without leaving the browser.'
-        : 'Un laboratorio web para productores, creado para calcular tiempos de delay y reverb a partir del BPM, practicar con metrónomo y tap tempo, y analizar el BPM y la tonalidad de tus audios sin salir del navegador.',
+        ? 'Calculate delay and reverb timing from BPM, practice with a metronome and tap tempo, and analyze your audio\'s BPM and key in the browser.'
+        : 'Calcula tiempos de delay y reverb desde el BPM, practica con metrónomo y tap tempo, y analiza el BPM y la tonalidad de tus audios en el navegador.',
     applicationCategory: 'MultimediaApplication',
     browserRequirements: 'Requires JavaScript and a modern web browser',
     operatingSystem: 'Any',
@@ -578,14 +578,37 @@ function createWebToolNodes(lang) {
     },
   };
 
+  const dhreView = {
+    '@type': 'SoftwareApplication',
+    '@id': `${SITE_URL}/herramientas#dhreview`,
+    name: 'dhreView',
+    description:
+      lang === 'en'
+        ? 'Capture any Windows DAW and its floating plugin windows in OBS without showing the rest of your desktop or interfering with audio.'
+        : 'Captura en OBS la ventana de cualquier DAW en Windows junto con sus plugins flotantes, sin mostrar el resto del escritorio y sin intervenir el audio.',
+    applicationCategory: 'MultimediaApplication',
+    applicationSubCategory: 'Private window capture tool for OBS Studio',
+    operatingSystem: 'Windows 10/11 x64',
+    softwareVersion: '1.0.0',
+    url: `${SITE_URL}/herramientas`,
+    image: `${SITE_URL}/tools/dhreview.png`,
+    author: { '@id': ARTIST_ID },
+    offers: {
+      '@type': 'Offer',
+      price: 0,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
+  };
+
   return [
     {
       '@type': 'ItemList',
       '@id': `${SITE_URL}/herramientas#catalog`,
       name: lang === 'en' ? 'Audio tools by dhreian' : 'Herramientas de audio de dhreian',
       url: `${SITE_URL}/herramientas`,
-      numberOfItems: 2,
-      itemListElement: [auroLab, dhreLink].map((tool, index) => ({
+      numberOfItems: 3,
+      itemListElement: [auroLab, dhreLink, dhreView].map((tool, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         item: { '@id': tool['@id'] },
@@ -593,6 +616,7 @@ function createWebToolNodes(lang) {
     },
     auroLab,
     dhreLink,
+    dhreView,
   ];
 }
 

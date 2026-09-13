@@ -104,6 +104,19 @@ export const WEB_TOOLS = [
       { key: 'v1', version: '1.0' },
     ],
   },
+  {
+    key: 'dhreview',
+    name: 'dhreView',
+    image: '/tools/dhreview.png',
+    type: 'desktopApp',
+    formats: ['DAW', 'OBS', 'Windows'],
+    free: true,
+    downloadByEmail: true,
+    url: null,
+    versions: [
+      { key: 'v1', version: '1.0' },
+    ],
+  },
 ];
 
 export const TRACKS = [

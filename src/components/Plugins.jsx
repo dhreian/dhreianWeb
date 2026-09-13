@@ -44,7 +44,7 @@ export default function Plugins() {
                       height="600"
                       loading="lazy"
                       decoding="async"
-                      className="h-full w-full object-contain"
+                      className="h-full w-full object-contain transition-transform duration-500 ease-out motion-safe:group-hover:scale-110"
                     />
                   ) : (
                     <div className="w-full h-full grid place-items-center">
